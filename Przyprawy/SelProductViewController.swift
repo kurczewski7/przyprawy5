@@ -15,13 +15,14 @@ class SelProductViewController: UIViewController, NSFetchedResultsControllerDele
         // categoryId   productName
         
         let context = database.context
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ProductTable")
-        let sort1 = NSSortDescriptor(key: "categoryId", ascending: true)
-        let sort2=NSSortDescriptor(key: "productName", ascending: true)
-        fetchRequest.sortDescriptors = [sort1, sort2]
+        // ??????
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ToShopProductTable")
+        let sort1 = NSSortDescriptor(key: "changeDate", ascending: true)
+//        let sort2=NSSortDescriptor(key: "productName", ascending: true)
+        fetchRequest.sortDescriptors = [sort1]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                               managedObjectContext: context,
-                                                              sectionNameKeyPath: "categoryId",
+                                                              sectionNameKeyPath: "checked",
                                                               cacheName: "SectionCache")
         fetchedResultsController.delegate =  self
         do {
@@ -34,7 +35,7 @@ class SelProductViewController: UIViewController, NSFetchedResultsControllerDele
 extension SelProductViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
+        return  sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,8 +43,12 @@ extension SelProductViewController: UITableViewDataSource, UITableViewDelegate {
         let dlugosc = database.product.productArray.count
         print("dlugosc \(dlugosc) indexPath.row \(indexPath.row)")
         //let tmp = database.product.productArray[indexPath.row < dlugosc  ? indexPath.row: 0]
-        let obj = fetchedResultsController.object(at: indexPath) as! ProductTable
-        configureCell(cell: cell, withEntity: obj, row: indexPath.row, section: indexPath.section )
+        let obj = fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+        if let product=obj.productRelation {
+            configureCell(cell: cell, withEntity: product, row: indexPath.row, section: indexPath.section )
+        }
+       
+       
         return cell
     }
     func configureCell(cell: SelProductViewControllerCell, withEntity product: ProductTable, row: Int, section: Int) {

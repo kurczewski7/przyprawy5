@@ -9,12 +9,12 @@
 import UIKit
 
 class SelProductViewControllerCell: UITableViewCell, ProductProtocol {
+    // perform protocol
     @IBOutlet var producentLabel: UILabel!
     @IBOutlet var productLabel: UILabel!
     @IBOutlet var picture: UIImageView!
-    
+    // non protocol
     @IBOutlet var detaliLabel: UILabel!
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
