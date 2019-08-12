@@ -712,7 +712,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="124" id="gvY-0o-iL6" customClass="InBasketTableViewCell" customModule="Przyprawy" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="124" id="gvY-0o-iL6" customClass="SelProductViewControllerCell" customModule="Przyprawy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gvY-0o-iL6" id="bvK-kC-3bJ">
@@ -765,10 +765,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="detailLabel" destination="2bj-20-ZPa" id="BBk-Rh-Owa"/>
+                                            <outlet property="detaliLabel" destination="2bj-20-ZPa" id="Hg8-tD-hB0"/>
                                             <outlet property="picture" destination="Flt-oB-Khj" id="XIa-VS-sdU"/>
-                                            <outlet property="producentLabel" destination="rFQ-oh-hMh" id="t9f-oj-ZaY"/>
-                                            <outlet property="productNameLabel" destination="nBm-gW-gEH" id="SwD-3T-cVf"/>
+                                            <outlet property="producentLabel" destination="rFQ-oh-hMh" id="dou-7N-AdO"/>
+                                            <outlet property="productLabel" destination="nBm-gW-gEH" id="8zU-4S-IgP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -31,6 +31,8 @@
 		2CB2281921F24BD8008A3292 /* InBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2281821F24BD8008A3292 /* InBasketViewController.swift */; };
 		2CB2281B21F2522C008A3292 /* InBasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */; };
 		2CB903AB230199AD009F6A8E /* SelProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB903AA230199AD009F6A8E /* SelProductViewController.swift */; };
+		2CB903AD2301AEB7009F6A8E /* ProductProlocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB903AC2301AEB7009F6A8E /* ProductProlocol.swift */; };
+		2CB903B12301B065009F6A8E /* SelProductViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB903B02301B065009F6A8E /* SelProductViewControllerCell.swift */; };
 		2CDC33AE225762B7000BCBE1 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC33AD225762B7000BCBE1 /* String+extension.swift */; };
 		2CE27567210237AF001C046B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE27566210237AF001C046B /* AppDelegate.swift */; };
 		2CE27569210237AF001C046B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE27568210237AF001C046B /* ViewController.swift */; };
@@ -87,6 +89,8 @@
 		2CB2281821F24BD8008A3292 /* InBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InBasketViewController.swift; path = ../InBasketViewController.swift; sourceTree = "<group>"; };
 		2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InBasketTableViewCell.swift; path = ../InBasketTableViewCell.swift; sourceTree = "<group>"; };
 		2CB903AA230199AD009F6A8E /* SelProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelProductViewController.swift; sourceTree = "<group>"; };
+		2CB903AC2301AEB7009F6A8E /* ProductProlocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductProlocol.swift; sourceTree = "<group>"; };
+		2CB903B02301B065009F6A8E /* SelProductViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelProductViewControllerCell.swift; sourceTree = "<group>"; };
 		2CDC33AD225762B7000BCBE1 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "Model/String+extension.swift"; sourceTree = "<group>"; };
 		2CE27563210237AF001C046B /* Przyprawy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Przyprawy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE27566210237AF001C046B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 			children = (
 				2CE2756A210237AF001C046B /* Main.storyboard */,
 				2CB903AA230199AD009F6A8E /* SelProductViewController.swift */,
+				2CB903B02301B065009F6A8E /* SelProductViewControllerCell.swift */,
+				2CB903AC2301AEB7009F6A8E /* ProductProlocol.swift */,
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
 				2CDC33AD225762B7000BCBE1 /* String+extension.swift */,
 				2C158CBD2186106F00C3438B /* Model */,
@@ -386,6 +392,7 @@
 				2C1B7940219C7DE300A7BD63 /* CategoryCollectionViewCell.swift in Sources */,
 				2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */,
 				2CB2281B21F2522C008A3292 /* InBasketTableViewCell.swift in Sources */,
+				2CB903B12301B065009F6A8E /* SelProductViewControllerCell.swift in Sources */,
 				2C1B793E219C66DB00A7BD63 /* CategoryViewController.swift in Sources */,
 				2CDC33AE225762B7000BCBE1 /* String+extension.swift in Sources */,
 				2C0A1D2821355BFF006FA312 /* PhoneContactsViewController.swift in Sources */,
@@ -402,6 +409,7 @@
 				2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */,
 				2CE2756F210237AF001C046B /* DataModel.xcdatamodeld in Sources */,
 				2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */,
+				2CB903AD2301AEB7009F6A8E /* ProductProlocol.swift in Sources */,
 				2C1B3BDD21B7D12000B53ABA /* TakePhotoViewController.swift in Sources */,
 				2C70579C2139ED4300B99FEA /* Product.swift in Sources */,
 			);
