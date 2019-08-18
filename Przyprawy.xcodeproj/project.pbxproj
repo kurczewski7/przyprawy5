@@ -22,6 +22,7 @@
 		2C3F37A92216060F00397BD7 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F37A82216060F00397BD7 /* ShareViewController.swift */; };
 		2C70579C2139ED4300B99FEA /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70579B2139ED4300B99FEA /* Product.swift */; };
 		2C7288BD2147EE0F003506BE /* popViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7288BC2147EE0F003506BE /* popViewController.swift */; };
+		2C72D5E0230961D4008BC61C /* DatabaseTableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72D5DF230961D4008BC61C /* DatabaseTableProtocol.swift */; };
 		2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DC212C492D00225A52 /* ShopingListViewController.swift */; };
 		2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */; };
 		2C7CB578212FEB57005F6304 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7CB577212FEB57005F6304 /* Contacts.swift */; };
@@ -80,6 +81,7 @@
 		2C691026225E9D7C00B09477 /* pl-PL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pl-PL"; path = "pl-PL.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		2C70579B2139ED4300B99FEA /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		2C7288BC2147EE0F003506BE /* popViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popViewController.swift; sourceTree = "<group>"; };
+		2C72D5DF230961D4008BC61C /* DatabaseTableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTableProtocol.swift; sourceTree = "<group>"; };
 		2C7888DC212C492D00225A52 /* ShopingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListViewController.swift; sourceTree = "<group>"; };
 		2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListCellView.swift; sourceTree = "<group>"; };
 		2C7CB577212FEB57005F6304 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
@@ -88,9 +90,9 @@
 		2C8C528C2122E135006D8099 /* AtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeViewController.swift; sourceTree = "<group>"; };
 		2CB2281821F24BD8008A3292 /* InBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InBasketViewController.swift; path = ../InBasketViewController.swift; sourceTree = "<group>"; };
 		2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InBasketTableViewCell.swift; path = ../InBasketTableViewCell.swift; sourceTree = "<group>"; };
-		2CB903AA230199AD009F6A8E /* SelProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelProductViewController.swift; sourceTree = "<group>"; };
+		2CB903AA230199AD009F6A8E /* SelProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelProductViewController.swift; path = ../SelProductViewController.swift; sourceTree = "<group>"; };
 		2CB903AC2301AEB7009F6A8E /* ProductProlocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductProlocol.swift; sourceTree = "<group>"; };
-		2CB903B02301B065009F6A8E /* SelProductViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelProductViewControllerCell.swift; sourceTree = "<group>"; };
+		2CB903B02301B065009F6A8E /* SelProductViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelProductViewControllerCell.swift; path = ../SelProductViewControllerCell.swift; sourceTree = "<group>"; };
 		2CDC33AD225762B7000BCBE1 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "Model/String+extension.swift"; sourceTree = "<group>"; };
 		2CE27563210237AF001C046B /* Przyprawy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Przyprawy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE27566210237AF001C046B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,9 +139,10 @@
 		2C158CBD2186106F00C3438B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2C1F1D6622072CD3004665DD /* WebCreator.swift */,
 				2CE2756D210237AF001C046B /* DataModel.xcdatamodeld */,
+				2C1F1D6622072CD3004665DD /* WebCreator.swift */,
 				2C31B32421383A4900B7581D /* Database.swift */,
+				2C72D5DF230961D4008BC61C /* DatabaseTableProtocol.swift */,
 				2C158CD7218623B300C3438B /* CoreDataStack.swift */,
 				2C70579B2139ED4300B99FEA /* Product.swift */,
 				2C82B678223925A900772BF6 /* Server.swift */,
@@ -158,6 +161,8 @@
 		2C158CC1218610BB00C3438B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2CB903AA230199AD009F6A8E /* SelProductViewController.swift */,
+				2CB903B02301B065009F6A8E /* SelProductViewControllerCell.swift */,
 				2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */,
 				2CB2281821F24BD8008A3292 /* InBasketViewController.swift */,
 				2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */,
@@ -189,6 +194,13 @@
 			path = Enitties;
 			sourceTree = "<group>";
 		};
+		2C8FE76523033AFE007FA8A5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		2CE2755A210237AF001C046B = {
 			isa = PBXGroup;
 			children = (
@@ -213,8 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				2CE2756A210237AF001C046B /* Main.storyboard */,
-				2CB903AA230199AD009F6A8E /* SelProductViewController.swift */,
-				2CB903B02301B065009F6A8E /* SelProductViewControllerCell.swift */,
 				2CB903AC2301AEB7009F6A8E /* ProductProlocol.swift */,
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
 				2CDC33AD225762B7000BCBE1 /* String+extension.swift */,
@@ -223,6 +233,7 @@
 				2C158CBF2186109800C3438B /* View */,
 				2C158CC2218610E400C3438B /* Enitties */,
 				2CE27570210237B1001C046B /* Assets.xcassets */,
+				2C8FE76523033AFE007FA8A5 /* New Group */,
 				2CE27575210237B1001C046B /* Info.plist */,
 			);
 			path = Przyprawy;
@@ -386,6 +397,7 @@
 				2C7288BD2147EE0F003506BE /* popViewController.swift in Sources */,
 				2C1EB36321A46B4B00426F61 /* ToShopTableViewCell.swift in Sources */,
 				2C3F37A92216060F00397BD7 /* ShareViewController.swift in Sources */,
+				2C72D5E0230961D4008BC61C /* DatabaseTableProtocol.swift in Sources */,
 				2CE27569210237AF001C046B /* ViewController.swift in Sources */,
 				2C82B33D21B4655600EDB60F /* ScanerViewController.swift in Sources */,
 				2C82B679223925A900772BF6 /* Server.swift in Sources */,

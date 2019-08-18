@@ -514,6 +514,7 @@ class Database  {
         toShop.changeDate=Date.init()
         toShop.eanCode=product.eanCode
         toShop.productRelation=product
+        toShop.checked = false  // false
         toShopProduct.toShopProductArray.append(toShop)
     }
         // TODO: - removeFromBasket
@@ -624,13 +625,17 @@ class CategorySeting {
 
 // New Class ------------------------------------------
 // variable for ProductTable
-class ProductSeting {
+class ProductSeting: DatabaseTableProtocol {
     var context: NSManagedObjectContext
 
-        var productArray : [ProductTable] = []
-        var featchResultCtrl: NSFetchedResultsController<ProductTable>
-        let feachRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
-        var sortDescriptor:NSSortDescriptor
+        //private
+    var  productArray : [ProductTable] = []
+    var featchResultCtrl: NSFetchedResultsController<ProductTable>
+    let feachRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
+    var sortDescriptor:NSSortDescriptor
+    var count: Int {
+        get {   return productArray.count   }
+    }
     init(context: NSManagedObjectContext)
     {
         self.context=context
@@ -638,6 +643,25 @@ class ProductSeting {
         sortDescriptor=NSSortDescriptor(key: "productName", ascending: true)
         feachRequest.sortDescriptors = [sortDescriptor]
         featchResultCtrl=NSFetchedResultsController(fetchRequest: feachRequest, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil)
+    }
+    subscript(index: Int) -> ProductTable {
+        get {  return productArray[index]      }
+        set {  productArray[index] = newValue  }
+    }
+    func add(value: ProductTable) -> Int {
+        productArray.append(value)
+        return productArray.count
+    }
+    func remove(at row: Int) -> Bool {
+        let res: Bool
+        if row < productArray.count {
+            productArray.remove(at: row)
+            res = true
+        }
+        else {
+            res = false
+        }
+        return res
     }
     
 } // end of class ProductSeting

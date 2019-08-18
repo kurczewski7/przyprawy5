@@ -591,17 +591,17 @@
         <!--In Basket-->
         <scene sceneID="Gjb-as-UvW">
             <objects>
-                <viewController id="449-9N-d5u" sceneMemberID="viewController">
+                <viewController id="449-9N-d5u" customClass="InBasketViewController" customModule="Przyprawy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sq5-ic-DiP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="tu pwisz dane" translatesAutoresizingMaskIntoConstraints="NO" id="qKQ-3k-L3l">
-                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qvL-gs-PTY">
-                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="124" id="FmZ-pv-Zaq" customClass="InBasketTableViewCell" customModule="Przyprawy" customModuleProvider="target">
@@ -657,10 +657,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="detailLabel" destination="2r1-WH-GP7" id="ZDA-M6-mZA"/>
-                                            <outlet property="picture" destination="WRz-FB-Mgt" id="yR4-gz-yqX"/>
-                                            <outlet property="producentLabel" destination="SsA-tl-Ivj" id="bLd-Ic-CSA"/>
-                                            <outlet property="productNameLabel" destination="nCf-IU-g2m" id="IbE-tI-cbt"/>
+                                            <outlet property="detailLabel" destination="2r1-WH-GP7" id="noz-7Z-0aL"/>
+                                            <outlet property="picture" destination="WRz-FB-Mgt" id="KVc-cJ-EdW"/>
+                                            <outlet property="producentLabel" destination="SsA-tl-Ivj" id="ZwK-j9-KIF"/>
+                                            <outlet property="productNameLabel" destination="nCf-IU-g2m" id="F6Y-Wn-Jp0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -686,13 +686,10 @@
                         <viewLayoutGuide key="safeArea" id="DBb-0a-Jq0"/>
                     </view>
                     <navigationItem key="navigationItem" title="In Basket" id="7oS-dW-UmE"/>
-                    <connections>
-                        <outlet property="tabView" destination="qvL-gs-PTY" id="87f-CB-gUm"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Coc-yU-k5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3575" y="2330"/>
+            <point key="canvasLocation" x="2655" y="2991"/>
         </scene>
         <!--Selected View Controller-->
         <scene sceneID="BJS-AZ-E0C">
@@ -781,7 +778,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JuE-9r-RBu"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RrX-Ei-L1l"/>
+                    <navigationItem key="navigationItem" title="Selected" id="Thl-1v-bGZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOE-mG-og5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -854,7 +851,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTY-ro-bJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2922" y="2949"/>
+            <point key="canvasLocation" x="3519" y="2991"/>
         </scene>
         <!--Kontakty-->
         <scene sceneID="d14-di-eCt">
@@ -1072,7 +1069,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="OUu-tw-MgZ" kind="relationship" relationship="rootViewController" id="s2t-xr-f0A"/>
+                        <segue destination="449-9N-d5u" kind="relationship" relationship="rootViewController" id="hl7-Ba-cIa"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAF-8n-Pps" userLabel="First Responder" sceneMemberID="firstResponder"/>
