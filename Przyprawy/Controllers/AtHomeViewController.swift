@@ -117,12 +117,12 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK - TableView metod
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return picturesArray.count
-        return database.product.productArray.count
+        return database.product.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as!   AtHomeCell
         // FIXME: error loading
-        let product=database.product.productArray[indexPath.row]
+        let product=database.product[indexPath.row]
         cell.productLabel.text = product.productName?.capitalized(with: nil) ?? "No product"
 
          //cell.producentLabel?.font.withSize(25)
@@ -155,14 +155,14 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let checkAction=UITableViewRowAction(style: .default, title: " 🧺\nDo koszyka", handler:
         {(action, indexPath) -> Void in
             currCell?.accessoryType = .checkmark
-            database.product.productArray[indexPath.row].checked = true
-            database.addToProductList(product: database.product.productArray[indexPath.row])
+            database.product[indexPath.row].checked = true
+            database.addToProductList(product: database.product[indexPath.row])
             database.save()
         })
         let uncheckAction=UITableViewRowAction(style: .destructive, title: "❎\nUsuń z koszyka ", handler:
         { (action, indexPath) -> Void in
             currCell?.accessoryType = .none
-            database.product.productArray[indexPath.row].checked = false
+            database.product[indexPath.row].checked = false
             database.removeFromProductList(withProductRec: indexPath.row) 
             database.save()
         })
@@ -246,7 +246,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         {
             let nextVC=segue.destination as! DetailAtHomeViewController //AtHomeViewController
             nextVC.numberOfRow = numberOfRow
-            let currentProduct = database.product.productArray[numberOfRow]
+            let currentProduct = database.product[numberOfRow]
             nextVC.productImageName = currentProduct.pictureName ?? "question-mark"
             nextVC.productTitle = currentProduct.productName ?? "no product"
             nextVC.productSubtitle = currentProduct.producent ?? "no producent"

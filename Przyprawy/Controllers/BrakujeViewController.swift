@@ -145,11 +145,11 @@ func initialProduct()
         
     }
     @IBAction func infoButton(_ sender: UIButton) {
-        let rec=database.product.productArray.count
+        let rec=database.product.count
         print("rozmiar productArray \(rec)")
         for i in 0..<rec
         {
-            print("\(i) )\(database.product.productArray[i])")
+            print("\(i) )\(database.product.array[i])")
         }
     }
     

@@ -47,7 +47,7 @@ class Server {
         
         tekst = "INSERT INTO `product_table` (`categoryId`, `changeDate`, `checked`, `eanCode`, `fullPicture`, `id`, `number1`, `number2`, `number3`, `pictureName`, `producent`, `productName`, `searchTag`, `smallPicture`, `weight`) VALUES\n"
         
-        let dbArray = db.product.productArray
+        let dbArray = db.product.array
         for i in 0..<dbArray.count   {
             tx[0] = "\(dbArray[i].categoryId)"            
             tx[1] =  getStringDate(forDate: dbArray[i].changeDate)                                           //"\(dbArray[i].changeDate ?? Date())"

@@ -55,7 +55,7 @@ class Database  {
         didSet {
             self.eanMode = true
             self.filterData(searchText: scanerCodebarValue, searchTable: .products, searchField: .EAN)
-            if database.product.productArray.count == 0 {
+            if database.product.count == 0 {
                 print("Not found this product")
             }
         }
@@ -86,7 +86,7 @@ class Database  {
         case .products:
             myArray  = category.categoryArray
         case .categories:
-            myArray  = product.productArray
+            myArray  = product.array
         case .shopingProduct:
             myArray  = shopingProduct.shopingProductArray
         case .toShop:
@@ -115,10 +115,10 @@ class Database  {
             // Todo- error out of range
             
             if newProducyArray.count > 0  {
-                self.product.productArray = newProducyArray }
+                self.product.array = newProducyArray }
             else {
                 print("Error loading empty data")
-                self.product.productArray = newProducyArray
+                self.product.array = newProducyArray
             }
         }
         catch { print("Error fetching data from context \(error)")   }
@@ -160,7 +160,7 @@ class Database  {
             }
             switch tabName {
                 case .products       :
-                    product.productArray = newArray as! [ProductTable]
+                    product.array = newArray as! [ProductTable]
                 case .basket         :
                     basketProduct.basketProductArray = newArray as! [BasketProductTable]
                 case .shopingProduct :
@@ -177,35 +177,35 @@ class Database  {
     }
     // MARK: - Delete and Add record methods
     func deleteOne() {
-        let r = product.productArray.count-1
-        context.delete(product.productArray[r])
-        product.productArray.remove(at: r)
+        let r = product.count-1
+        context.delete(product[r])
+        product.remove(at: r)
         save()
     }
     func deleteOne(withProductRec row : Int) {
         // for row -1 delete last record
-        var arr = product.productArray
+        let arr = product.array
         let r = (row == -1 ? arr.count-1 : row)
         context.delete(arr[r])
-        product.productArray.remove(at: r)
+        product.remove(at: r)
         save()
     }
     func deleteOne(withToShopRec row : Int) {
-        var arr = toShopProduct.toShopProductArray
+        let arr = toShopProduct.toShopProductArray
         let r = (row == -1 ? arr.count-1 : row)
         context.delete(arr[r])
         toShopProduct.toShopProductArray.remove(at: r)
         save()
     }
     func deleteOne(withBasketRec row : Int) {
-        var arr = basketProduct.basketProductArray   //toShopProduct.toShopProductArray
+        let arr = basketProduct.basketProductArray   //toShopProduct.toShopProductArray
         let r = (row == -1 ? arr.count-1 : row)
         context.delete(arr[r])
         basketProduct.basketProductArray.remove(at: r)
         save()
     }
     func uncheckOne(withToShopRec row : Int, toCheck: Bool = false) {
-        var arr = toShopProduct.toShopProductArray
+        let arr = toShopProduct.toShopProductArray
         let r = (row == -1 ? arr.count-1 : row)
         arr[r].productRelation?.checked = toCheck
         save()
@@ -223,7 +223,7 @@ class Database  {
     }
     
       func addOneRecord(newProduct : ProductTable) {
-        self.product.productArray.append(newProduct)
+        self.product.add(value: newProduct)
         self.save()
     }
     func addOneRecord(newProductInBasket basketProd: BasketProductTable, at row: Int = -1) {
@@ -252,11 +252,11 @@ class Database  {
         //productElem.parentCategory?.categoryName=database.selectedCategory?.categoryName
         productElem.parentCategory=database.selectedCategory
         productElem.categoryId = 1
-        self.product.productArray.append(productElem)
-        if product.productArray[product.productArray.count-1].pictureName == nil
+        self.product.append(productElem)
+        if product[product.count-1].pictureName == nil
         {
             print("---------")
-            print("nul at \(product.productArray.count-1)")
+            print("nul at \(product.count-1)")
             print("---------")
         }
         if saving {
@@ -419,8 +419,8 @@ class Database  {
         do {
             let newSearchArray = (try context.fetch(reqest))
             switch searchTable {
-            case .products:         product.productArray       = newSearchArray as! [ProductTable]
-                                    numberOfRecords    = product.productArray.count
+            case .products:         product.array       = newSearchArray as! [ProductTable]
+                                    numberOfRecords    = product.count
             // FIXME - basketProduct to shopingProduct
             case .shopingProduct:   basketProduct.basketProductArray = newSearchArray as! [BasketProductTable]
                                     numberOfRecords    = basketProduct.basketProductArray.count
@@ -519,9 +519,9 @@ class Database  {
     }
         // TODO: - removeFromBasket
     func removeFromProductList(withProductRec row : Int = -1) {
-        let r = (row == -1 ? product.productArray.count-1 : row)
-        context.delete(product.productArray[r])
-        product.productArray.remove(at: r)
+        let r = (row == -1 ? product.count-1 : row)
+        context.delete(product[r])
+        product.remove(at: r)
         save()
     }
 //    func deleteOne(withProductRec row : Int = -1) {
@@ -626,15 +626,28 @@ class CategorySeting {
 // New Class ------------------------------------------
 // variable for ProductTable
 class ProductSeting: DatabaseTableProtocol {
-    var context: NSManagedObjectContext
 
-        //private
-    var  productArray : [ProductTable] = []
+    var context: NSManagedObjectContext
+    private var   productArray : [ProductTable] = []
     var featchResultCtrl: NSFetchedResultsController<ProductTable>
     let feachRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
     var sortDescriptor:NSSortDescriptor
     var count: Int {
         get {   return productArray.count   }
+    }
+    var array: [ProductTable] {
+        get {   return productArray   }
+        set {   productArray = newValue  }
+    }
+
+    subscript(index: Int) -> ProductTable {
+        get {  return productArray[index]      }
+        set {  productArray[index] = newValue  }
+    }
+    func append<T>(_ value: T) {
+        if let val = value as? ProductTable {
+            productArray.append(val)
+        }
     }
     init(context: NSManagedObjectContext)
     {
@@ -643,10 +656,6 @@ class ProductSeting: DatabaseTableProtocol {
         sortDescriptor=NSSortDescriptor(key: "productName", ascending: true)
         feachRequest.sortDescriptors = [sortDescriptor]
         featchResultCtrl=NSFetchedResultsController(fetchRequest: feachRequest, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil)
-    }
-    subscript(index: Int) -> ProductTable {
-        get {  return productArray[index]      }
-        set {  productArray[index] = newValue  }
     }
     func add(value: ProductTable) -> Int {
         productArray.append(value)
@@ -694,13 +703,29 @@ class ProductSeting: DatabaseTableProtocol {
 //        catch  {  print("Error saveing context \(error)")   }
 //    }
 //}
-class ToShopProduct {
+class ToShopProduct: DatabaseTableProtocol {
+
     var context: NSManagedObjectContext
     var sortDescriptor:NSSortDescriptor
     
     var toShopProductArray = [ToShopProductTable]()
     var featchResultCtrl: NSFetchedResultsController<ToShopProductTable>
     var feachRequest:NSFetchRequest<ToShopProductTable> = ToShopProductTable.fetchRequest()
+    var count: Int = 0
+    
+    func append<T>(_ value: T) {
+        if let val = value as? ToShopProductTable {
+            toShopProductArray.append(val)
+        }
+    }
+    func remove(at row: Int) -> Bool {
+        var result: Bool = false
+        if row < toShopProductArray.count {
+            toShopProductArray.remove(at: row)
+            result = true
+        }
+        return result
+    }
     init(context: NSManagedObjectContext)
     {
         self.context=context

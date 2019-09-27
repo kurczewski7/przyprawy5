@@ -78,7 +78,7 @@ class WebCreator {
         self.emailFrom = emailFrom
         lang = polishLanguage ? "pl" : "en"
         sectionInfo.sectionTitles = setSectionsTitles()
-        db=database.product.productArray
+        db=database.product.array
 
         //let allTitles = self.delegate?.webCreatorTitlesOfSerctions()
         //print("allTitles: \(allTitles ?? ["default value"])")

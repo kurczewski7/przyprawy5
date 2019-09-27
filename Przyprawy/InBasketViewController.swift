@@ -10,37 +10,53 @@ import UIKit
 import CoreData
 
 class InBasketViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+    enum SectionType: Int {
+        case ToBuy = 0
+        case AlreadyBought = 1
+    }
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // categoryId   productName
-        
         let context = database.context
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ToShopProductTable")
-        let sort1 = NSSortDescriptor(key: "changeDate", ascending: true)
+        let sort1 = NSSortDescriptor(key: "checked", ascending: true)
         //let sort2=NSSortDescriptor(key: "productName", ascending: true)
         fetchRequest.sortDescriptors = [sort1]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                               managedObjectContext: context,
-                                                              sectionNameKeyPath: "changeDate", //"changeDate", checked
+                                                              sectionNameKeyPath: "checked", //"changeDate", checked
                                                               cacheName: "SectionCache")
         fetchedResultsController.delegate =  self
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Error: \(error.localizedDescription)")
+            
         }
+    }
+    override func  viewWillAppear(_ animated: Bool) {
+        print("Odświeżenie")
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+        }
+        self.tableView?.reloadData()
+        super.viewWillAppear(animated)
     }
     func numberOfSectionsInTableView
         (tableView: UITableView) -> Int {
         let sectionInfo =  fetchedResultsController.sections![0]
         
+        print("======== numberOfSectionsInTableView:")
         print("ind: \(sectionInfo.indexTitle ?? "brak")")
         print("name: \(sectionInfo.name)")
         print("obj: \(sectionInfo.numberOfObjects)")
         print("count: \(sectionInfo.objects?.count ?? -1)")
 
-        return fetchedResultsController.sections!.count
+        return fetchedResultsController.sections?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView,
@@ -57,7 +73,7 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
 //            print("index: \(sectionInfo.indexTitle)")
 //            print("name: \(sectionInfo.name)")
 //            print("count: \(sectionInfo.objects?.count)")
-        return fetchedResultsController.sections?.count  ?? 0  //sectionInfo.numberOfObjects
+        return fetchedResultsController.sections?[section].numberOfObjects ?? 0  //  sections?[section].count  ?? 0  //sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,21 +87,30 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! InBasketTableViewCell
-        let dlugosc = database.product.productArray.count
+        let dlugosc = database.product.count
         print("dlugosc \(dlugosc) indexPath.row \(indexPath.row)")
-        //let tmp = database.product.productArray[indexPath.row < dlugosc  ? indexPath.row: 0]
-        let obj=fetchedResultsController.object(at: indexPath) as! ToShopProductTable
-        if let product = obj.productRelation {
-            configureCell(cell: cell, withEntity: product, row: indexPath.row, section: indexPath.section )
+        if let obj=fetchedResultsController.object(at: indexPath) as? ToShopProductTable {
+            configureCell(cell: cell, withEntity: obj, at: indexPath)
         }
         return cell
     }
-    func configureCell(cell: InBasketTableViewCell, withEntity product: ProductTable, row: Int, section: Int) {
+    func configureCell(cell: InBasketTableViewCell, withEntity toShopproduct: ToShopProductTable, at indexPath: IndexPath) {
+        //row: Int, section: Int
+        let row = indexPath.row
+        let section = indexPath.section
+        if let product = toShopproduct.productRelation {
         cell.detailLabel.text=product.description
         cell.producentLabel.text="aaa\(row),\(section)"
         //cell.productNameLabel.text="cobj"
         cell.productNameLabel.text = product.productName
         cell.picture.image=UIImage(named: product.pictureName ?? "cameraCanon")
+        cell.accessoryType = (toShopproduct.checked ? .checkmark : .none)
+        }
+        else
+        {
+            cell.accessoryType = (toShopproduct.checked ? .checkmark : .none)
+            cell.detailLabel.text="No product"
+        }
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -93,13 +118,19 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print("Move ...items: Any..")
     }
+    func saveDataAndReloadView() {
+        do {
+            try fetchedResultsController.managedObjectContext.save()
+        }
+        catch  {  print("Error saveing context \(error)")   }
+        // tableView?.reloadData()
+    }
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .destructive, title: "Usuń z listy") { (lastAction, view, completionHandler) in
-            //let sectionInfo =  self.fetchedResultsController.sections![indexPath.section]
-            //sectionInfo.objects?.remove(at: indexPath.row)
             print("Usuń z listy")
             database.toShopProduct.toShopProductArray.remove(at: indexPath.row)
             database.save()
+            self.tableView?.reloadData()
             completionHandler(true)
         }
         action.backgroundColor = .red
@@ -108,31 +139,50 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
         return swipe
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let sectionType = getSectionType(at: indexPath)
         let action1 = UIContextualAction(style: .destructive, title: "Kup") { (act, view, completionHandler) in
             print("Kup")
-            database.toShopProduct.toShopProductArray[indexPath.row].checked = true
-            database.save()
-          completionHandler(true)
+            let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+            toShopProduct.checked = true
+            self.saveDataAndReloadView()
+            completionHandler(true)
         }
         action1.backgroundColor =  #colorLiteral(red: 0.09233232588, green: 0.5611743331, blue: 0.3208354712, alpha: 1)
         action1.image =  UIImage(named: "buy_filled")
-        action1.title = "Kup"
         
-        let action2 = UIContextualAction(style: .destructive, title: "Kup") { (act, view, completionHandler) in
-            print("Kup")
-            database.toShopProduct.toShopProductArray[indexPath.row].checked = false
-            database.save()
+        let action2 = UIContextualAction(style: .destructive, title: "Zwróć") { (act, view, completionHandler) in
+            print("Zwróć")
+            let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+            toShopProduct.checked = false
+            self.saveDataAndReloadView()
             completionHandler(true)
         }
         action2.backgroundColor =  #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
         action2.image =  UIImage(named: "return_purchase_filled")
-        action2.title = "Zwróć"
-        let swipe = UISwipeActionsConfiguration(actions: [indexPath.section==0 ?  action1 : action2])
+        
+        let swipe = UISwipeActionsConfiguration(actions: [sectionType == .ToBuy ?  action1 : action2])
         return swipe
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headers = ["Do kupienia",  "Kupione", "sec AAA", "Sec BBB", "Sec CCC","Sec DDDD"]
+        //var sectionType: SectionType = .ToBuy
+        var headers = ["Do kupienia",  "Kupione"]
         let label=UILabel()
+        if fetchedResultsController.sections?.count ?? 0 < 2 {
+            let indexPath = IndexPath(row: 0, section: section)
+            let elem = fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+            if elem.checked {
+                headers = ["Kupione"]
+            }
+            else {
+                headers = ["Do kupienia"]
+            }
+        }
+        else {
+            headers = ["Do kupienia",  "Kupione"]
+        }
+//------------------
+        
+        
         let sectionName = headers[section]
         //let secCount = database.category.sectionsData[section].objects.count
         label.text="\(sectionName)"
@@ -141,8 +191,19 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
         label.textColor = ((section != 0) ? UIColor.white : UIColor.black)
         return label
     }
+    func getSectionType(at indexPath: IndexPath) -> SectionType {
+        let elem = fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+        return elem.checked ? SectionType.AlreadyBought : SectionType.ToBuy
+    }
     func firstRunSetupSections(forEntityName entityName : String) {
     }
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+       
+            print("Controler: old Indexpath \(indexPath), new Indexpath (\(newIndexPath)")
+            self.tableView?.reloadData()
+    }
+        
     /*
     // MARK: - Navigation
 
