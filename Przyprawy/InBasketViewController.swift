@@ -128,9 +128,15 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .destructive, title: "Usuń z listy") { (lastAction, view, completionHandler) in
             print("Usuń z listy")
-            database.toShopProduct.toShopProductArray.remove(at: indexPath.row)
-            database.save()
-            self.tableView?.reloadData()
+            
+            
+            let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+            self.fetchedResultsController.managedObjectContext.delete(toShopProduct)
+            self.saveDataAndReloadView()
+//            toShopProduct.checked = true
+//            database.toShopProduct.toShopProductArray.remove(at: indexPath.row)
+//            database.save()
+          //  self.tableView?.reloadData()
             completionHandler(true)
         }
         action.backgroundColor = .red
