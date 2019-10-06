@@ -136,7 +136,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         else {
            cell.productPicture.image = UIImage( named: "question-mark")
         }
-        cell.accessoryType =  product.checked ? .checkmark : .none
+        cell.accessoryType =  product.checked1 ? .checkmark : .none
         cell.producentLabel?.font.withSize(25)
         return cell
     }
@@ -155,14 +155,16 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let checkAction=UITableViewRowAction(style: .default, title: " 🧺\nDo koszyka", handler:
         {(action, indexPath) -> Void in
             currCell?.accessoryType = .checkmark
-            database.product[indexPath.row].checked = true
+            //database.product[indexPath.row].checked1 = true
+            database.checkProductList(withNumberList: 1, productTable: database.product[indexPath.row], toCheck: true)
             database.addToProductList(product: database.product[indexPath.row])
             database.save()
         })
         let uncheckAction=UITableViewRowAction(style: .destructive, title: "❎\nUsuń z koszyka ", handler:
         { (action, indexPath) -> Void in
             currCell?.accessoryType = .none
-            database.product[indexPath.row].checked = false
+            //database.product[indexPath.row].checked1 = false
+            database.checkProductList(withNumberList: 1, productTable: database.product[indexPath.row], toCheck: false)
             database.removeFromProductList(withProductRec: indexPath.row) 
             database.save()
         })

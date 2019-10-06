@@ -207,8 +207,21 @@ class Database  {
     func uncheckOne(withToShopRec row : Int, toCheck: Bool = false) {
         let arr = toShopProduct.toShopProductArray
         let r = (row == -1 ? arr.count-1 : row)
-        arr[r].productRelation?.checked = toCheck
+        //arr[r].productRelation?.checked1 = toCheck
+        checkProductList(withNumberList: 1, productTable: arr[r].productRelation, toCheck: toCheck)
         save()
+    }
+    func checkProductList(withNumberList num: Int, productTable: ProductTable?, toCheck: Bool = false )  {
+        switch num {
+            //case 0: productTable?.checked = toCheck
+            case 1: productTable?.checked1 = toCheck
+            case 2: productTable?.checked2 = toCheck
+            case 3: productTable?.checked3 = toCheck
+            case 4: productTable?.checked4 = toCheck
+            case 5: productTable?.checked5 = toCheck
+        default:
+            print("Error checked Product")
+        }
     }
     func delTable(dbTableName : DbTableNames)  {
         let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: dbTableName.rawValue)
@@ -357,7 +370,7 @@ class Database  {
             product.weight     = Int16(weight)
             product.id         = Int32(nr)
             product.changeDate = Date.init()
-            product.checked    = false
+            product.checked1    = false
         }
         return product
     }

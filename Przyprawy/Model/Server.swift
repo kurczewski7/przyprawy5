@@ -39,31 +39,37 @@ class Server {
         
         var isNumber: Bool = false 
         var tekst: String = ""
-        var tx: [String] =  ["","","","","","","","","","","","","","",""]
-        let integerFields: [Int] = [0, 2, 5, 6, 7, 8, 14]
+        var tx: [String] =  ["","","","","","","","","","","","","","","","","","",""]
+        let integerFields: [Int] = [0, 2,  3,4,5,6,  9, 10, 11, 12, 18]
 
 //        tekst =  "INSERT INTO `dvds` (`filmId`, `title`, `filmDirector`, `actors`, `type`, `filmDescription`, `filmImageName`, `youtubeUrl`, `price`, `isLiked`) VALUES \n"
         
         
-        tekst = "INSERT INTO `product_table` (`categoryId`, `changeDate`, `checked`, `eanCode`, `fullPicture`, `id`, `number1`, `number2`, `number3`, `pictureName`, `producent`, `productName`, `searchTag`, `smallPicture`, `weight`) VALUES\n"
+        tekst = "INSERT INTO `product_table` (`categoryId`, `changeDate`, `checked1`,`checked2`,`checked3`,`checked4`,`checked5`, `eanCode`, `fullPicture`, `id`, `number1`, `number2`, `number3`, `pictureName`, `producent`, `productName`, `searchTag`, `smallPicture`, `weight`) VALUES\n"
         
         let dbArray = db.product.array
         for i in 0..<dbArray.count   {
             tx[0] = "\(dbArray[i].categoryId)"            
             tx[1] =  getStringDate(forDate: dbArray[i].changeDate)                                           //"\(dbArray[i].changeDate ?? Date())"
-            tx[2] = "\(dbArray[i].checked)"
-            tx[3] = "\(dbArray[i].eanCode ?? "")"
-            tx[4] =  "pict_\(dbArray[i].eanCode ?? "")"
-            tx[5] = "\(dbArray[i].id)"
-            tx[6] = "\(dbArray[i].number1)"
-            tx[7] = "\(dbArray[i].number2)"
-            tx[8] = "\(dbArray[i].number3)"
-            tx[9] =  dbArray[i].pictureName ?? "pict00"
-            tx[10] = dbArray[i].producent ?? ""
-            tx[11] = dbArray[i].productName ?? ""
-            tx[12] = dbArray[i].searchTag ?? ""
-            tx[13] = "pict_\(dbArray[i].eanCode ?? "")"
-            tx[14] = "\(dbArray[i].weight)"
+            tx[2] = "\(dbArray[i].checked1)"
+            
+            tx[3] = "\(dbArray[i].checked2)"
+            tx[4] = "\(dbArray[i].checked3)"
+            tx[5] = "\(dbArray[i].checked4)"
+            tx[6] = "\(dbArray[i].checked5)"
+            
+            tx[7] = "\(dbArray[i].eanCode ?? "")"
+            tx[8] =  "pict_\(dbArray[i].eanCode ?? "")"
+            tx[9] = "\(dbArray[i].id)"
+            tx[10] = "\(dbArray[i].number1)"
+            tx[11] = "\(dbArray[i].number2)"
+            tx[12] = "\(dbArray[i].number3)"
+            tx[13] =  dbArray[i].pictureName ?? "pict00"
+            tx[14] = dbArray[i].producent ?? ""
+            tx[15] = dbArray[i].productName ?? ""
+            tx[16] = dbArray[i].searchTag ?? ""
+            tx[17] = "pict_\(dbArray[i].eanCode ?? "")"
+            tx[18] = "\(dbArray[i].weight)"
 
             tekst += "("
             for t in 0..<tx.count-1 {
