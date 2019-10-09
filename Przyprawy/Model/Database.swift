@@ -18,6 +18,7 @@ class Database  {
     // seting delegate
     var delegate: DatabaseDelegate?
     var context: NSManagedObjectContext
+    var selectedProductList: Int
     var eanMode: Bool = false
     
     // MARK: - Entitis of project
@@ -73,7 +74,10 @@ class Database  {
     // initialising class Database
     init(context: NSManagedObjectContext) {
         self.context = context
+        self.selectedProductList = 1
         self.scanerCodebarValue = ""
+        
+        
         category  = CategorySeting(context: context)
         product   = ProductSeting(context: context)
         toShopProduct = ToShopProduct(context: context)
@@ -208,11 +212,11 @@ class Database  {
         let arr = toShopProduct.toShopProductArray
         let r = (row == -1 ? arr.count-1 : row)
         //arr[r].productRelation?.checked1 = toCheck
-        checkProductList(withNumberList: 1, productTable: arr[r].productRelation, toCheck: toCheck)
+        checkProductList(productTable: arr[r].productRelation, toCheck: toCheck)
         save()
     }
-    func checkProductList(withNumberList num: Int, productTable: ProductTable?, toCheck: Bool = false )  {
-        switch num {
+    func checkProductList(productTable: ProductTable?, toCheck: Bool = false )  {
+        switch self.selectedProductList {
             //case 0: productTable?.checked = toCheck
             case 1: productTable?.checked1 = toCheck
             case 2: productTable?.checked2 = toCheck

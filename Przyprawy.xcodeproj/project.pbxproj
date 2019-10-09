@@ -20,6 +20,8 @@
 		2C31B32521383A4900B7581D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31B32421383A4900B7581D /* Database.swift */; };
 		2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38921F2122FE5300257476 /* AtHomeCell.swift */; };
 		2C3F37A92216060F00397BD7 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F37A82216060F00397BD7 /* ShareViewController.swift */; };
+		2C55CD3B234A8FBE00ACFC95 /* SelectedProducyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C55CD3A234A8FBE00ACFC95 /* SelectedProducyListController.swift */; };
+		2C55CD3D234A900F00ACFC95 /* SelectedProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C55CD3C234A900F00ACFC95 /* SelectedProductListCell.swift */; };
 		2C70579C2139ED4300B99FEA /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70579B2139ED4300B99FEA /* Product.swift */; };
 		2C7288BD2147EE0F003506BE /* popViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7288BC2147EE0F003506BE /* popViewController.swift */; };
 		2C72D5E0230961D4008BC61C /* DatabaseTableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72D5DF230961D4008BC61C /* DatabaseTableProtocol.swift */; };
@@ -77,6 +79,9 @@
 		2C31B32421383A4900B7581D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		2C38921F2122FE5300257476 /* AtHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeCell.swift; sourceTree = "<group>"; };
 		2C3F37A82216060F00397BD7 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		2C55CD3A234A8FBE00ACFC95 /* SelectedProducyListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProducyListController.swift; sourceTree = "<group>"; };
+		2C55CD3C234A900F00ACFC95 /* SelectedProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProductListCell.swift; sourceTree = "<group>"; };
+		2C55CD3F234A910600ACFC95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		2C691025225E9D7C00B09477 /* pl-PL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pl-PL"; path = "pl-PL.lproj/Main.strings"; sourceTree = "<group>"; };
 		2C691026225E9D7C00B09477 /* pl-PL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pl-PL"; path = "pl-PL.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		2C70579B2139ED4300B99FEA /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -161,6 +166,8 @@
 		2C158CC1218610BB00C3438B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2C55CD3A234A8FBE00ACFC95 /* SelectedProducyListController.swift */,
+				2C55CD3C234A900F00ACFC95 /* SelectedProductListCell.swift */,
 				2CB903AA230199AD009F6A8E /* SelProductViewController.swift */,
 				2CB903B02301B065009F6A8E /* SelProductViewControllerCell.swift */,
 				2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */,
@@ -393,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C158CD8218623B300C3438B /* CoreDataStack.swift in Sources */,
+				2C55CD3B234A8FBE00ACFC95 /* SelectedProducyListController.swift in Sources */,
 				2CB2281921F24BD8008A3292 /* InBasketViewController.swift in Sources */,
 				2C7288BD2147EE0F003506BE /* popViewController.swift in Sources */,
 				2C1EB36321A46B4B00426F61 /* ToShopTableViewCell.swift in Sources */,
@@ -423,6 +431,7 @@
 				2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */,
 				2CB903AD2301AEB7009F6A8E /* ProductProlocol.swift in Sources */,
 				2C1B3BDD21B7D12000B53ABA /* TakePhotoViewController.swift in Sources */,
+				2C55CD3D234A900F00ACFC95 /* SelectedProductListCell.swift in Sources */,
 				2C70579C2139ED4300B99FEA /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +473,7 @@
 			children = (
 				2CE2756B210237AF001C046B /* Base */,
 				2C691025225E9D7C00B09477 /* pl-PL */,
+				2C55CD3F234A910600ACFC95 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

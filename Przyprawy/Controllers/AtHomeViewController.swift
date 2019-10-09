@@ -156,7 +156,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         {(action, indexPath) -> Void in
             currCell?.accessoryType = .checkmark
             //database.product[indexPath.row].checked1 = true
-            database.checkProductList(withNumberList: 1, productTable: database.product[indexPath.row], toCheck: true)
+            database.checkProductList(productTable: database.product[indexPath.row], toCheck: true)
             database.addToProductList(product: database.product[indexPath.row])
             database.save()
         })
@@ -164,7 +164,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         { (action, indexPath) -> Void in
             currCell?.accessoryType = .none
             //database.product[indexPath.row].checked1 = false
-            database.checkProductList(withNumberList: 1, productTable: database.product[indexPath.row], toCheck: false)
+            database.checkProductList(productTable: database.product[indexPath.row], toCheck: false)
             database.removeFromProductList(withProductRec: indexPath.row) 
             database.save()
         })
