@@ -22,6 +22,11 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
         tap.cancelsTouchesInView = true
         view.addGestureRecognizer(tap)
         view.addGestureRecognizer(longTap)
+        
+        
+        registerSettingBundle()
+        NotificationCenter.default.addObserver(self, selector: #selector(ToShopTableViewController.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+        defaultsChanged()
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     @objc func hideKeyboard() {
@@ -30,6 +35,20 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     @objc func goToNextViwecontroller() {
         print("goToNextViwecontroller")
+    }
+    func registerSettingBundle() {
+        let appDefaults = [String : AnyObject]()
+        UserDefaults.standard.register(defaults:appDefaults)
+    }
+    @objc func defaultsChanged() {
+        if UserDefaults.standard.bool(forKey: "red_theme_key") {
+            self.view.backgroundColor = .red 
+            print("RedThemeKey")
+        }
+        else {
+            self.view.backgroundColor = .white
+            print("whiteThemaKey")
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -193,5 +212,8 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
         keyboarActive = false
         view.endEditing(true)
         //view.resignFirstResponder()
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
