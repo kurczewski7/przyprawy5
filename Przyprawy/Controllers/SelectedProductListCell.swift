@@ -11,5 +11,5 @@ import UIKit
 class SelectedProductListCell: UICollectionViewCell {
     @IBOutlet var picture: UIImageView!
     @IBOutlet var listLabel: UILabel!
-    @IBOutlet var iLikePicture: UIImageView!
+    @IBOutlet var iLikePicture: UIButton!
 }

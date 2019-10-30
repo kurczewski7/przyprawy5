@@ -12,7 +12,7 @@ import Foundation
 class SelectedProducyListController: UIViewController {
     let items: [String] = ["1","2","3","4","5","6","7","8","9"]
     
-    let picturesName: [String] = ["zakupy.jpg","tort2.jpeg","dom1.jpeg","ogrod2.jpeg","zwierzeta4.jpg","zwierzeta3.jpg","tort2.jpg","tort2.jpeg","tort2.jpeg"]
+    let picturesName: [String] = ["zakupy.jpg","tort2.jpeg","dom1.jpeg","ogrod2.jpeg","zwierzeta4.jpg","zwierzeta3.jpg","mieso.jpg","warzywa.jpg","przyprawa.jpg","napoje.jpg","napoje2.jpg","leki.jpg","agd.jpg","tree.jpg"]
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     let itemsPerRow: CFloat = 3
     /*
@@ -25,13 +25,13 @@ class SelectedProducyListController: UIViewController {
 }
 extension SelectedProducyListController: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        items.count
+        picturesName.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)  as! SelectedProductListCell
-        cell.listLabel.text=items[indexPath.row]
-        // cell.picture.image = UIImage(named: picturesName[indexPath.row]) ?? UIImage(named: "agd.jpg")
+        cell.listLabel.text="\(indexPath.row+1). Lista"
+        cell.picture.image = UIImage(named: picturesName[indexPath.row]) ?? UIImage(named: "agd.jpg")
         cell.backgroundColor = .yellow
         
         return cell

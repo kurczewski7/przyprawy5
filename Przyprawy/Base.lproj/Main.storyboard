@@ -365,32 +365,35 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dom1.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="CXP-Rx-ZHd">
                                                     <rect key="frame" x="0.0" y="0.0" width="319" height="312"/>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartfull" translatesAutoresizingMaskIntoConstraints="NO" id="1gJ-5D-2Ni">
-                                                    <rect key="frame" x="134.5" y="254" width="50" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="1gJ-5D-2Ni" secondAttribute="height" multiplier="1:1" id="9Wj-gX-hvn"/>
-                                                        <constraint firstAttribute="width" constant="50" id="T5P-gY-WJP"/>
-                                                        <constraint firstAttribute="height" constant="50" id="xHU-cc-qkU"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9E-bz-PBK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Lista" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9E-bz-PBK">
                                                     <rect key="frame" x="20" y="8" width="279" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="qbp-Pl-HLx"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZM-In-W8R">
+                                                    <rect key="frame" x="125" y="235" width="69" height="69"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="69" id="CuF-Oh-kif"/>
+                                                        <constraint firstAttribute="width" secondItem="SZM-In-W8R" secondAttribute="height" multiplier="1:1" id="TqV-Bm-5eU"/>
+                                                        <constraint firstAttribute="width" constant="69" id="epQ-Vz-dEK"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Button" image="heart"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1gJ-5D-2Ni" firstAttribute="centerX" secondItem="9NT-De-3CO" secondAttribute="centerX" id="0wE-K0-VwX"/>
+                                                <constraint firstAttribute="bottom" secondItem="SZM-In-W8R" secondAttribute="bottom" constant="8" id="Em7-D4-PAd"/>
+                                                <constraint firstItem="SZM-In-W8R" firstAttribute="centerX" secondItem="9NT-De-3CO" secondAttribute="centerX" id="Kt2-i4-70a"/>
                                                 <constraint firstItem="f9E-bz-PBK" firstAttribute="leading" secondItem="9NT-De-3CO" secondAttribute="leading" constant="20" id="Not-qj-qZT"/>
                                                 <constraint firstAttribute="trailing" secondItem="CXP-Rx-ZHd" secondAttribute="trailing" id="RDR-cB-fFn"/>
                                                 <constraint firstAttribute="trailing" secondItem="f9E-bz-PBK" secondAttribute="trailing" constant="20" id="WY0-L9-ENf"/>
                                                 <constraint firstItem="CXP-Rx-ZHd" firstAttribute="top" secondItem="9NT-De-3CO" secondAttribute="top" id="c8O-Ov-AY1"/>
                                                 <constraint firstAttribute="bottom" secondItem="CXP-Rx-ZHd" secondAttribute="bottom" id="cf8-XE-oPx"/>
-                                                <constraint firstAttribute="bottom" secondItem="1gJ-5D-2Ni" secondAttribute="bottom" constant="8" id="kIC-H5-4HO"/>
                                                 <constraint firstItem="f9E-bz-PBK" firstAttribute="top" secondItem="9NT-De-3CO" secondAttribute="top" constant="8" id="rOh-Ed-SzM"/>
                                                 <constraint firstItem="CXP-Rx-ZHd" firstAttribute="leading" secondItem="9NT-De-3CO" secondAttribute="leading" id="sNO-Hg-8hy"/>
                                             </constraints>
@@ -398,7 +401,9 @@
                                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <size key="customSize" width="319" height="312"/>
                                         <connections>
+                                            <outlet property="iLikePicture" destination="SZM-In-W8R" id="2GP-yL-0bU"/>
                                             <outlet property="listLabel" destination="f9E-bz-PBK" id="6Ub-CA-1Z3"/>
+                                            <outlet property="picture" destination="CXP-Rx-ZHd" id="yyN-IW-273"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1690,7 +1695,6 @@
         <image name="documents" width="25" height="25"/>
         <image name="dom1.jpeg" width="640" height="480"/>
         <image name="heart" width="128" height="128"/>
-        <image name="heartfull" width="128" height="128"/>
         <image name="keyboard_filled" width="25" height="25"/>
         <image name="plus" width="25" height="25"/>
         <image name="setup" width="25" height="25"/>
