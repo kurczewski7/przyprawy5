@@ -7,9 +7,31 @@
 //
 
 import UIKit
-
-class SelectedProductListCell: UICollectionViewCell {
+protocol SelectedProductListDelegate {
+    func didListChoicePressed(cell: UICollectionViewCell)
+}
+class SelectedProductListCell: UICollectionViewCell    {
     @IBOutlet var picture: UIImageView!
     @IBOutlet var listLabel: UILabel!
-    @IBOutlet var iLikePicture: UIButton!
+    @IBOutlet var iChoicePicture: UIButton!
+    var delegate: SelectedProductListDelegate?
+    
+    @IBAction func ListChoiceButtonPressed(_ sender: UIButton) {
+        print("ListChoiceButtonPressed")
+        delegate?.didListChoicePressed(cell: self)
+    }
+var isChecked: Bool = false {
+    didSet {
+        if isChecked {
+            print("isChecked On")
+            iChoicePicture.setImage(UIImage(named: "heartfull"), for: .normal)
+        }
+        else {
+             print("isChecked Off")
+            iChoicePicture.setImage(UIImage(named: "heart"), for: .normal)
+            }
+        }
+    }
 }
+
+// Protocool

@@ -9,21 +9,37 @@
 import UIKit
 import Foundation
 
-class SelectedProducyListController: UIViewController {
-    let items: [String] = ["1","2","3","4","5","6","7","8","9"]
+class SelectedProducyListController: UIViewController, SelectedProductListDelegate  {
+//    init() {
+//        fillCards()
+//    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    let items: [String] = ["1","2","3","4","5","6","7","8","9"]
     let picturesName: [String] = ["zakupy.jpg","tort2.jpeg","dom1.jpeg","ogrod2.jpeg","zwierzeta4.jpg","zwierzeta3.jpg","mieso.jpg","warzywa.jpg","przyprawa.jpg","napoje.jpg","napoje2.jpg","leki.jpg","agd.jpg","tree.jpg"]
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     let itemsPerRow: CFloat = 3
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    private var cards: [ProductList] = []
+    func fillCards() {
+        for elem in picturesName {
+            cards.append(ProductList(pictureName: elem))
+        }
+       
     }
-    */
+    // MARK: SelectedProductListDelegate method
+    func didListChoicePressed(cell: UICollectionViewCell) {
+        if let indexPath=collectionView.indexPath(for: cell) {
+            cell.isSelected = !cell.isSelected
+        }
+    }
 }
-extension SelectedProducyListController: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+extension SelectedProducyListController: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
+    // MARK: UICollectionViewDelegate method
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         picturesName.count
     }
