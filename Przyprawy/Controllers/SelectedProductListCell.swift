@@ -11,11 +11,11 @@ protocol SelectedProductListDelegate {
     func didListChoicePressed(cell: UICollectionViewCell)
 }
 class SelectedProductListCell: UICollectionViewCell    {
+    var delegate: SelectedProductListDelegate?
+    
     @IBOutlet var picture: UIImageView!
     @IBOutlet var listLabel: UILabel!
     @IBOutlet var iChoicePicture: UIButton!
-    var delegate: SelectedProductListDelegate?
-    
     @IBAction func ListChoiceButtonPressed(_ sender: UIButton) {
         print("ListChoiceButtonPressed")
         delegate?.didListChoicePressed(cell: self)

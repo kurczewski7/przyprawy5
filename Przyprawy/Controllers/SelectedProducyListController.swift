@@ -10,14 +10,7 @@ import UIKit
 import Foundation
 
 class SelectedProducyListController: UIViewController, SelectedProductListDelegate  {
-    init() {
-        // fillCards()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented !!!")
-    }
-    
+    var selectProd: SelectedProductListDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
     
     let items: [String] = ["1","2","3","4","5","6","7","8","9"]
@@ -25,6 +18,7 @@ class SelectedProducyListController: UIViewController, SelectedProductListDelega
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     let itemsPerRow: CFloat = 3
     private var cards: [ProductList] = []
+    
     func fillCards() {
         for elem in picturesName {
             cards.append(ProductList(pictureName: elem))
@@ -33,8 +27,10 @@ class SelectedProducyListController: UIViewController, SelectedProductListDelega
     }
     // MARK: SelectedProductListDelegate method
     func didListChoicePressed(cell: UICollectionViewCell) {
+        
         if let indexPath=collectionView.indexPath(for: cell) {
             cell.isSelected = !cell.isSelected
+            print("cell:\(indexPath.item),\(indexPath.row)")
         }
     }
 }
@@ -49,7 +45,7 @@ extension SelectedProducyListController: UICollectionViewDataSource, UICollectio
         cell.listLabel.text="\(indexPath.row+1). Lista"
         cell.picture.image = UIImage(named: picturesName[indexPath.row]) ?? UIImage(named: "agd.jpg")
         cell.backgroundColor = .yellow
-        
+        cell.delegate = self
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
