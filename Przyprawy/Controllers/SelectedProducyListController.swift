@@ -10,12 +10,12 @@ import UIKit
 import Foundation
 
 class SelectedProducyListController: UIViewController, SelectedProductListDelegate  {
-//    init() {
-//        fillCards()
-//    }
+    init() {
+        // fillCards()
+    }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented !!!")
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
