@@ -54,9 +54,10 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        let numList=Setup.currentListNumber+1
         database.loadData(tableNameType: .toShop)
         database.category.crateCategoryGroups(forToShopProduct: database.toShopProduct.toShopProductArray)
-        self.title=card.getName()
+        self.title=cards[0].getName()+" \(numList)"
         //database.category.createSectionsData()
         tabView.reloadData()
         print("viewWillAppear")

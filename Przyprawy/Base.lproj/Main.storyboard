@@ -113,7 +113,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="icA-2F-gcc"/>
             </objects>
-            <point key="canvasLocation" x="2908" y="777"/>
+            <point key="canvasLocation" x="2950" y="777"/>
         </scene>
         <!--Lista-->
         <scene sceneID="0LX-6M-Sva">

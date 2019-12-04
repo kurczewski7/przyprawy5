@@ -13,7 +13,7 @@ class SelectedProducyListController: UIViewController, SelectedProductListDelega
     var selectProd: SelectedProductListDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var currentCheckList = 0
+    var currentCheckList = Setup.currentListNumber
     let itemsPerRow: CFloat = 3
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
   
@@ -24,8 +24,9 @@ class SelectedProducyListController: UIViewController, SelectedProductListDelega
     func didListChoicePressed(cell: SelectedProductListCell) {
         if let indexPath=collectionView.indexPath(for: cell) {
             currentCheckList = indexPath.item
-            //cards[indexPath.item].isCheked = !cards[indexPath.item].isCheked
-            cell.isChecked =  true //cards[indexPath.item].isCheked
+            cell.isChecked =  true
+            Setup.currentListNumber = indexPath.item
+            collectionView.reloadData()
             print("cell:\(indexPath.item),\(indexPath.row)")
         }
     }
