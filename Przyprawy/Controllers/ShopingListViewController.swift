@@ -49,7 +49,7 @@ class ShopingListViewController: UIViewController, UICollectionViewDelegate, UIC
 
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return picturesArray.count
+        return Setup.picturesArray.count
     }
 
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,7 +58,7 @@ class ShopingListViewController: UIViewController, UICollectionViewDelegate, UIC
         // Configure the cell
         cell.backgroundView?.backgroundColor = UIColor.brown
         cell.productName.text = "aaa"
-        cell.productPicture.image = UIImage(named: picturesArray[indexPath.row])
+        cell.productPicture.image = UIImage(named: Setup.picturesArray[indexPath.row])
         
         
         

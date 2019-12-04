@@ -8,7 +8,7 @@
 
 import UIKit
 protocol SelectedProductListDelegate {
-    func didListChoicePressed(cell: UICollectionViewCell)
+    func didListChoicePressed(cell: SelectedProductListCell)
 }
 class SelectedProductListCell: UICollectionViewCell    {
     var delegate: SelectedProductListDelegate?

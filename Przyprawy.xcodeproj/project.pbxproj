@@ -65,6 +65,7 @@
 		2CE27574210237B1001C046B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE27572210237B1001C046B /* LaunchScreen.storyboard */; };
 		2CE2757F210237B1001C046B /* PrzyprawyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE2757E210237B1001C046B /* PrzyprawyTests.swift */; };
 		2CE2758A210237B1001C046B /* PrzyprawyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE27589210237B1001C046B /* PrzyprawyUITests.swift */; };
+		2CF187C02398161700BEB505 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF187BF2398161700BEB505 /* Setup.swift */; };
 		2CF73B042135D97700FEA34C /* BrakujeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF73B032135D97700FEA34C /* BrakujeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +154,7 @@
 		2CE27585210237B1001C046B /* PrzyprawyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrzyprawyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE27589210237B1001C046B /* PrzyprawyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrzyprawyUITests.swift; sourceTree = "<group>"; };
 		2CE2758B210237B1001C046B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CF187BF2398161700BEB505 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		2CF73B032135D97700FEA34C /* BrakujeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrakujeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -300,6 +302,7 @@
 				2CE2756A210237AF001C046B /* Main.storyboard */,
 				2CB903AC2301AEB7009F6A8E /* ProductProlocol.swift */,
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
+				2CF187BF2398161700BEB505 /* Setup.swift */,
 				2CDC33AD225762B7000BCBE1 /* String+extension.swift */,
 				2C158CBD2186106F00C3438B /* Model */,
 				2C158CC1218610BB00C3438B /* Controllers */,
@@ -500,6 +503,7 @@
 				2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */,
 				2CB2281B21F2522C008A3292 /* InBasketTableViewCell.swift in Sources */,
 				2CB903B12301B065009F6A8E /* SelProductViewControllerCell.swift in Sources */,
+				2CF187C02398161700BEB505 /* Setup.swift in Sources */,
 				2C1B793E219C66DB00A7BD63 /* CategoryViewController.swift in Sources */,
 				2CDC33AE225762B7000BCBE1 /* String+extension.swift in Sources */,
 				2C0A1D2821355BFF006FA312 /* PhoneContactsViewController.swift in Sources */,

@@ -62,19 +62,19 @@ func initialProduct()
     @IBAction func WczytajBaze(_ sender: UIButton) {
         print("wczytaj baze")
         var k=0
-        for i in 0..<picturesArray.count  {
+        for i in 0..<Setup.picturesArray.count  {
             database.addProduct(withProductId: i)
             k=i
         }
-        for rek in fructsProd {
+        for rek in Setup.fructsProd {
             k=k+1
             otherProduct(pictureName: rek, productName: rek, categoryNumber: 2, productId: k)
         }
-        for rek2 in vegetableProd {
+        for rek2 in Setup.vegetableProd {
              k=k+1
             otherProduct(pictureName: rek2, productName: "aaaaa bbbbb ccccc ddddd eeeeee ffffff ggggg hhhhh iiiiii jjjjj kkkkk llllll", categoryNumber: 1, productId: k)
         }
-        for rek3 in othersProd {
+        for rek3 in Setup.othersProd {
              k=k+1
             otherProduct(pictureName: rek3, productName: "aaaaa bbbbb ccccc ddddd eeeeee ffffff ggggg hhhhh iiiiii jjjjj kkkkk llllll mmmmm nnnn oooooo ppppp", categoryNumber: 7, productId: k)
         }
@@ -179,7 +179,7 @@ func initialProduct()
     }
     @IBAction func fillCategory(_ sender: Any) {
         var i=1
-        for rec in categoriesData {
+        for rec in Setup.categoriesData {
             database.addCategory(newCategoryValue: rec, idNumber: i)
             i+=1
         }

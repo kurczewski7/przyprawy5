@@ -13,6 +13,8 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet var tabView: UITableView!
     @IBOutlet var searchedBar: UISearchBar!
+    var currentCheckList = 0
+    let card = ProductList(pictureName: "zakupy.jpg")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,7 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
         defaultsChanged()
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    @objc func hideKeyboard() {
+     @objc func hideKeyboard() {
         print("keyboarActive \(keyboarActive), view.isFocused \(view.isFocused),isFirstResponder \(view.isFirstResponder) ")
         view.endEditing(true)
     }
@@ -54,6 +56,7 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewWillAppear(_ animated: Bool) {
         database.loadData(tableNameType: .toShop)
         database.category.crateCategoryGroups(forToShopProduct: database.toShopProduct.toShopProductArray)
+        self.title=card.getName()
         //database.category.createSectionsData()
         tabView.reloadData()
         print("viewWillAppear")

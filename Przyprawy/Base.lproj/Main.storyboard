@@ -419,7 +419,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CFn-so-7Fn"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Selected Product List" id="7Vf-pl-aeA"/>
+                    <navigationItem key="navigationItem" title="Selected Product List" id="7Vf-pl-aeA">
+                        <barButtonItem key="backBarButtonItem" title="Lista" id="Nn7-Jg-I1B"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="UvW-cf-eHp" id="i2H-4i-MCb"/>
                     </connections>
@@ -1659,6 +1661,7 @@
                         <viewLayoutGuide key="safeArea" id="pPi-pd-eMj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lista 1" id="HzP-hd-KRy">
+                        <barButtonItem key="backBarButtonItem" title="Lista" id="ce9-gb-mnj"/>
                         <barButtonItem key="leftBarButtonItem" enabled="NO" image="documents" id="mka-Rm-36V">
                             <connections>
                                 <action selector="changeList:" destination="c5G-IV-pUg" id="dGK-dF-wNA"/>
@@ -1673,7 +1676,7 @@
                             <barButtonItem image="add_file" id="C2D-xG-pvq">
                                 <connections>
                                     <action selector="addNewListToBay:" destination="c5G-IV-pUg" id="qx0-ab-i5X"/>
-                                    <segue destination="Zk3-ru-hOp" kind="show" id="lln-Of-NXI"/>
+                                    <segue destination="Zk3-ru-hOp" kind="show" identifier="goToSelectList" id="lln-Of-NXI"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>

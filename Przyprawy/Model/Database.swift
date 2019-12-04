@@ -312,7 +312,7 @@ class Database  {
         var eanCode: String
         var w : String = ""
         
-        let pictureName:String = picturesArray[nr]
+        let pictureName:String = Setup.picturesArray[nr]
         let elementy = pictureName.split(separator: "_", maxSplits: 11, omittingEmptySubsequences: false)
         print("---- \(pictureName)  ----")
         for i in 0..<elementy.count
@@ -596,7 +596,7 @@ class CategorySeting {
         var sectionTitle = ""        
         for tmp in categoryGroups {
             if tmp.count > 0 {
-                sectionTitle = polishLanguage ? categoriesData[sectionNo].name : categoriesData[sectionNo].nameEN
+                sectionTitle = polishLanguage ? Setup.categoriesData[sectionNo].name : Setup.categoriesData[sectionNo].nameEN
                 addElementToSectionData(sectionId: sectionNo+1, sectionTitle: sectionTitle, groupId: i, objects: tmp)
                 i += 1
             }

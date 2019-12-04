@@ -8,12 +8,16 @@
 
 import Foundation
 class ProductList {
-    init(pictureName name: String) {
-        self.polishName=name
-    }
-    var englishName: String = ". List"
-    var polishName: String = ". Lista"
-    var pictureNane: String = ""
+    var englishName: String = " List"
+    var polishName: String = " Lista"
+    var pictureName: String = ""
     var descripton : String = ""
     var isCheked: Bool = false
+    
+    init(pictureName name: String) {
+        self.pictureName = name
+    }
+    func getName() -> String{
+        return polishLanguage ? self.polishName : self.englishName
+    }
 }
