@@ -14,12 +14,10 @@ class SelectedProducyListController: UIViewController, SelectedProductListDelega
     @IBOutlet weak var collectionView: UICollectionView!
 
     var currentCheckList = Setup.currentListNumber
-    let itemsPerRow: CFloat = 3
+    let itemsPerRow: CFloat = 1
+    let margin: CGFloat = 10
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
   
-    override func viewDidLoad() {
-    
-    }
     // MARK: SelectedProductListDelegate method
     func didListChoicePressed(cell: SelectedProductListCell) {
         if let indexPath=collectionView.indexPath(for: cell) {
@@ -51,7 +49,7 @@ extension SelectedProducyListController: UICollectionViewDataSource, UICollectio
         let paddingSpace: CGFloat =  CGFloat(itemsPerRow + 1) * CGFloat(sectionInsets.left)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = CGFloat(availableWidth / CGFloat(itemsPerRow))
-        //return CGSize(width: widthPerItem, height: widthPerItem)
-        return CGSize(width: 250, height: 250)
+        return CGSize(width: widthPerItem - margin, height: widthPerItem - margin)
+        //return CGSize(width: 250, height: 250)
     }
 }
