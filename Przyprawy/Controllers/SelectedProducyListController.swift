@@ -49,7 +49,7 @@ extension SelectedProducyListController: UICollectionViewDataSource, UICollectio
         let paddingSpace: CGFloat =  CGFloat(itemsPerRow + 1) * CGFloat(sectionInsets.left)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = CGFloat(availableWidth / CGFloat(itemsPerRow))
-        return CGSize(width: widthPerItem - margin, height: widthPerItem - margin)
-        //return CGSize(width: 250, height: 250)
+        //return CGSize(width: widthPerItem - margin, height: widthPerItem - margin)
+        return CGSize(width: 250, height: 250)
     }
 }
