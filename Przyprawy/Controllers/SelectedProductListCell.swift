@@ -25,7 +25,9 @@ var isChecked: Bool = false {
         if isChecked {
             print("isChecked On")
             iChoicePicture.setImage(UIImage(named: "heartfull"), for: .normal)
-            database.readMultiCheck(withProduct: nil)
+            let prod = ProductTable(context: database.context)
+            prod.multiChecked = 0xF
+            database.readMultiCheck(withProduct: prod)
         }
         else {
              print("isChecked Off")

@@ -553,19 +553,25 @@ class Database  {
         database.filterData(searchText: self.scanerCodebarValue, searchTable: .products, searchField: .EAN)
     }
     func readMultiCheck(withProduct product: ProductTable?) {
-        let val1 = setBit(withBitNumber: 0)
-        let val2 = setBit(withBitNumber: 2)
-        let val3 = setBit(withBitNumber: 0)
-        let val4 = setBit(withBitNumber: 1)
-        let result = val1 | val2  | val3  | val4
-        
-        let binaryValue: UInt64 = product?.multiChecked.magnitude ?? 0x0
-       
-        print("val:\(val1),\(binaryValue),\(val2), res:\(result)")
+        var bitsArray: [Bool] = [Bool](repeating: false, count: 64)
+        if let prod = product {
+            let multiCheck: UInt64 = UInt64(prod.multiChecked)
+            for i in 0..<bitsArray.count {
+                bitsArray[i] = multiCheck & setBit(withBitNumber: i) == 0 ? false : true
+            }
+            let val1 =  bitsArray[0]
+            let val2 =  bitsArray[1]
+            let val3 =  bitsArray[2]
+            let val4 =  bitsArray[3]
+            let val5 =  bitsArray[4]
+            // let result = val1 | val2  | val3  | val4
+            //let binaryValue: UInt64 = product?.multiChecked.magnitude ?? 0x0
+            print("val:\(val1),\(val2),\(val3),\(val4),\(val5), res:\(multiCheck)")
+        }
     }
     func setBit(withBitNumber number: Int) -> UInt64 {
         var val: UInt64 = 0x1
-        val = (number > 0) ? val << (number - 1) : val
+        val = (number > 0) ? val << number  : val
         return val
     }
 }
