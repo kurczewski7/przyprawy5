@@ -40,8 +40,9 @@ extension SelectedProducyListController: UICollectionViewDataSource, UICollectio
         cell.listLabel.text="\(indexPath.row+1). \(cards[indexPath.item].getName())"
         cell.picture.image = UIImage(named: cards[indexPath.item].pictureName) ?? UIImage(named: "agd.jpg")
         cell.isChecked = (indexPath.item == currentCheckList)
-    
-        cell.backgroundColor = .yellow
+        
+        cell.layer.cornerRadius = 20
+        cell.backgroundColor = (indexPath.item % 3) == 0 ? .cyan : .lightGray
         cell.delegate = self
         return cell
     }

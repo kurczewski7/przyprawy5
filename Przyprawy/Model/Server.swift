@@ -45,18 +45,14 @@ class Server {
 //        tekst =  "INSERT INTO `dvds` (`filmId`, `title`, `filmDirector`, `actors`, `type`, `filmDescription`, `filmImageName`, `youtubeUrl`, `price`, `isLiked`) VALUES \n"
         
         
-        tekst = "INSERT INTO `product_table` (`categoryId`, `changeDate`, `checked1`,`checked2`,`checked3`,`checked4`,`checked5`, `eanCode`, `fullPicture`, `id`, `number1`, `number2`, `number3`, `pictureName`, `producent`, `productName`, `searchTag`, `smallPicture`, `weight`) VALUES\n"
+        tekst = "INSERT INTO `product_table` (`categoryId`, `changeDate`, `checked1`,`checked2`,`eanCode`, `fullPicture`, `id`, `number1`, `number2`, `number3`, `pictureName`, `producent`, `productName`, `searchTag`, `smallPicture`, `weight`) VALUES\n"
         
         let dbArray = db.product.array
         for i in 0..<dbArray.count   {
             tx[0] = "\(dbArray[i].categoryId)"            
             tx[1] =  getStringDate(forDate: dbArray[i].changeDate)                                           //"\(dbArray[i].changeDate ?? Date())"
             tx[2] = "\(dbArray[i].checked1)"
-            
             tx[3] = "\(dbArray[i].checked2)"
-            tx[4] = "\(dbArray[i].checked3)"
-            tx[5] = "\(dbArray[i].checked4)"
-            tx[6] = "\(dbArray[i].checked5)"
             
             tx[7] = "\(dbArray[i].eanCode ?? "")"
             tx[8] =  "pict_\(dbArray[i].eanCode ?? "")"

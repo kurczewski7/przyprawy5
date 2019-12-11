@@ -220,9 +220,6 @@ class Database  {
             //case 0: productTable?.checked = toCheck
             case 1: productTable?.checked1 = toCheck
             case 2: productTable?.checked2 = toCheck
-            case 3: productTable?.checked3 = toCheck
-            case 4: productTable?.checked4 = toCheck
-            case 5: productTable?.checked5 = toCheck
         default:
             print("Error checked Product")
         }
@@ -555,7 +552,24 @@ class Database  {
     func searchEanCode() {
         database.filterData(searchText: self.scanerCodebarValue, searchTable: .products, searchField: .EAN)
     }
+    func readMultiCheck(withProduct product: ProductTable?) {
+        let val1 = setBit(withBitNumber: 0)
+        let val2 = setBit(withBitNumber: 2)
+        let val3 = setBit(withBitNumber: 0)
+        let val4 = setBit(withBitNumber: 1)
+        let result = val1 | val2  | val3  | val4
+        
+        let binaryValue: UInt64 = product?.multiChecked.magnitude ?? 0x0
+       
+        print("val:\(val1),\(binaryValue),\(val2), res:\(result)")
+    }
+    func setBit(withBitNumber number: Int) -> UInt64 {
+        var val: UInt64 = 0x1
+        val = (number > 0) ? val << (number - 1) : val
+        return val
+    }
 }
+//=====================================================
 // New Class ------------------------------------------
 class CategorySeting {
     struct SectionsData {

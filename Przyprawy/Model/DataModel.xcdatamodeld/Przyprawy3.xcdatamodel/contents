@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BasketProductTable" representedClassName="BasketProductTable" syncable="YES" codeGenerationType="class">
         <attribute name="eanCode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -25,12 +25,10 @@
         <attribute name="changeDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="checked1" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="checked2" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="checked3" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="checked4" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="checked5" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="eanCode" optional="YES" attributeType="String"/>
         <attribute name="fullPicture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="multiChecked" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="number1" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="number2" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="number3" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -67,7 +65,7 @@
         <element name="BasketProductTable" positionX="-277.06640625" positionY="-16.4921875" width="128" height="88"/>
         <element name="CategoryTable" positionX="-251.7265625" positionY="-182.3828125" width="128" height="150"/>
         <element name="PreferedContacts" positionX="-621" positionY="-36" width="128" height="105"/>
-        <element name="ProductTable" positionX="-63" positionY="-18" width="128" height="388"/>
+        <element name="ProductTable" positionX="-63" positionY="-18" width="128" height="358"/>
         <element name="ShopingProductTable" positionX="-521.12109375" positionY="72.01953125" width="128" height="88"/>
         <element name="ToShopProductTable" positionX="-291.75" positionY="198.96875" width="128" height="118"/>
         <element name="UsersTable" positionX="-823.21875" positionY="185.390625" width="128" height="103"/>
