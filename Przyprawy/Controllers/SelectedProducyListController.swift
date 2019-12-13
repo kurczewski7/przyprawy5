@@ -17,6 +17,7 @@ class SelectedProducyListController: UIViewController, SelectedProductListDelega
     let itemsPerRow: CFloat = 1
     let margin: CGFloat = 10
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+   
   
     // MARK: SelectedProductListDelegate method
     func didListChoicePressed(cell: SelectedProductListCell) {
@@ -27,6 +28,15 @@ class SelectedProducyListController: UIViewController, SelectedProductListDelega
             collectionView.reloadData()
             print("cell:\(indexPath.item),\(indexPath.row)")
         }
+    }
+    override func viewDidLoad() {
+        //let prod = database.giveElement(withProduct: 1)
+        let prod = ProductTable(context:  database.context)
+        prod.multiChecked = 0x69
+        database.bits.setProduct(withProduct: prod)
+        database.bits.readMultiCheck()
+        database.bits.loadListBits()
+        let multiCheck = database.product[0].multiChecked
     }
 }
 extension SelectedProducyListController: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
@@ -42,7 +52,8 @@ extension SelectedProducyListController: UICollectionViewDataSource, UICollectio
         cell.isChecked = (indexPath.item == currentCheckList)
         
         cell.layer.cornerRadius = 20
-        cell.backgroundColor = (indexPath.item % 3) == 0 ? .cyan : .lightGray
+        let notEmpty = database.bits.bitsArray[indexPath.item]
+        cell.backgroundColor = notEmpty ? .cyan : .lightGray
         cell.delegate = self
         return cell
     }

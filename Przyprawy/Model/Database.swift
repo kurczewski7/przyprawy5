@@ -26,7 +26,8 @@ class Database  {
     var product: ProductSeting!    //   = ProductSeting(context: context)
     var toShopProduct: ToShopProduct!
     var shopingProduct: ShopingProduct!
-    var basketProduct: BasketProduct!
+    var basketProduct: BasketProduct!    
+    let bits: Bits!
  
 //    // variable for ShopingProductTable
 //    var shopingProductArray = [ShopingProductTable]()
@@ -76,6 +77,7 @@ class Database  {
         self.context = context
         self.selectedProductList = 1
         self.scanerCodebarValue = ""
+        bits = Bits(context: context)
         
         
         category  = CategorySeting(context: context)
@@ -372,6 +374,7 @@ class Database  {
             product.id         = Int32(nr)
             product.changeDate = Date.init()
             product.checked1    = false
+            product.multiChecked = 0x9
         }
         return product
     }
@@ -552,28 +555,6 @@ class Database  {
     func searchEanCode() {
         database.filterData(searchText: self.scanerCodebarValue, searchTable: .products, searchField: .EAN)
     }
-    func readMultiCheck(withProduct product: ProductTable?) {
-        var bitsArray: [Bool] = [Bool](repeating: false, count: 64)
-        if let prod = product {
-            let multiCheck: UInt64 = UInt64(prod.multiChecked)
-            for i in 0..<bitsArray.count {
-                bitsArray[i] = multiCheck & setBit(withBitNumber: i) == 0 ? false : true
-            }
-            let val1 =  bitsArray[0]
-            let val2 =  bitsArray[1]
-            let val3 =  bitsArray[2]
-            let val4 =  bitsArray[3]
-            let val5 =  bitsArray[4]
-            // let result = val1 | val2  | val3  | val4
-            //let binaryValue: UInt64 = product?.multiChecked.magnitude ?? 0x0
-            print("val:\(val1),\(val2),\(val3),\(val4),\(val5), res:\(multiCheck)")
-        }
-    }
-    func setBit(withBitNumber number: Int) -> UInt64 {
-        var val: UInt64 = 0x1
-        val = (number > 0) ? val << number  : val
-        return val
-    }
 }
 //=====================================================
 // New Class ------------------------------------------
@@ -590,7 +571,14 @@ class CategorySeting {
     var context: NSManagedObjectContext
     var categoryArray: [CategoryTable] = []
     var sortCategoryDescriptor:NSSortDescriptor
-
+    
+    var count: Int {
+        get {   return categoryArray.count   }
+    }
+    subscript(index: Int) -> CategoryTable {
+        get {  return categoryArray[index]      }
+        set {  categoryArray[index] = newValue  }
+    }
     init(context: NSManagedObjectContext)
     {
         self.context=context

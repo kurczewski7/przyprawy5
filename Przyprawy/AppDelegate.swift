@@ -44,6 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        print("database.product.count przed: \(database.product.count)")
+        database.loadData(tableNameType: .products)
+        print("database.product.count po: \(database.product.count)")
+        
         print("database.categoryArray.count przed : \(database.category.categoryArray.count)")
         database.loadData(tableNameType: .categories)
         print("database.categoryArray.count po : \(database.category.categoryArray.count)")
