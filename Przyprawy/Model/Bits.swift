@@ -12,7 +12,7 @@ class Bits {
     var context: NSManagedObjectContext
     var product: ProductTable?
     var bitsArray: [Bool]   = [Bool](repeating: false, count: 64)
-    var bitsListCouut: [Int] = [Int](repeating: 0, count: 64)
+    var bitsListCount: [Int] = [Int](repeating: 0, count: 64)
     var multiCheck: UInt64 = 0x0
     init(context: NSManagedObjectContext) {
         self.context = context    }
@@ -26,7 +26,7 @@ class Bits {
     func clearData() {
         for i in 0..<bitsArray.count {
            bitsArray[i]     = false
-           bitsListCouut[i] = 0
+           bitsListCount[i] = 0
         }
     }
 //    var array: [Bool] {
@@ -66,17 +66,26 @@ class Bits {
         }
         print("ret value: \(value)")
     }
-    func loadListBits() -> Bool {
-        var isFound: Bool = false
+    func loadListBits() {
+        var multiChecked: UInt64 = 0x0
         if database.product.count > 0 {
             print("W bazie istnieje \(database.product.count) produktów")
-            let multiChecked = UInt64(database.product[0].multiChecked)
+            
             print("multiChecked: \(multiChecked)")
-            if multiChecked & setBit(withBitNumber: 5) != 0 {
-                isFound = true
-            }
+            for i in 0..<database.product.count {
+                multiChecked = UInt64(database.product[i].multiChecked)
+                updateBitsListCouut(forMultiChecked: multiChecked)
+             }
         }
-        return isFound
+    }
+    func updateBitsListCouut(forMultiChecked value: UInt64)  {
+        for i in 0..<bitsListCount.count {
+            self.bitsListCount[i] += (value & self.setBit(withBitNumber: i)) == 0 ? 0 : 1
+        }
+
+    }
+    func isActiveList(withListNumber listNumber: Int) -> Bool {
+        return self.bitsListCount[listNumber] == 0 ? false : true
     }
     func printBits() {
         let b1 = bitsArray[0]
@@ -94,6 +103,7 @@ class Bits {
 
         let res = multiCheck
         print("val: \(b1),\(b2),\(b3),\(b4),\(b5),\(b6),\(b7),\(b8),\(b9),\(b10),\(b11),\(b12), res:\(res)")
+        print("bitsListCount:\(bitsListCount)")
     }
 
 }

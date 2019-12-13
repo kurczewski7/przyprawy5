@@ -36,7 +36,9 @@ class SelectedProducyListController: UIViewController, SelectedProductListDelega
         database.bits.setProduct(withProduct: prod)
         database.bits.readMultiCheck()
         database.bits.loadListBits()
-        let multiCheck = database.product[0].multiChecked
+        print("RAZEM: \(database.bits.isActiveList(withListNumber: 0))")
+        database.bits.printBits()
+        //let multiCheck = database.product[0].multiChecked
     }
 }
 extension SelectedProducyListController: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
