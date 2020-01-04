@@ -98,13 +98,14 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
         //row: Int, section: Int
         let row = indexPath.row
         let section = indexPath.section
+        print("aaa\(row),\(section)")
         if let product = toShopproduct.productRelation {
-        cell.detailLabel.text=product.description
-        cell.producentLabel.text="aaa\(row),\(section)"
-        //cell.productNameLabel.text="cobj"
-        cell.productNameLabel.text = product.productName
-        cell.picture.image=UIImage(named: product.pictureName ?? "cameraCanon")
-        cell.accessoryType = (toShopproduct.checked ? .checkmark : .none)
+            cell.detailLabel.text = ""
+            cell.producentLabel.text = product.producent//"aaa\(row),\(section)"
+            //cell.productNameLabel.text="cobj"
+            cell.productNameLabel.text = product.productName
+            cell.picture.image=UIImage(named: product.pictureName ?? "cameraCanon")
+            cell.accessoryType = (toShopproduct.checked ? .checkmark : .none)
         }
         else
         {
