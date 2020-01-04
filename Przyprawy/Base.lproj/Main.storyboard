@@ -964,10 +964,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TY-BI-MPI">
-                                <rect key="frame" x="48" y="68" width="261" height="79"/>
+                                <rect key="frame" x="48" y="68" width="279" height="100"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="79" id="CAF-mz-vGA"/>
+                                    <constraint firstAttribute="height" constant="100" id="CAF-mz-vGA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title=" 📞 Zadzwoń    ">
@@ -978,8 +978,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hp-Kt-KwE">
-                                <rect key="frame" x="48" y="179" width="261" height="105"/>
+                                <rect key="frame" x="48" y="196" width="279" height="100"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="6Hu-Fk-m1E"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title=" ✉️  e-mail   ">
@@ -990,10 +993,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0M-66-GG2">
-                                <rect key="frame" x="48" y="318" width="261" height="77"/>
+                                <rect key="frame" x="48" y="328" width="279" height="100"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="77" id="rMm-Ms-pAJ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="I1G-lv-JCN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title=" 📟 sms     "/>
@@ -1002,8 +1005,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-Co-EMs">
-                                <rect key="frame" x="48" y="438" width="261" height="49"/>
+                                <rect key="frame" x="48" y="460" width="279" height="100"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Kpq-cy-gT6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="   👥 Kontakty  ">
@@ -1017,19 +1023,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4hp-Kt-KwE" firstAttribute="top" secondItem="5TY-BI-MPI" secondAttribute="bottom" constant="32" id="6FA-dk-LHC"/>
+                            <constraint firstItem="mhb-Co-EMs" firstAttribute="top" secondItem="r0M-66-GG2" secondAttribute="bottom" constant="32" id="4gx-Y5-QpI"/>
+                            <constraint firstItem="5TY-BI-MPI" firstAttribute="top" secondItem="iIC-7T-6cj" secondAttribute="top" constant="24" id="AHR-18-eWe"/>
                             <constraint firstItem="r0M-66-GG2" firstAttribute="leading" secondItem="4hp-Kt-KwE" secondAttribute="leading" id="H80-Nu-j63"/>
-                            <constraint firstItem="mhb-Co-EMs" firstAttribute="top" secondItem="r0M-66-GG2" secondAttribute="bottom" constant="43" id="Jlx-bj-fua"/>
                             <constraint firstItem="r0M-66-GG2" firstAttribute="leading" secondItem="mhb-Co-EMs" secondAttribute="leading" id="KKc-UO-dCk"/>
+                            <constraint firstItem="iIC-7T-6cj" firstAttribute="trailing" secondItem="4hp-Kt-KwE" secondAttribute="trailing" constant="48" id="MTR-0X-GFl"/>
+                            <constraint firstItem="mhb-Co-EMs" firstAttribute="leading" secondItem="iIC-7T-6cj" secondAttribute="leading" constant="48" id="Usn-RW-aSA"/>
+                            <constraint firstItem="iIC-7T-6cj" firstAttribute="trailing" secondItem="5TY-BI-MPI" secondAttribute="trailing" constant="48" id="WSB-eI-9UH"/>
+                            <constraint firstItem="4hp-Kt-KwE" firstAttribute="leading" secondItem="iIC-7T-6cj" secondAttribute="leading" constant="48" id="Wnb-n2-BQo"/>
+                            <constraint firstItem="mhb-Co-EMs" firstAttribute="top" secondItem="r0M-66-GG2" secondAttribute="bottom" constant="32" id="X1q-Gh-efR"/>
+                            <constraint firstItem="r0M-66-GG2" firstAttribute="top" secondItem="4hp-Kt-KwE" secondAttribute="bottom" constant="32" id="bdj-nx-D9d"/>
+                            <constraint firstItem="iIC-7T-6cj" firstAttribute="trailing" secondItem="mhb-Co-EMs" secondAttribute="trailing" constant="48" id="efz-cV-K0m"/>
                             <constraint firstItem="5TY-BI-MPI" firstAttribute="top" secondItem="iIC-7T-6cj" secondAttribute="top" constant="24" id="egL-hA-2tY"/>
-                            <constraint firstItem="r0M-66-GG2" firstAttribute="top" secondItem="eWO-f5-Uet" secondAttribute="top" constant="318" id="jek-NI-fGR"/>
+                            <constraint firstItem="r0M-66-GG2" firstAttribute="top" secondItem="eWO-f5-Uet" secondAttribute="top" constant="328" id="jek-NI-fGR"/>
                             <constraint firstItem="r0M-66-GG2" firstAttribute="trailing" secondItem="5TY-BI-MPI" secondAttribute="trailing" id="jfK-2Z-fF2"/>
                             <constraint firstItem="r0M-66-GG2" firstAttribute="trailing" secondItem="4hp-Kt-KwE" secondAttribute="trailing" id="kvO-pW-9c2"/>
                             <constraint firstItem="r0M-66-GG2" firstAttribute="leading" secondItem="5TY-BI-MPI" secondAttribute="leading" id="qj0-bv-ivo"/>
-                            <constraint firstItem="iIC-7T-6cj" firstAttribute="trailing" secondItem="r0M-66-GG2" secondAttribute="trailing" constant="66" id="uF1-A0-fmr"/>
                             <constraint firstItem="r0M-66-GG2" firstAttribute="trailing" secondItem="mhb-Co-EMs" secondAttribute="trailing" id="v2E-Fy-8qX"/>
+                            <constraint firstItem="iIC-7T-6cj" firstAttribute="trailing" secondItem="r0M-66-GG2" secondAttribute="trailing" constant="48" id="y3V-TW-hCd"/>
                             <constraint firstItem="r0M-66-GG2" firstAttribute="leading" secondItem="iIC-7T-6cj" secondAttribute="leading" constant="48" id="zT5-1P-5eN"/>
-                            <constraint firstItem="r0M-66-GG2" firstAttribute="top" secondItem="4hp-Kt-KwE" secondAttribute="bottom" constant="34" id="zbW-RX-adY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iIC-7T-6cj"/>
                     </view>
@@ -1050,7 +1062,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gca-Pb-Ugr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lKd-ic-vWz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2329" y="3709"/>
+            <point key="canvasLocation" x="2328.8000000000002" y="3708.3958020989508"/>
         </scene>
         <!--Phone Contacts View Controller-->
         <scene sceneID="IpI-0c-vLJ">
