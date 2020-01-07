@@ -435,7 +435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fc7-2L-dN1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2949.5999999999999" y="14.842578710644679"/>
+            <point key="canvasLocation" x="3041" y="15"/>
         </scene>
         <!--Scanning now-->
         <scene sceneID="5xg-KY-RAv">
@@ -1310,11 +1310,7 @@
                         <viewLayoutGuide key="safeArea" id="XC0-lh-7ft"/>
                     </view>
                     <navigationItem key="navigationItem" title="To shop" id="AQk-iK-Alz">
-                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="x8K-tv-jGF">
-                            <connections>
-                                <segue destination="HD1-DK-cfl" kind="show" id="Zhh-ac-UYC"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="x8K-tv-jGF"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchedBar" destination="TgN-ud-Gxn" id="822-a1-221"/>
@@ -1345,7 +1341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mf7-z2-Kkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3853.5999999999999" y="1553.9730134932536"/>
+            <point key="canvasLocation" x="3014" y="-684"/>
         </scene>
         <!--Share-->
         <scene sceneID="2mT-IT-QOr">
@@ -1446,7 +1442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYb-8g-EO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4708" y="1553.9730134932536"/>
+            <point key="canvasLocation" x="3836" y="-684"/>
         </scene>
         <!--Detail At HomeView Controller-->
         <scene sceneID="vmb-6b-Eec">
@@ -1681,9 +1677,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Lista 1" id="HzP-hd-KRy">
                         <barButtonItem key="backBarButtonItem" title="Lista" id="ce9-gb-mnj"/>
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="documents" id="mka-Rm-36V">
+                        <barButtonItem key="leftBarButtonItem" image="documents" id="C2D-xG-pvq">
                             <connections>
-                                <action selector="changeList:" destination="c5G-IV-pUg" id="dGK-dF-wNA"/>
+                                <action selector="addNewListToBay:" destination="c5G-IV-pUg" id="qx0-ab-i5X"/>
+                                <segue destination="Zk3-ru-hOp" kind="show" identifier="goToSelectList" id="lln-Of-NXI"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -1692,10 +1689,9 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="wL5-vI-O63"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="add_file" id="C2D-xG-pvq">
+                            <barButtonItem systemItem="bookmarks" id="oKX-Wb-ANA">
                                 <connections>
-                                    <action selector="addNewListToBay:" destination="c5G-IV-pUg" id="qx0-ab-i5X"/>
-                                    <segue destination="Zk3-ru-hOp" kind="show" identifier="goToSelectList" id="lln-Of-NXI"/>
+                                    <segue destination="HD1-DK-cfl" kind="show" id="lRs-Bd-gUl"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
