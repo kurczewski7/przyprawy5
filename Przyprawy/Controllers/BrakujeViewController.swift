@@ -163,7 +163,7 @@ func initialProduct()
     
         shoping.eanCode="60920808" //"60057064"
         shoping.productRelation=product
-        database.shopingProduct.shopingProductArray.append(shoping)
+        database.shopingProduct.append(shoping)
         database.save()
     }    
     @IBAction func addNewCategory(_ sender: UIButton) {

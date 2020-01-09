@@ -94,11 +94,11 @@ class Database  {
         case .categories:
             myArray  = product.array
         case .shopingProduct:
-            myArray  = shopingProduct.shopingProductArray
+            myArray  = shopingProduct.array
         case .toShop:
-            myArray  = toShopProduct.toShopProductArray
+            myArray  = toShopProduct.array
         case .basket:
-            myArray  = basketProduct.basketProductArray
+            myArray  = basketProduct.array
         case .users:
             print("ERROR: myArray  = userArray")
         }
@@ -168,15 +168,15 @@ class Database  {
                 case .products       :
                     product.array = newArray as! [ProductTable]
                 case .basket         :
-                    basketProduct.basketProductArray = newArray as! [BasketProductTable]
+                    basketProduct.array = newArray as! [BasketProductTable]
                 case .shopingProduct :
-                    shopingProduct.shopingProductArray = newArray as! [ShopingProductTable]
+                    shopingProduct.array = newArray as! [ShopingProductTable]
                 case .categories     :
                     category.categoryArray = newArray as! [CategoryTable]
                 case .users          :
                     usersArray = newArray as! [UsersTable]
                 case .toShop         :
-                    toShopProduct.toShopProductArray = newArray as! [ToShopProductTable]
+                    toShopProduct.array = newArray as! [ToShopProductTable]
             }
         }
         catch { print("Error fetching data from context \(error)")   }
@@ -198,23 +198,23 @@ class Database  {
     }
     func deleteOne(withToShopRec row : Int) {
         //var arr = toShopProduct.toShopProductArray
-        let r = (row == -1 ? toShopProduct.toShopProductArray.count-1 : row)
-        context.delete(toShopProduct.toShopProductArray[r])
-        toShopProduct.toShopProductArray.remove(at: r) //toShopProduct.toShopProductArray.remove(at: r)
+        let r = (row == -1 ? toShopProduct.count-1 : row)
+        context.delete(toShopProduct[r])
+        toShopProduct.remove(at: r)
         save()
     }
     func deleteOne(withBasketRec row : Int) {
         //let arr = basketProduct.basketProductArray   //toShopProduct.toShopProductArray
-        let r = (row == -1 ? basketProduct.basketProductArray.count-1 : row)
-        context.delete(basketProduct.basketProductArray[r])
-        basketProduct.basketProductArray.remove(at: r)
+        let r = (row == -1 ? basketProduct.count-1 : row)
+        context.delete(basketProduct[r])
+        basketProduct.remove(at: r)
         save()
     }
     func uncheckOne(withToShopRec row : Int, toCheck: Bool = false) {
         //let arr = toShopProduct.toShopProductArray
-        let r = (row == -1 ? toShopProduct.toShopProductArray.count-1 : row)
+        let r = (row == -1 ? toShopProduct.count-1 : row)
         //arr[r].productRelation?.checked1 = toCheck
-        checkProductList(productTable: toShopProduct.toShopProductArray[r].productRelation, toCheck: toCheck)
+        checkProductList(productTable: toShopProduct[r].productRelation, toCheck: toCheck)
         save()
     }
     func checkProductList(productTable: ProductTable?, toCheck: Bool = false )  {
@@ -244,19 +244,19 @@ class Database  {
     }
     func addOneRecord(newProductInBasket basketProd: BasketProductTable, at row: Int = -1) {
         if row == -1 {
-            self.basketProduct.basketProductArray.append(basketProd)
+            self.basketProduct.append(basketProd)
         }
         else {
-            self.basketProduct.basketProductArray.insert(basketProd, at: row)
+            self.basketProduct.insert(basketProd, at: row)
         }
         self.save()
     }
     func addOneRecord(newProductToShop toshopProd: ToShopProductTable, at row: Int = -1) {
         if row == -1 {
-            self.toShopProduct.toShopProductArray.append(toshopProd)
+            self.toShopProduct.append(toshopProd)
         }
         else {
-            self.toShopProduct.toShopProductArray.insert(toshopProd, at: row)
+            self.toShopProduct.insert(toshopProd: toshopProd, at: row)
         }
         self.save()
     }
@@ -280,8 +280,8 @@ class Database  {
         }
     }
     func moveProdduct(toBasketFrom row: Int, toRow: Int = -1) {
-       if row < toShopProduct.toShopProductArray.count {
-        if let product = toShopProduct.toShopProductArray[row].productRelation {
+       if row < toShopProduct.count {
+        if let product = toShopProduct[row].productRelation {
             let basket = BasketProductTable(context: context)
             print("prod:\(product.productName ?? "brak")")
             basket.productRelation = product
@@ -293,8 +293,8 @@ class Database  {
         }
     }
     func moveProdduct(fromBasketFrom row: Int, toRow: Int = -1) {
-        if row < basketProduct.basketProductArray.count {
-            if let product = basketProduct.basketProductArray[row].productRelation {
+        if row < basketProduct.count {
+            if let product = basketProduct[row].productRelation {
                 print("prod:\(product.productName ?? "brak")")
                 let toShop = ToShopProductTable(context:  context)
                 toShop.productRelation=product
@@ -439,12 +439,12 @@ class Database  {
             case .products:         product.array       = newSearchArray as! [ProductTable]
                                     numberOfRecords    = product.count
             // FIXME - basketProduct to shopingProduct
-            case .shopingProduct:   basketProduct.basketProductArray = newSearchArray as! [BasketProductTable]
-                                    numberOfRecords    = basketProduct.basketProductArray.count
-            case .toShop:           toShopProduct.toShopProductArray = newSearchArray as! [ToShopProductTable]
-                                    numberOfRecords    = toShopProduct.toShopProductArray.count
-            case .basket:           basketProduct.basketProductArray = newSearchArray as! [BasketProductTable]
-                                    numberOfRecords    = basketProduct.basketProductArray.count
+            case .shopingProduct:   basketProduct.array = newSearchArray as! [BasketProductTable]
+                                    numberOfRecords    = basketProduct.count
+            case .toShop:           toShopProduct.array = newSearchArray as! [ToShopProductTable]
+                                    numberOfRecords    = toShopProduct.count
+            case .basket:           basketProduct.array = newSearchArray as! [BasketProductTable]
+                                    numberOfRecords    = basketProduct.count
             default:
                 print("Table does not exist")
             }
@@ -532,7 +532,7 @@ class Database  {
         toShop.eanCode=product.eanCode
         toShop.productRelation=product
         toShop.checked = false  // false
-        toShopProduct.toShopProductArray.append(toShop)
+        toShopProduct.append(toShop)
     }
         // TODO: - removeFromBasket
     func removeFromProductList(withProductRec row : Int = -1) {
@@ -653,7 +653,9 @@ class CategorySeting {
 class ProductSeting: DatabaseTableProtocol {
 
     var context: NSManagedObjectContext
-    private var   productArray : [ProductTable] = []
+    private var  productArray: [ProductTable] = []
+    private var  productArrayFiltered: [ProductTable] = []
+    
     var featchResultCtrl: NSFetchedResultsController<ProductTable>
     let feachRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
     var sortDescriptor:NSSortDescriptor
@@ -664,11 +666,18 @@ class ProductSeting: DatabaseTableProtocol {
         get {   return productArray   }
         set {   productArray = newValue  }
     }
-
+    var arrayFiltered:[ProductTable] {
+        get {   return productArrayFiltered   }
+        set {   productArrayFiltered = newValue  }
+    }
     subscript(index: Int) -> ProductTable {
         get {  return productArray[index]      }
         set {  productArray[index] = newValue  }
     }
+//    subscript(section: Int, row: Int) {
+//        get { return nil }
+//        set { _ = newValue }
+//    }
     func append<T>(_ value: T) {
         if let val = value as? ProductTable {
             productArray.append(val)
@@ -696,6 +705,10 @@ class ProductSeting: DatabaseTableProtocol {
             res = false
         }
         return res
+    }
+    func remove(fromDatabaseRow row:Int) -> Bool {
+        
+        return true
     }
     
 } // end of class ProductSeting
@@ -733,15 +746,30 @@ class ToShopProduct: DatabaseTableProtocol {
     var context: NSManagedObjectContext
     var sortDescriptor:NSSortDescriptor
     
-    var toShopProductArray = [ToShopProductTable]()
+    private var toShopProductArray = [ToShopProductTable]()
     var featchResultCtrl: NSFetchedResultsController<ToShopProductTable>
     var feachRequest:NSFetchRequest<ToShopProductTable> = ToShopProductTable.fetchRequest()
-    var count: Int = 0
+    //var count: Int = 0
+    var count: Int {
+        get {  return toShopProductArray.count  }
+    }
+    var array: [ToShopProductTable] {
+        get { return toShopProductArray }
+        set { toShopProductArray = newValue }
+    }
+    subscript(index: Int) -> ToShopProductTable {
+        get { return toShopProductArray[index] }
+        set { toShopProductArray[index] = newValue }
+    }
     
     func append<T>(_ value: T) {
         if let val = value as? ToShopProductTable {
             toShopProductArray.append(val)
         }
+    }
+    // self.toShopProduct.insert(toshopProd, at: row)
+    func insert(toshopProd: ToShopProductTable, at row: Int) {
+        toShopProductArray.insert(toshopProd, at: row)
     }
     func remove(at row: Int) -> Bool {
         var result: Bool = false
@@ -765,7 +793,7 @@ class ToShopProduct: DatabaseTableProtocol {
 // variable for ShopingProductTable
 class ShopingProduct {
     var context: NSManagedObjectContext
-    var shopingProductArray = [ShopingProductTable]()
+    private var shopingProductArray = [ShopingProductTable]()
     var featchResultCtrl: NSFetchedResultsController<ShopingProductTable>
     var feachRequest:NSFetchRequest<ShopingProductTable> = ShopingProductTable.fetchRequest()
     let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
@@ -778,12 +806,43 @@ class ShopingProduct {
         feachRequest.sortDescriptors = [sortDescriptor]
         featchResultCtrl = NSFetchedResultsController(fetchRequest: feachRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     }
+    var count: Int {
+        get { return shopingProductArray.count }
+    }
+    var array: [ShopingProductTable] {
+        get { return shopingProductArray }
+        set { shopingProductArray = newValue }
+    }
+    subscript(index: Int) -> ShopingProductTable {
+        get { return shopingProductArray[index] }
+        set { shopingProductArray[index] = newValue }
+    }
+    func append<T>(_ value: T) {
+        if let val = value as? ShopingProductTable {
+            shopingProductArray.append(val)
+        }
+    }
+    func add(value: ShopingProductTable) -> Int {
+        shopingProductArray.append(value)
+        return shopingProductArray.count
+    }
+    func remove(at row: Int) -> Bool {
+        let res:Bool
+        if row < shopingProductArray.count {
+            shopingProductArray.remove(at: row)
+            res = true
+        }
+        else {
+            res = false
+        }
+        return res
+    }
 }
 // New Class ------------------------------------------
 // variable for BasketProductTable
 class BasketProduct {
     var context: NSManagedObjectContext
-    var basketProductArray = [BasketProductTable]()
+    private var basketProductArray = [BasketProductTable]()
     var featchResultCtrl: NSFetchedResultsController<BasketProductTable>
     var feachRequest:NSFetchRequest<BasketProductTable> = BasketProductTable.fetchRequest()
     let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
@@ -794,6 +853,42 @@ class BasketProduct {
         feachRequest.sortDescriptors = [sortDescriptor]
         feachRequest.sortDescriptors = [sortDescriptor]
         featchResultCtrl = NSFetchedResultsController(fetchRequest: feachRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    }
+    var count: Int {
+        get { return basketProductArray.count }
+    }
+    var array: [BasketProductTable] {
+        get { return basketProductArray }
+        set { basketProductArray = newValue }
+    }
+    subscript(index: Int) -> BasketProductTable {
+        get { return basketProductArray[index] }
+        set { basketProductArray[index] = newValue }
+    }
+    func append<T>(_ value: T) {
+        if let val = value as? BasketProductTable {
+            basketProductArray.append(val)
+        }
+    }
+    func add(value: BasketProductTable) -> Int {
+        basketProductArray.append(value)
+        return basketProductArray.count
+    }
+    func remove(at row: Int) -> Bool {
+        let res: Bool
+        if row < basketProductArray.count {
+            basketProductArray.remove(at: row)
+            res = true
+        }
+        else {
+            res = false
+        }
+        return res
+    }
+    //insert(basketProd, at: row)
+    func insert(_ productToInsert: BasketProductTable, at row: Int) -> Int {
+        basketProductArray.insert(productToInsert, at: row)
+        return basketProductArray.count
     }
 }
 

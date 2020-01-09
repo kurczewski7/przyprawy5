@@ -52,9 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         database.loadData(tableNameType: .categories)
         print("database.categoryArray.count po : \(database.category.categoryArray.count)")
         
-        print("database.basketProduct.basketProductArray.count przed : \(database.basketProduct.basketProductArray.count)")
+        print("database.basketProduct.basketProductArray.count przed : \(database.basketProduct.count)")
         database.loadData(tableNameType: .basket)
-        print("database.basketProduct.basketProductArray.count po : \(database.basketProduct.basketProductArray.count)")
+        print("database.basketProduct.basketProductArray.count po : \(database.basketProduct.count)")
         if database.category.categoryArray.count == 0 {
             var i=1
             for rec in Setup.categoriesData {

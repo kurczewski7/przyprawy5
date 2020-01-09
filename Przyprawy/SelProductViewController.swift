@@ -15,11 +15,11 @@ class SelProductViewController: UIViewController, NSFetchedResultsControllerDele
 }
 extension SelProductViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return database.toShopProduct.toShopProductArray.count
+        return database.toShopProduct.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SelProductViewControllerCell //
-        let toShop=database.toShopProduct.toShopProductArray
+        let toShop=database.toShopProduct.array
         let dlugosc = toShop.count
         print("dlugosc \(dlugosc) indexPath.row \(indexPath.row)")
         if let product = toShop[indexPath.row].productRelation {
@@ -50,7 +50,7 @@ extension SelProductViewController: UITableViewDataSource, UITableViewDelegate {
             //let sectionInfo =  self.fetchedResultsController.sections![indexPath.section]
             //sectionInfo.objects?.remove(at: indexPath.row)
             print("Usuń z listy")
-            database.toShopProduct.toShopProductArray.remove(at: indexPath.row)
+            database.toShopProduct.remove(at: indexPath.row)
             database.save()
             completionHandler(true)
         }
@@ -62,7 +62,7 @@ extension SelProductViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action1 = UIContextualAction(style: .destructive, title: "Kup") { (act, view, completionHandler) in
             print("Kup")
-            database.toShopProduct.toShopProductArray[indexPath.row].checked = true
+            database.toShopProduct[indexPath.row].checked = true
             database.save()
             completionHandler(true)
         }
@@ -72,7 +72,7 @@ extension SelProductViewController: UITableViewDataSource, UITableViewDelegate {
         
         let action2 = UIContextualAction(style: .destructive, title: "Kup") { (act, view, completionHandler) in
             print("Kup")
-            database.toShopProduct.toShopProductArray[indexPath.row].checked = false
+            database.toShopProduct[indexPath.row].checked = false
             database.save()
             completionHandler(true)
         }

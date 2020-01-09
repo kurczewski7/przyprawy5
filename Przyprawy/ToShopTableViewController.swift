@@ -56,7 +56,7 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewWillAppear(_ animated: Bool) {
         let numList=Setup.currentListNumber+1
         database.loadData(tableNameType: .toShop)
-        database.category.crateCategoryGroups(forToShopProduct: database.toShopProduct.toShopProductArray)
+        database.category.crateCategoryGroups(forToShopProduct: database.toShopProduct.array)
         self.title=cards[0].getName()+" \(numList)"
         //database.category.createSectionsData()
         tabView.reloadData()
@@ -78,8 +78,8 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     func getToShopProduct(indexPath: IndexPath) -> ProductTable?  {
         let prodNumber=database.category.sectionsData[indexPath.section].objects[indexPath.row]
-        let  xxx = prodNumber < database.toShopProduct.toShopProductArray.count ? prodNumber : database.toShopProduct.toShopProductArray.count-1
-        let toShopProduct = database.toShopProduct.toShopProductArray[xxx].productRelation
+        let  xxx = prodNumber < database.toShopProduct.count ? prodNumber : database.toShopProduct.count-1
+        let toShopProduct = database.toShopProduct[xxx].productRelation
         return toShopProduct
     }
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
