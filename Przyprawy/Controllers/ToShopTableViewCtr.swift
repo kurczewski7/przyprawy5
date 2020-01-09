@@ -12,6 +12,9 @@ import CoreData
 class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate {
     
    // UITableViewController, NSFetchedResultsControllerDelegate, UISearchBarDelegate
+    let sectionNameKeyPath = "categoryId"
+    let sortingKey = "categoryId"
+    let entityName = "ToShopProductTable"
     
       enum SectionType: Int {
           case ToBuy = 0
@@ -23,17 +26,16 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
           super.viewDidLoad()
-        //database.toShopProduct.array[0].productRelation?.categoryId
-        //database.toShopProduct.array[0].categoryId
+
           let context = database.context
-          let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ToShopProductTable")
-          let sort1 = NSSortDescriptor(key: "categoryId", ascending: true)
+          let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+          let sort1 = NSSortDescriptor(key: sortingKey, ascending: true)
           //let sort2=NSSortDescriptor(key: "productName", ascending: true)
           fetchRequest.sortDescriptors = [sort1]
           fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                                managedObjectContext: context,
-                                                                sectionNameKeyPath: "categoryId", //"changeDate", checked
-                                                                cacheName: "SectionCache")
+                                    managedObjectContext: context,
+                                    sectionNameKeyPath: sectionNameKeyPath,
+                                    cacheName: "SectionCache")
           fetchedResultsController.delegate =  self
           do {
               try fetchedResultsController.performFetch()
@@ -178,30 +180,31 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
       }
       func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
           //var sectionType: SectionType = .ToBuy
-          var headers = ["Do kupienia",  "Kupione","AAAA","BBBBB","CCCC"]
+          var headers = ["Do kupienia XX",  "Kupione YY","AAAA","BBBBB","CCCC","DDDD","EEEE","FFFF"]
+        let colorList: [UIColor] = [.orange, .purple, .green, .blue, .brown, .cyan , .magenta, .purple]
           let label=UILabel()
-          if fetchedResultsController.sections?.count ?? 0 < 2 {
-              let indexPath = IndexPath(row: 0, section: section)
-              let elem = fetchedResultsController.object(at: indexPath) as! ToShopProductTable
-              if elem.checked {
-                  headers = ["Kupione"]
-              }
-              else {
-                  headers = ["Do kupienia"]
-              }
-          }
-          else {
-              headers = ["Do kupienia",  "Kupione"]
-          }
-  //------------------
+        if let sectionCount = fetchedResultsController.sections?.count  {
+            let indexPath = IndexPath(row: 0, section: section)
+            let elem = fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+        }
+            //              if elem.checked {
+            //                  headers = ["Kupione"]
+            //              }
+            //              else {
+            //                  headers = ["Do kupienia"]
+            //              }
+//          else {
+//              headers = ["Do kupienia",  "Kupione"]
+//          }
           
           
           let sectionName = headers[section]
           //let secCount = database.category.sectionsData[section].objects.count
           label.text="\(sectionName)"
           label.textAlignment = .center
-          label.backgroundColor = ((section == 0) ?  #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1) : #colorLiteral(red: 0, green: 0.5690457821, blue: 0.5746168494, alpha: 1))
-          label.textColor = ((section != 0) ? UIColor.white : UIColor.black)
+          label.backgroundColor = colorList[section]
+            //((section == 0) ?  #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1) : #colorLiteral(red: 0, green: 0.5690457821, blue: 0.5746168494, alpha: 1))
+        label.textColor = ((section % 2 == 0) ?  UIColor.black : UIColor.white)
           return label
       }
       func getSectionType(at indexPath: IndexPath) -> SectionType {
