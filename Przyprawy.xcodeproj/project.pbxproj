@@ -69,6 +69,7 @@
 		2CE2758A210237B1001C046B /* PrzyprawyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE27589210237B1001C046B /* PrzyprawyUITests.swift */; };
 		2CF187C02398161700BEB505 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF187BF2398161700BEB505 /* Setup.swift */; };
 		2CF73B042135D97700FEA34C /* BrakujeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF73B032135D97700FEA34C /* BrakujeViewController.swift */; };
+		2CF8917F23C7490C006B8463 /* ToShopTableViewCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF8917E23C7490C006B8463 /* ToShopTableViewCtr.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,7 @@
 		2CE2758B210237B1001C046B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CF187BF2398161700BEB505 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		2CF73B032135D97700FEA34C /* BrakujeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrakujeViewController.swift; sourceTree = "<group>"; };
+		2CF8917E23C7490C006B8463 /* ToShopTableViewCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToShopTableViewCtr.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */,
 				2C1EB36221A46B4B00426F61 /* ToShopTableViewCell.swift */,
 				2CB2281821F24BD8008A3292 /* InBasketViewController.swift */,
+				2CF8917E23C7490C006B8463 /* ToShopTableViewCtr.swift */,
 				2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */,
 				2C3F37A82216060F00397BD7 /* ShareViewController.swift */,
 				2C22CF2A220CBB4100F6B53B /* WebViewController.swift */,
@@ -526,6 +529,7 @@
 				2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */,
 				2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */,
 				2CB903AB230199AD009F6A8E /* SelProductViewController.swift in Sources */,
+				2CF8917F23C7490C006B8463 /* ToShopTableViewCtr.swift in Sources */,
 				2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */,
 				2CE2756F210237AF001C046B /* DataModel.xcdatamodeld in Sources */,
 				2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */,

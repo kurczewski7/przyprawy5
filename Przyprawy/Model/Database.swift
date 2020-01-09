@@ -197,11 +197,14 @@ class Database  {
         save()
     }
     func deleteOne(withToShopRec row : Int) {
-        //var arr = toShopProduct.toShopProductArray
+        var arr = toShopProduct.array
         let r = (row == -1 ? toShopProduct.count-1 : row)
         context.delete(toShopProduct[r])
         toShopProduct.remove(at: r)
         save()
+        var arr2 = toShopProduct.array
+        print("\(arr)")
+        print("\(arr2)")
     }
     func deleteOne(withBasketRec row : Int) {
         //let arr = basketProduct.basketProductArray   //toShopProduct.toShopProductArray
