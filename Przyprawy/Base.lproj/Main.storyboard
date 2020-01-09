@@ -1578,7 +1578,7 @@
         <!--Lista 1-->
         <scene sceneID="zhV-n2-wtc">
             <objects>
-                <viewController id="c5G-IV-pUg" customClass="ToShopTableViewController" customModule="Przyprawy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="c5G-IV-pUg" customClass="ToShopTableViewCtr" customModule="Przyprawy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3rz-Da-7hD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1679,7 +1679,6 @@
                         <barButtonItem key="backBarButtonItem" title="Lista" id="ce9-gb-mnj"/>
                         <barButtonItem key="leftBarButtonItem" image="documents" id="C2D-xG-pvq">
                             <connections>
-                                <action selector="addNewListToBay:" destination="c5G-IV-pUg" id="qx0-ab-i5X"/>
                                 <segue destination="Zk3-ru-hOp" kind="show" identifier="goToSelectList" id="lln-Of-NXI"/>
                             </connections>
                         </barButtonItem>
@@ -1697,8 +1696,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchedBar" destination="Bjv-D4-HH9" id="JkY-ZV-WyG"/>
-                        <outlet property="tabView" destination="4is-sJ-bDd" id="TJ4-1F-jgO"/>
+                        <outlet property="tableView" destination="4is-sJ-bDd" id="8eB-0u-jhl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxX-xM-D99" userLabel="First Responder" sceneMemberID="firstResponder"/>

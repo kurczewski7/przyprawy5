@@ -217,14 +217,14 @@
 		2C158CC1218610BB00C3438B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2CF8917E23C7490C006B8463 /* ToShopTableViewCtr.swift */,
+				2CB2281821F24BD8008A3292 /* InBasketViewController.swift */,
 				2C55CD3A234A8FBE00ACFC95 /* SelectedProducyListController.swift */,
 				2C55CD3C234A900F00ACFC95 /* SelectedProductListCell.swift */,
 				2CB903AA230199AD009F6A8E /* SelProductViewController.swift */,
 				2CB903B02301B065009F6A8E /* SelProductViewControllerCell.swift */,
 				2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */,
 				2C1EB36221A46B4B00426F61 /* ToShopTableViewCell.swift */,
-				2CB2281821F24BD8008A3292 /* InBasketViewController.swift */,
-				2CF8917E23C7490C006B8463 /* ToShopTableViewCtr.swift */,
 				2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */,
 				2C3F37A82216060F00397BD7 /* ShareViewController.swift */,
 				2C22CF2A220CBB4100F6B53B /* WebViewController.swift */,
