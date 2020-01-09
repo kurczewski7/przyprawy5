@@ -23,14 +23,16 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
           super.viewDidLoad()
+        //database.toShopProduct.array[0].productRelation?.categoryId
+        //database.toShopProduct.array[0].categoryId
           let context = database.context
           let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ToShopProductTable")
-          let sort1 = NSSortDescriptor(key: "checked", ascending: true)
+          let sort1 = NSSortDescriptor(key: "categoryId", ascending: true)
           //let sort2=NSSortDescriptor(key: "productName", ascending: true)
           fetchRequest.sortDescriptors = [sort1]
           fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                 managedObjectContext: context,
-                                                                sectionNameKeyPath: "checked", //"changeDate", checked
+                                                                sectionNameKeyPath: "categoryId", //"changeDate", checked
                                                                 cacheName: "SectionCache")
           fetchedResultsController.delegate =  self
           do {
@@ -176,7 +178,7 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
       }
       func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
           //var sectionType: SectionType = .ToBuy
-          var headers = ["Do kupienia",  "Kupione"]
+          var headers = ["Do kupienia",  "Kupione","AAAA","BBBBB","CCCC"]
           let label=UILabel()
           if fetchedResultsController.sections?.count ?? 0 < 2 {
               let indexPath = IndexPath(row: 0, section: section)

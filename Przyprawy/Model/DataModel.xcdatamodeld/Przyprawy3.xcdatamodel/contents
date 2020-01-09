@@ -49,6 +49,7 @@
         <relationship name="productRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductTable" inverseName="shopingProductRelation" inverseEntity="ProductTable"/>
     </entity>
     <entity name="ToShopProductTable" representedClassName="ToShopProductTable" syncable="YES" codeGenerationType="class">
+        <attribute name="categoryId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="changeDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="checked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="eanCode" optional="YES" attributeType="String"/>
@@ -67,7 +68,7 @@
         <element name="PreferedContacts" positionX="-621" positionY="-36" width="128" height="105"/>
         <element name="ProductTable" positionX="-63" positionY="-18" width="128" height="358"/>
         <element name="ShopingProductTable" positionX="-521.12109375" positionY="72.01953125" width="128" height="88"/>
-        <element name="ToShopProductTable" positionX="-291.75" positionY="198.96875" width="128" height="118"/>
+        <element name="ToShopProductTable" positionX="-291.75" positionY="198.96875" width="128" height="133"/>
         <element name="UsersTable" positionX="-823.21875" positionY="185.390625" width="128" height="103"/>
     </elements>
 </model>

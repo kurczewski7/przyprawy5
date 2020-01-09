@@ -767,11 +767,14 @@ class ToShopProduct: DatabaseTableProtocol {
     
     func append<T>(_ value: T) {
         if let val = value as? ToShopProductTable {
+            val.categoryId = val.productRelation?.categoryId ?? 0
             toShopProductArray.append(val)
         }
     }
     // self.toShopProduct.insert(toshopProd, at: row)
     func insert(toshopProd: ToShopProductTable, at row: Int) {
+        let categoryId = toshopProd.productRelation?.categoryId ?? 0
+        toshopProd.categoryId = categoryId
         toShopProductArray.insert(toshopProd, at: row)
     }
     func remove(at row: Int) -> Bool {
