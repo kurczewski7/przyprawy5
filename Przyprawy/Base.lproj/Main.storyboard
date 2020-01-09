@@ -1332,7 +1332,7 @@
                         <viewLayoutGuide key="safeArea" id="EAD-FW-Fmd"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lista zakupow" id="Upd-td-xtt">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hGT-vu-cTR">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="phone.arrow.up.right" catalog="system" id="hGT-vu-cTR">
                             <connections>
                                 <segue destination="Yha-b8-xHJ" kind="show" identifier="gotoShare" id="tVF-O2-wK6"/>
                             </connections>
@@ -1720,6 +1720,7 @@
         <image name="dom1.jpeg" width="640" height="480"/>
         <image name="heart" width="128" height="128"/>
         <image name="keyboard_filled" width="25" height="25"/>
+        <image name="phone.arrow.up.right" catalog="system" width="64" height="56"/>
         <image name="plus" width="25" height="25"/>
         <image name="setup" width="25" height="25"/>
     </resources>

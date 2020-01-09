@@ -250,11 +250,11 @@
 			path = Enitties;
 			sourceTree = "<group>";
 		};
-		2C66D167234F2F5A00E0129F /* New Group1 */ = {
+		2C66D167234F2F5A00E0129F /* gradient */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "New Group1";
+			path = gradient;
 			sourceTree = "<group>";
 		};
 		2C8FE76523033AFE007FA8A5 /* IkonyList */ = {
@@ -315,7 +315,7 @@
 				2C158CBF2186109800C3438B /* View */,
 				2C158CC2218610E400C3438B /* Enitties */,
 				2CE27570210237B1001C046B /* Assets.xcassets */,
-				2C66D167234F2F5A00E0129F /* New Group1 */,
+				2C66D167234F2F5A00E0129F /* gradient */,
 				2C8FE76523033AFE007FA8A5 /* IkonyList */,
 				2CE27575210237B1001C046B /* Info.plist */,
 				2C6A2E7423608060002C85DA /* Settings.bundle */,

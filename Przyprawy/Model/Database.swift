@@ -190,31 +190,31 @@ class Database  {
     }
     func deleteOne(withProductRec row : Int) {
         // for row -1 delete last record
-        let arr = product.array
-        let r = (row == -1 ? arr.count-1 : row)
-        context.delete(arr[r])
-        product.remove(at: r)
+        //let arr = product.array
+        let r = (row == -1 ? product.count-1 : row)
+        context.delete(product.array[r])
+        product.array.remove(at: r)
         save()
     }
     func deleteOne(withToShopRec row : Int) {
-        let arr = toShopProduct.toShopProductArray
-        let r = (row == -1 ? arr.count-1 : row)
-        context.delete(arr[r])
-        toShopProduct.toShopProductArray.remove(at: r)
+        //var arr = toShopProduct.toShopProductArray
+        let r = (row == -1 ? toShopProduct.toShopProductArray.count-1 : row)
+        context.delete(toShopProduct.toShopProductArray[r])
+        toShopProduct.toShopProductArray.remove(at: r) //toShopProduct.toShopProductArray.remove(at: r)
         save()
     }
     func deleteOne(withBasketRec row : Int) {
-        let arr = basketProduct.basketProductArray   //toShopProduct.toShopProductArray
-        let r = (row == -1 ? arr.count-1 : row)
-        context.delete(arr[r])
+        //let arr = basketProduct.basketProductArray   //toShopProduct.toShopProductArray
+        let r = (row == -1 ? basketProduct.basketProductArray.count-1 : row)
+        context.delete(basketProduct.basketProductArray[r])
         basketProduct.basketProductArray.remove(at: r)
         save()
     }
     func uncheckOne(withToShopRec row : Int, toCheck: Bool = false) {
-        let arr = toShopProduct.toShopProductArray
-        let r = (row == -1 ? arr.count-1 : row)
+        //let arr = toShopProduct.toShopProductArray
+        let r = (row == -1 ? toShopProduct.toShopProductArray.count-1 : row)
         //arr[r].productRelation?.checked1 = toCheck
-        checkProductList(productTable: arr[r].productRelation, toCheck: toCheck)
+        checkProductList(productTable: toShopProduct.toShopProductArray[r].productRelation, toCheck: toCheck)
         save()
     }
     func checkProductList(productTable: ProductTable?, toCheck: Bool = false )  {
