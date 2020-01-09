@@ -18,6 +18,6 @@ class ProductList {
         self.pictureName = name
     }
     func getName() -> String{
-        return polishLanguage ? self.polishName : self.englishName
+        return Setup.polishLanguage  ? self.polishName : self.englishName
     }
 }

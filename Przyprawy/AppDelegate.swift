@@ -7,6 +7,10 @@
 //
 
 import UIKit
+enum LanguaesList: String {
+    case enlish = "EN"
+    case polish = "PL"
+}
 
 enum DbTableNames : String {
     case products        = "ProductTable"
@@ -32,7 +36,7 @@ let database = Database(context: coreData.persistentContainer.viewContext)
 let server   = Server()
 let cards = Setup.fillCards()
 
-let polishLanguage = true
+//let polishLanguage = true
 // Mark: Detect 3D touch
 let is3Dtouch = UIApplication.shared.keyWindow?.traitCollection.forceTouchCapability == UIForceTouchCapability.available
 let bundleID = "pl.wroclaw.pwr.Przyprawy"

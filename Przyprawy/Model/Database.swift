@@ -607,7 +607,7 @@ class CategorySeting {
         var sectionTitle = ""        
         for tmp in categoryGroups {
             if tmp.count > 0 {
-                sectionTitle = polishLanguage ? Setup.categoriesData[sectionNo].name : Setup.categoriesData[sectionNo].nameEN
+                sectionTitle = Setup.polishLanguage ? Setup.categoriesData[sectionNo].name : Setup.categoriesData[sectionNo].nameEN
                 addElementToSectionData(sectionId: sectionNo+1, sectionTitle: sectionTitle, groupId: i, objects: tmp)
                 i += 1
             }

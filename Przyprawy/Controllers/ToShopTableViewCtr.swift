@@ -198,7 +198,8 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
 //          }
           
           
-          let sectionName = headers[section]
+          //let sectionName = headers[section]
+          let sectionName = Setup.getCateorieName(forNumber: section)
           //let secCount = database.category.sectionsData[section].objects.count
           label.text="\(sectionName)"
           label.textAlignment = .center

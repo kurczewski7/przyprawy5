@@ -8,6 +8,11 @@
 
 import Foundation
 class Setup {
+    static var  currentLanguage: LanguaesList = .polish
+    static var  polishLanguage: Bool  {
+        return currentLanguage == LanguaesList.polish ? true : false
+    }
+    
     static let  categoriesData : [CategoryType]  =
         [(name: "Przyprawy", nameEN: "Spices", pictureName: "🌶🧂", selectedCategory : false),
          (name: "Warzywa", nameEN: "Vegetables", pictureName: "🥬🥕🥒", selectedCategory : false),
@@ -19,6 +24,9 @@ class Setup {
          (name: "Inne", nameEN: "Others", pictureName: "🥜🥟🥮", selectedCategory : false)
             //✖️✔️☛☞☛✔︎✘✓✕❤︎☎︎☏✆✍︎✍︎✍︎💲✖️✔️
     ]
+    class func getCateorieName(forNumber row: Int) -> String {
+        return currentLanguage == LanguaesList.polish ? categoriesData[row].name : categoriesData[row].nameEN
+    }
     
     static let fructsProd    : [String] = ["owoce_01_b","owoce_02_b","owoce_03_b","owoce_04_b","owoce_05_b","owoce_06_b","owoce_07_b","owoce_08_b","owoce_09_b","owoce_10_b",
                                     "owoce_11_b","owoce_12_b","owoce_13_b","owoce_14_b","owoce_15_b","owoce_16_b","owoce_17_b","owoce_18_b","owoce_19_b","owoce_20_b"]
@@ -213,7 +221,7 @@ class Setup {
     static var currentListNumber = 0
     
     class func fillCards() -> [ProductList] {
-        let picturesName: [String] = ["zakupy.jpg","tort2.jpeg","dom1.jpeg","ogrod2.jpeg","zwierzeta4.jpg","zwierzeta3.jpg","mieso.jpg","warzywa.jpg","przyprawa.jpg","napoje.jpg","napoje2.jpg","leki.jpg","agd.jpg","tree.jpg"]
+        let picturesName: [String] = ["zakupy.jpg","tort2.jpeg","dom1.jpeg","ogrod2.jpeg","zwierzeta4.jpg","zwierzeta3.jpg","mieso.jpg","warzywa.jpg","przyprawa.jpg","napoje.jpg","napoje2.jpg","leki.jpg","agd2.jpg","tree.jpg"]
         var cards: [ProductList] = []
         for elem in picturesName {
             cards.append(ProductList(pictureName: elem))

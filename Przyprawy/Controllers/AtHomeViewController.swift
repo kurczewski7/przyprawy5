@@ -233,7 +233,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func giveProductPrompt(with isPlaceholder:Bool) -> [String]
     {
         var myPrompt = [String]()
-        if(polishLanguage)
+        if(Setup.polishLanguage)
         {
            myPrompt = (isPlaceholder ? ["Wyszukaj produkt 🌶","Wyszukaj producenta 🔧"] : ["🌶 Produkt ","🔧 Producent "] )
         }
