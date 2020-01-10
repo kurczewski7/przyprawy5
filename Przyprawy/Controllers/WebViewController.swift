@@ -22,9 +22,23 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
         super.viewDidLoad()
         webCreator.delegate = self
         database.loadData(tableNameType: .toShop)
+         prepareDataForWeb()
         displayHtml()
         displaySms()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        prepareDataForWeb()
+    }
+    func prepareDataForWeb() {
+ //       override func viewWillAppear(_ animated: Bool) {
+             let numList=Setup.currentListNumber+1
+             database.loadData(tableNameType: .toShop)
+             database.category.crateCategoryGroups(forToShopProduct: database.toShopProduct.array)
+             self.title=cards[0].getName()+" \(numList)"
+             //database.category.createSectionsData()
+             //tabView.reloadData()
+             //print("viewWillAppear")
+         }
     // MARK: WebCreatorDelegate method
     func webCreatorTitlesOfSerctions() -> [String] {
         var value: [String] = [String]()
@@ -115,11 +129,8 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
             let nextController=segue.destination as! ShareViewController
             nextController.htmlText = html
             nextController.smsText  = sms
-            
                        //nextVC.productTitle = currentProduct.productName ?? "no product"
         }
 
     }
- 
-
 }

@@ -12,6 +12,7 @@ protocol WebCreatorDelegate {
     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable?
     func webCreatorNumberOfRows(forSection section: Int) -> Int
     func webCreatorNumberOfSections() -> Int
+    //func webCreatorHeaderForSection() -> Int
 }
 class WebCreator {
     struct WebColDescription {
@@ -25,12 +26,12 @@ class WebCreator {
         var sectionTitles = [String]()
         init() {
             mainTitle = "Koszyk produktów"
-            sectionTitles = ["Przyprawy","Warzywa","Owoce"]
+            sectionTitles = ["Przyprawy","Warzywa","Owoce","AAAA","BBBB","CCCC","DDDD"]
         }
     }
     var delegate: WebCreatorDelegate?
     
-    var sectionInfo: SectionsDescription = SectionsDescription()
+    var sectionInfoWeb: SectionsDescription = SectionsDescription()
     var webColsDescription: [WebColDescription] = []
     var db : [ProductTable] = []
     
@@ -77,7 +78,7 @@ class WebCreator {
         self.telFrom = telFrom
         self.emailFrom = emailFrom
         lang = polishLanguage ? "pl" : "en"
-        sectionInfo.sectionTitles = setSectionsTitles()
+        sectionInfoWeb.sectionTitles = setSectionsTitles()
         db=database.product.array
 
         //let allTitles = self.delegate?.webCreatorTitlesOfSerctions()
@@ -134,7 +135,8 @@ class WebCreator {
         var tableBodyHtml = ""
         var tableFooterHtml = ""
         
-        aTitle = sectionInfo.sectionTitles[section]
+        //aTitle = sectionInfoWeb.sectionTitles[section]
+        aTitle = "SSSSSS"
         tableHeaderHtml="<table id=\"t0\(idTable)\" style=\"background-color:powderblue; border-style: solid; border-width: 1px;\">\n"
         tableHeaderHtml+="<caption><b>\(aTitle) \(extraTitle)</b></caption>\n"
         tableHeaderHtml+="<tr style=\"background-color:LightSeaGreen;\">"
@@ -202,7 +204,8 @@ class WebCreator {
         return fullSmsText
     }
     func getOneSectionSms(forSection section: Int) -> String {
-        var smsText = "     \(sectionInfo.sectionTitles[section])\n"
+        //var smsText = "     \(sectionInfoWeb.sectionTitles[section])\n"
+        var smsText = "smsText"
         let numOfRows = self.delegate?.webCreatorNumberOfRows(forSection: section)
         for i in 0..<numOfRows! {
             if let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section) {
