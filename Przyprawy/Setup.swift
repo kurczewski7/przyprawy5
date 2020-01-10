@@ -26,7 +26,7 @@ class Setup {
     ]
     class func getCateorieName(forNumber row: Int) -> String {
         let name: String
-        if row>0 && row < categoriesData.count { name = currentLanguage == LanguaesList.polish ? categoriesData[row].name : categoriesData[row].nameEN }
+        if row>0 && row < categoriesData.count+1 { name = currentLanguage == LanguaesList.polish ? categoriesData[row-1].name : categoriesData[row-1].nameEN }
         else {  name = "empty"  }
         return name
     }

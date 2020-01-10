@@ -179,23 +179,22 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
           return swipe
       }
       func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var sectionName = "brak"
+          var sectionName = "brak"
           let colorList: [UIColor] = [.orange, .purple, .green, .blue, .brown, .cyan , .magenta, .purple]
           let label=UILabel()
+          //fetchedResultsController.object(at: IndexPath(0,0))
           if let sectionCount = fetchedResultsController.sections?.count  {
-             let indexPath = IndexPath(row: 0, section: section)
-             let elem = fetchedResultsController.object(at: indexPath) as! ToShopProductTable
-             let categoryNumber = Int(elem.categoryId)
-             sectionName = Setup.getCateorieName(forNumber:  categoryNumber)  //section)
-          }
-
-        
-          
-          //let secCount = database.category.sectionsData[section].objects.count
-          label.text="\(sectionName)"
-          label.textAlignment = .center
-          label.backgroundColor = colorList[section]
-          label.textColor = ((section % 2 == 0) ?  UIColor.black : UIColor.white)
+            let indexPath = IndexPath(row: 0, section: section)
+            let elem = fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+            let categoryNumber = Int(elem.categoryId)
+            print("????   sectionCount:\(sectionCount),categoryNumber:\(categoryNumber)")
+            sectionName = Setup.getCateorieName(forNumber:  categoryNumber)  //section)
+            //let secCount = database.category.sectionsData[section].objects.count
+            label.text="\(sectionName)"
+            label.textAlignment = .center
+            label.backgroundColor = colorList[section]
+            label.textColor = ((section % 2 == 0) ?  UIColor.black : UIColor.white)
+        }
           return label
         //((section == 0) ?  #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1) : #colorLiteral(red: 0, green: 0.5690457821, blue: 0.5746168494, alpha: 1))
       }
