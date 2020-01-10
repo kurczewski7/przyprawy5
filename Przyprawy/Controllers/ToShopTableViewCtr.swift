@@ -180,7 +180,7 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
       }
       func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
           var sectionName = "brak"
-          let colorList: [UIColor] = [.orange, .purple, .green, .blue, .brown, .cyan , .magenta, .purple]
+        let colorList: [UIColor] = [.orange, .purple, .green, .brown, .cyan, .blue, .yellow, .gray]
           let label=UILabel()
           //fetchedResultsController.object(at: IndexPath(0,0))
           if let sectionCount = fetchedResultsController.sections?.count  {
@@ -192,7 +192,7 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
             //let secCount = database.category.sectionsData[section].objects.count
             label.text="\(sectionName)"
             label.textAlignment = .center
-            label.backgroundColor = colorList[section]
+            label.backgroundColor = colorList[section % 8]
             label.textColor = ((section % 2 == 0) ?  UIColor.black : UIColor.white)
         }
           return label
