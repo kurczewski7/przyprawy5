@@ -154,42 +154,55 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
           return swipe
       }
       func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-          let sectionType = getSectionType(at: indexPath)
-          let action1 = UIContextualAction(style: .destructive, title: "Kup") { (act, view, completionHandler) in
-              print("Kup")
-              let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
-              toShopProduct.checked = true
-              self.saveDataAndReloadView()
-              completionHandler(true)
-          }
-          action1.backgroundColor =  #colorLiteral(red: 0.09233232588, green: 0.5611743331, blue: 0.3208354712, alpha: 1)
-          action1.image =  UIImage(named: "buy_filled")
-          
-          let action2 = UIContextualAction(style: .destructive, title: "Zwróć") { (act, view, completionHandler) in
-              print("Zwróć")
-              let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
-              toShopProduct.checked = false
-              self.saveDataAndReloadView()
-              completionHandler(true)
-          }
-          action2.backgroundColor =  #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
-          action2.image =  UIImage(named: "return_purchase_filled")
-          
-          let swipe = UISwipeActionsConfiguration(actions: [sectionType == .ToBuy ?  action1 : action2])
-          return swipe
-      }
+         let deleteMessage = Setup.currentLanguage == .polish ? "Usuń z listy" : "Remove" //"Usuń z listy" : "Remove from list"
+         let action = UIContextualAction(style: .destructive, title: deleteMessage) { (lastAction, view, completionHandler) in
+         print("Usuń z listy")
+         let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+         self.fetchedResultsController.managedObjectContext.delete(toShopProduct)
+         self.saveDataAndReloadView()
+            completionHandler(true)
+            //            toShopProduct.checked = true
+            //            database.toShopProduct.toShopProductArray.remove(at: indexPath.row)
+            //            database.save()
+            //  self.tableView?.reloadData()§gggg
+        }
+        action.backgroundColor = .red
+        action.image=UIImage(named: "full_trash_big")
+        let swipe = UISwipeActionsConfiguration(actions: [action])
+        return swipe
+    }
+          //          let sectionType = getSectionType(at: indexPath)
+          //          let action1 = UIContextualAction(style: .destructive, title: "Kup") { (act, view, completionHandler) in
+          //              print("Kup")
+          //              let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+          //              toShopProduct.checked = true
+          //              self.saveDataAndReloadView()
+          //              completionHandler(true)
+          //          }
+          //          action1.backgroundColor =  #colorLiteral(red: 0.09233232588, green: 0.5611743331, blue: 0.3208354712, alpha: 1)
+          //          action1.image =  UIImage(named: "buy_filled")
+          //
+          //          let action2 = UIContextualAction(style: .destructive, title: "Zwróć") { (act, view, completionHandler) in
+          //              print("Zwróć")
+          //              let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+          //              toShopProduct.checked = false
+          //              self.saveDataAndReloadView()
+          //              completionHandler(true)
+          //          }
+          //          action2.backgroundColor =  #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
+          //          action2.image =  UIImage(named: "return_purchase_filled")
+          //
+          //          let swipe = UISwipeActionsConfiguration(actions: [sectionType == .ToBuy ?  action1 : action2])
       func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
           var sectionName = "brak"
         let colorList: [UIColor] = [.orange, .purple, .green, .brown, .cyan, .blue, .yellow, .gray]
           let label=UILabel()
-          //fetchedResultsController.object(at: IndexPath(0,0))
           if let sectionCount = fetchedResultsController.sections?.count  {
             let indexPath = IndexPath(row: 0, section: section)
             let elem = fetchedResultsController.object(at: indexPath) as! ToShopProductTable
             let categoryNumber = Int(elem.categoryId)
             print("????   sectionCount:\(sectionCount),categoryNumber:\(categoryNumber)")
-            sectionName = Setup.getCateorieName(forNumber:  categoryNumber)  //section)
-            //let secCount = database.category.sectionsData[section].objects.count
+            sectionName = Setup.getCateorieName(forNumber:  categoryNumber)
             label.text="\(sectionName)"
             label.textAlignment = .center
             label.backgroundColor = colorList[section % 8]

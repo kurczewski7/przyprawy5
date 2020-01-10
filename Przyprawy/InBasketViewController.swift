@@ -141,13 +141,14 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
             completionHandler(true)
         }
         action.backgroundColor = .red
-        action.image=UIImage(named: "full_trash")
+        action.image=UIImage(named: "full_trash_big")
         let swipe = UISwipeActionsConfiguration(actions: [action])
         return swipe
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let sectionType = getSectionType(at: indexPath)
-        let action1 = UIContextualAction(style: .destructive, title: "Kup") { (act, view, completionHandler) in
+        let buyMessage = Setup.polishLanguage ? "Kup" : "Buy"
+        let action1 = UIContextualAction(style: .destructive, title: buyMessage) { (act, view, completionHandler) in
             print("Kup")
             let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
             toShopProduct.checked = true
@@ -155,9 +156,9 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
             completionHandler(true)
         }
         action1.backgroundColor =  #colorLiteral(red: 0.09233232588, green: 0.5611743331, blue: 0.3208354712, alpha: 1)
-        action1.image =  UIImage(named: "buy_filled")
-        
-        let action2 = UIContextualAction(style: .destructive, title: "Zwróć") { (act, view, completionHandler) in
+        action1.image =  UIImage(named: "buy_filled_big2")
+        let returnMessage = Setup.polishLanguage ? "Zwróć" : "Give back"
+        let action2 = UIContextualAction(style: .destructive, title: returnMessage) { (act, view, completionHandler) in
             print("Zwróć")
             let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
             toShopProduct.checked = false
@@ -165,7 +166,7 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
             completionHandler(true)
         }
         action2.backgroundColor =  #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
-        action2.image =  UIImage(named: "return_purchase_filled")
+        action2.image =  UIImage(named: "return_purchase_filled_big") // return_purchase_filled_big return_purchase_filled
         
         let swipe = UISwipeActionsConfiguration(actions: [sectionType == .ToBuy ?  action1 : action2])
         return swipe
