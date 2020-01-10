@@ -21,6 +21,7 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
     override func viewDidLoad() {
         super.viewDidLoad()
         webCreator.delegate = self
+        database.loadData(tableNameType: .toShop)
         displayHtml()
         displaySms()
     }
@@ -33,9 +34,13 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
         return ["tyt0","tyt1","tyt2","tyt3"] //value
     }
     func webCreatorNumberOfRows(forSection section: Int) -> Int {
+        let xxx = database.category.getCurrentSectionCount(forSection: section)
+        print("xxx:\(xxx)")
         return  database.category.getCurrentSectionCount(forSection: section)
     }
     func webCreatorNumberOfSections() -> Int {
+        let yyy = database.category.getTotalNumberOfSection()
+        print("xxx:\(yyy)")
         return  database.category.getTotalNumberOfSection()
     }
     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable? {
