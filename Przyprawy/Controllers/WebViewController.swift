@@ -131,6 +131,5 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
             nextController.smsText  = sms
                        //nextVC.productTitle = currentProduct.productName ?? "no product"
         }
-
     }
 }

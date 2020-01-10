@@ -23,10 +23,10 @@ class WebCreator {
     }
     struct SectionsDescription {
         var mainTitle = ""
-        var sectionTitles = [String]()
+        var sectionTitles = ["XXXX","YYYYY"]//[String]()
         init() {
             mainTitle = "Koszyk produktów"
-            sectionTitles = ["Przyprawy","Warzywa","Owoce","AAAA","BBBB","CCCC","DDDD"]
+            sectionTitles = ["Przyprawy","Warzywa","Owoce","AAAA","BBBB","CCCC","DDDD","EEE"]
         }
     }
     var delegate: WebCreatorDelegate?
@@ -70,11 +70,11 @@ class WebCreator {
                 let sectionName = database.category.getCategorySectionHeader(forSection: i)
                 value.append(sectionName)
             }
-        return value
+        return ["ffff","GGGG","HHHH","IIII","JJJJ","KKKKK","LLLLL","MMMMM"] //value
     }
     
     init(polishLanguage: Bool, telFrom: String, emailFrom: String)  {
-        self.polishLanguage = polishLanguage
+        self.polishLanguage = Setup.polishLanguage
         self.telFrom = telFrom
         self.emailFrom = emailFrom
         lang = polishLanguage ? "pl" : "en"
@@ -90,40 +90,45 @@ class WebCreator {
         for i in 0..<headers.count {
             self.addWebCol(header: headers[i], size: sizes[i], rowContent: rowContents[i], footContent: footContents[i])
         }
+                
+        headHtml+="""
+             <!DOCTYPE html><html lang=\"\(lang)\">\n
+             <head><title>Products</title><meta charset=\"utf-8\">\n<style>\n
+             table {width:100%;} \ntable, th, td {  border: 1px solid black;   border-collapse: collapse;  text-align: center;  }\n
+             th {padding: 5px;text-align: center;}\n
+             td {padding: 5px;text-align: left;}\n
+             img {width: 100px; height: 100px;}\n
+             table tr:nth-child(even) {   background-color: #eee;  }\n
+             table tr:nth-child(odd)  {   background-color:#fff;   }\n
+             table th                 {   background-color: powderblue;  }\n
+             table#t02 table, th, td, thead, tfoot\n
+             {\n
+                 border: 0px solid yelow;\n
+                 text-align: left;\n
+            }\n
+             table#t01 thead {  color:black;}\n
+             table#t01 tfoot {  color:blue; }\n
+            """
         
-        //<!DOCTYPE html><html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Gmail</title>
-        headHtml+="<!DOCTYPE html><html lang=\"\(lang)\">\n"
-        headHtml+="<head><title>Products</title><meta charset=\"utf-8\">\n<style>\n"
-        headHtml+="table {width:100%;} \ntable, th, td {  border: 1px solid black;   border-collapse: collapse;  text-align: center;  }\n"
-        headHtml+="th {padding: 5px;text-align: center;}\n"
-        headHtml+="td {padding: 5px;text-align: left;}\n"
-        headHtml+="img {width: 100px; height: 100px;}\n"
-        headHtml+="table tr:nth-child(even) {   background-color: #eee;  }\n"
-        headHtml+="table tr:nth-child(odd)  {   background-color:#fff;   }\n"
-        headHtml+="table th                 {   background-color: powderblue;  }\n"
-        headHtml+="table#t02 table, th, td, thead, tfoot\n"
-        headHtml+="{\n"
-        headHtml+="    border: 0px solid yelow;\n"
-        headHtml+="    text-align: left;\n"
-        headHtml+="}\n"
-        headHtml+="table#t01 thead {  color:black;}\n"
-        headHtml+="table#t01 tfoot {  color:blue; }\n"
         if ccsStyleExt.count > 0 {
             headHtml+="\n\(ccsStyleExt)\n"
         }
-        headHtml+="</style>\n"
-        headHtml+="</head>\n"
-        headHtml+="<body>\n"
-        
-
+        headHtml += """
+            </style>\n
+            </head>\n
+            <body>\n
+            """
+ 
         // <a href="sms:1-111-1111;body=I made it!">Send location via SMS</a>
         endHtml+="<a href=\"tel:\(telFrom)\">Tel:  \(telFrom)</a><br/>\n"
         endHtml+="<a href=\"sms://\(telFrom)\">Sms:  \(telFrom)</a><br/>\n"
         endHtml+="<a href=\"mailto:\(emailFrom)\">eMail:  \(emailFrom)</a><br/>\n"
         
         //"mailto://\(email)?cc=\(cc)&subject=\(subject)&body=\(body)"
-        endHtml+="</body>"
-        endHtml+="</html>"
+        endHtml += """
+            </body>
+            </html>
+            """
     }
     func addWebCol(header: String, size: String, rowContent: String, footContent: String) {
         let value: WebColDescription = WebColDescription(header: header, size: size, rowContent: rowContent, footContent: footContent)
@@ -135,8 +140,8 @@ class WebCreator {
         var tableBodyHtml = ""
         var tableFooterHtml = ""
         
-        //aTitle = sectionInfoWeb.sectionTitles[section]
-        aTitle = "SSSSSS"
+        aTitle = sectionInfoWeb.sectionTitles[section]  //[section] //sectionInfoWeb
+        //aTitle = "SSSSSS"
         tableHeaderHtml="<table id=\"t0\(idTable)\" style=\"background-color:powderblue; border-style: solid; border-width: 1px;\">\n"
         tableHeaderHtml+="<caption><b>\(aTitle) \(extraTitle)</b></caption>\n"
         tableHeaderHtml+="<tr style=\"background-color:LightSeaGreen;\">"
@@ -147,14 +152,19 @@ class WebCreator {
         
         tableBodyHtml = getRowData(forSection: section)
         // ["-", "Razem produktów \(footerTitle)", "\(lp)"]
-        tableFooterHtml+="<tfoot>\n"
-        tableFooterHtml+="<tr>\n"
+        tableFooterHtml += """
+            <tfoot>\n
+            <tr>\n
+            """
+
         for tmp in webColsDescription {
             tableFooterHtml+="<th style=\"width:\(tmp.size)%; background-color:powderblue;\">\(tmp.footContent)</th>\n"
         }
-        tableFooterHtml+="</tr>\n"
-        tableFooterHtml+="</tfoot>\n"
-        tableFooterHtml+="</table>"
+        tableFooterHtml += """
+            </tr>\n
+            </tfoot>\n
+            </table>
+            """
         self.htmlTablesCollection.append(tableHeaderHtml + tableBodyHtml + tableFooterHtml)
     }
 
