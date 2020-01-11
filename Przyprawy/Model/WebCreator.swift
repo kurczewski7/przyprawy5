@@ -12,7 +12,7 @@ protocol WebCreatorDelegate {
     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable?
     func webCreatorNumberOfRows(forSection section: Int) -> Int
     func webCreatorNumberOfSections() -> Int
-    //func webCreatorHeaderForSection() -> Int
+    func webCreatorHeaderForSection() -> [String]?
 }
 class WebCreator {
     struct WebColDescription {
@@ -65,12 +65,20 @@ class WebCreator {
     
     func setSectionsTitles()  -> [String] {
         var value: [String] = [String]()
-        let sectionCount=database.category.getTotalNumberOfSection()
-        for i in 0..<sectionCount {
-                let sectionName = database.category.getCategorySectionHeader(forSection: i)
-                value.append(sectionName)
-            }
-        return ["ffff","GGGG","HHHH","IIII","JJJJ","KKKKK","LLLLL","MMMMM"] //value
+//        let sectionCount=database.category.getTotalNumberOfSection()
+//        for i in 0..<sectionCount {
+//                let sectionName = database.category.getCategorySectionHeader(forSection: i)
+//                value.append(sectionName)
+//            }
+        let sectionTitle = self.delegate?.webCreatorHeaderForSection()
+        value = sectionTitle ?? ["ffff","GGGG","HHHH","IIII","JJJJ","KKKKK","LLLLL","MMMMM"]
+//        {
+//            value = sectionTitle
+//        }
+//        else {
+//            value = ["ffff","GGGG","HHHH","IIII","JJJJ","KKKKK","LLLLL","MMMMM"]
+//        }
+        return value
     }
     
     init(polishLanguage: Bool, telFrom: String, emailFrom: String)  {

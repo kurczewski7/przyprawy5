@@ -10,7 +10,6 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WebCreatorDelegate {
-    
     var webView: WKWebView!
     var html: String = ""
     var sms:  String = ""
@@ -40,6 +39,11 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
              //print("viewWillAppear")
          }
     // MARK: WebCreatorDelegate method
+     
+    func webCreatorHeaderForSection() -> [String]?  {
+        let titleInfo = ["Pierwsze", "Drugie","Trzecie"]
+        return titleInfo
+    }
     func webCreatorTitlesOfSerctions() -> [String] {
         var value: [String] = [String]()
         for tmp in database.category.categoryArray {
