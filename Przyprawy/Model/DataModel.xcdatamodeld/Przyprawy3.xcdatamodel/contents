@@ -37,6 +37,7 @@
         <attribute name="productName" optional="YES" attributeType="String"/>
         <attribute name="searchTag" optional="YES" attributeType="String"/>
         <attribute name="smallPicture" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="basketProductTable" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BasketProductTable" inverseName="productRelation" inverseEntity="BasketProductTable"/>
         <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryTable" inverseName="products" inverseEntity="CategoryTable"/>
@@ -66,7 +67,7 @@
         <element name="BasketProductTable" positionX="-277.06640625" positionY="-16.4921875" width="128" height="88"/>
         <element name="CategoryTable" positionX="-251.7265625" positionY="-182.3828125" width="128" height="150"/>
         <element name="PreferedContacts" positionX="-621" positionY="-36" width="128" height="105"/>
-        <element name="ProductTable" positionX="-63" positionY="-18" width="128" height="358"/>
+        <element name="ProductTable" positionX="-63" positionY="-18" width="128" height="373"/>
         <element name="ShopingProductTable" positionX="-521.12109375" positionY="72.01953125" width="128" height="88"/>
         <element name="ToShopProductTable" positionX="-291.75" positionY="198.96875" width="128" height="133"/>
         <element name="UsersTable" positionX="-823.21875" positionY="185.390625" width="128" height="103"/>

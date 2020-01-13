@@ -173,20 +173,20 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //var sectionType: SectionType = .ToBuy
-        var headers = ["Do kupienia",  "Kupione"]
+        var headers = ["Do kupienia ❓",  "Kupione ✅"]
         let label=UILabel()
         if fetchedResultsController.sections?.count ?? 0 < 2 {
             let indexPath = IndexPath(row: 0, section: section)
             let elem = fetchedResultsController.object(at: indexPath) as! ToShopProductTable
             if elem.checked {
-                headers = ["Kupione"]
+                headers = ["Kupione 👍"]
             }
             else {
-                headers = ["Do kupienia"]
+                headers = ["Do kupienia 👉🏻"]
             }
         }
         else {
-            headers = ["Do kupienia",  "Kupione"]
+            headers = ["Do kupienia 👉🏻",  "Kupione  👍"]
         }
 //------------------
         
