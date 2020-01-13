@@ -63,10 +63,10 @@ class WebCreator {
     var emailFrom = ""   //"kurczewski7@gmail.com"
     var htmlTablesCollection: [String] = [String]()
     
-    init(polishLanguage: Bool, telFrom: String, emailFrom: String)  {
+    init(polishLanguage: Bool, telFrom: [String], emailFrom: [String])  {
         self.polishLanguage = Setup.polishLanguage
-        self.telFrom = telFrom
-        self.emailFrom = emailFrom
+        self.telFrom = telFrom[0]
+        self.emailFrom = emailFrom[0]
     }
     func setSectionsTitles()  -> [String] {
         var sectionNames: [String] = [String]()
@@ -75,28 +75,11 @@ class WebCreator {
         return sectionNames
     }
 
-        
-//        let zzzz = self.delegate?.webCreatorNumberOfSections()
-//        print("zzzz:\(String(describing: zzzz))")
-//        let sectionTitle = self.delegate?.webCreatorHeaderForSection()
-//        value = sectionTitle ?? ["ffff","GGGG","HHHH","IIII","JJJJ","KKKKK","LLLLL","MMMMM"]
-//        {
-//            value = sectionTitle
-//        }
-//        else {
-//            value = ["ffff","GGGG","HHHH","IIII","JJJJ","KKKKK","LLLLL","MMMMM"]
-//        }
-
-
     func generateHtml() {
         lang = polishLanguage ? "pl" : "en"
         sectionInfoWeb.sectionTitles = setSectionsTitles()
         db=database.product.array
 
-        //let allTitles = self.delegate?.webCreatorTitlesOfSerctions()
-        //print("allTitles: \(allTitles ?? ["default value"])")
-        //?? ["title0","title1","title2","title3"]
-        
         self.i = 0
         self.lp = 0
         for i in 0..<headers.count {
@@ -213,15 +196,29 @@ class WebCreator {
         //print("tableHewaderHtml:\(tableHeaderHtml)")
         return value
     }
-    func getFullSms(myPhoneNumber tel: String, myEmail eMail: String)  -> String {
+    func getFullSms(myPhoneNumber tel: [String], myEmail eMail: [String])  -> String {
         let sectionsCount = self.delegate?.webCreatorNumberOfSections() ?? 1
         var fullSmsText = ""
         for i in 0..<sectionsCount {
             fullSmsText += getOneSectionSms(forSection: i)
         }
-        fullSmsText += "tel:\(tel)\n"
-        fullSmsText += "mailto:\(eMail)\n"
-        fullSmsText += "sms:\(tel)\n"
+        for i in 0..<tel.count {
+           fullSmsText += "tel:\(tel[i])\n"
+        }
+        fullSmsText += "\n"
+        fullSmsText += "\n"
+        for i in 0..<eMail.count {
+           fullSmsText += "mailto:\(eMail[i])\n"
+        }
+        fullSmsText += "\n"
+        for i in 0..<tel.count {
+           fullSmsText += "sms:\(tel[i])\n"
+        }
+        fullSmsText += "\n"
+        
+        //fullSmsText += "tel:\(tel[0])\n"
+        //fullSmsText += "mailto:\(eMail[0])\n"
+        //fullSmsText += "sms:\(tel[0])\n"
 
         return fullSmsText
     }
@@ -235,7 +232,6 @@ class WebCreator {
             }
         }
         return smsText
-
     }
     func setCcsStyle(newStyleExtension style: String) {
         self.ccsStyleExt = style

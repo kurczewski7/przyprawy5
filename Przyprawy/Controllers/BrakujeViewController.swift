@@ -28,7 +28,7 @@ func initialProduct()
     }
    
     @IBAction func WebCreate(_ sender: UIButton) {
-        let web=WebCreator(polishLanguage: true, telFrom: "512589528", emailFrom: "kurczewski7@gmail.com")
+        let web=WebCreator(polishLanguage: true, telFrom: ["512589528"], emailFrom: ["kurczewski7@gmail.com"])
         _ = web.getFullHtml()
     }
     

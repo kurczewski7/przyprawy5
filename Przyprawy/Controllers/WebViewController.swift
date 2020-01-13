@@ -9,9 +9,9 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WebCreatorDelegate {    
-    var telFrom   = "512589528"
-    var emailFrom = "kurczewski7@gmail.com"
+class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WebCreatorDelegate {
+    var telFrom   = ["512589528"]
+    var emailFrom = ["kurczewski7@gmail.com","test@gmail.com"]
 
     var webView: WKWebView!
     var html: String = ""
@@ -66,7 +66,7 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
     // End of WebCreatorDelegate
  
     func displaySms() {
-        sms = webCreator.getFullSms(myPhoneNumber: "512589528", myEmail: "kurczewski7@gmail.com")
+        sms = webCreator.getFullSms(myPhoneNumber: telFrom, myEmail: emailFrom)
     }
     func displayHtml() {
         html = webCreator.getFullHtml()
