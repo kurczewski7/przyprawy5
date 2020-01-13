@@ -10,18 +10,24 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WebCreatorDelegate {
+    
+    var telFrom   = "512589528"
+    var emailFrom = "kurczewski7@gmail.com"
+
     var webView: WKWebView!
     var html: String = ""
     var sms:  String = ""
-    let webCreator = WebCreator(polishLanguage: Setup.polishLanguage, telFrom: "512589528", emailFrom: "kurczewski7@gmail.com")
-//    var telFrom   = ""   //"512589528"
-//    var emailFrom = ""   //"kurczewski7@gmail.com"
-
+    var webCreator: WebCreator!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        webCreator.delegate = self
         database.loadData(tableNameType: .toShop)
-         prepareDataForWeb()
+        prepareDataForWeb()
+        webCreator = WebCreator(polishLanguage: Setup.polishLanguage, telFrom: telFrom, emailFrom: emailFrom)
+        webCreator.delegate = self
+        webCreator.generateHtml()
+      
+
         displayHtml()
         displaySms()
     }
@@ -39,33 +45,56 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
              //print("viewWillAppear")
          }
     // MARK: WebCreatorDelegate method
+     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable? {
+         let  prodNumber=database.category.sectionsData[section].objects[row]
+         let product = database.toShopProduct[prodNumber].productRelation
+         return product
+     }
      
-    func webCreatorHeaderForSection() -> [String]?  {
-        let titleInfo = ["Pierwsze", "Drugie","Trzecie"]
-        return titleInfo
-    }
-    func webCreatorTitlesOfSerctions() -> [String] {
-        var value: [String] = [String]()
-        for tmp in database.category.categoryArray {
-            value.append(tmp.categoryName ?? "no category")
-        }
-        return ["tyt0","tyt1","tyt2","tyt3"] //value
-    }
-    func webCreatorNumberOfRows(forSection section: Int) -> Int {
-        let xxx = database.category.getCurrentSectionCount(forSection: section)
-        print("xxx:\(xxx)")
-        return  database.category.getCurrentSectionCount(forSection: section)
-    }
-    func webCreatorNumberOfSections() -> Int {
-        let yyy = database.category.getTotalNumberOfSection()
-        print("xxx:\(yyy)")
-        return  database.category.getTotalNumberOfSection()
-    }
-    func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable? {
-        let  prodNumber=database.category.sectionsData[section].objects[row]
-        let product = database.toShopProduct[prodNumber].productRelation
-        return product
-    }
+     func webCreatorNumberOfRows(forSection section: Int) -> Int {
+         let xxx = database.category.getCurrentSectionCount(forSection: section)
+         print("xxx:\(xxx)")
+         return  database.category.getCurrentSectionCount(forSection: section)
+     }
+     
+     func webCreatorNumberOfSections() -> Int {
+         let yyy = database.category.getTotalNumberOfSection()
+         print("xxx:\(yyy)")
+         return  database.category.getTotalNumberOfSection()
+     }
+     
+     func webCreatorHeaderForSection() -> [String]? {
+         let titleInfo = ["Pierwsze", "Drugie","Trzecie"]
+         return titleInfo
+     }
+
+//    func webCreatorHeaderForSection() -> [String]?  {
+//        let titleInfo = ["Pierwsze", "Drugie","Trzecie"]
+//        return titleInfo
+//    }
+//    func webCreatorTitlesOfSerctions() -> [String] {
+//        var value: [String] = [String]()
+//        for tmp in database.category.categoryArray {
+//            value.append(tmp.categoryName ?? "no category")
+//        }
+//        return ["tyt0","tyt1","tyt2","tyt3"] //value
+//    }
+//    func webCreatorNumberOfRows(forSection section: Int) -> Int {
+//        let xxx = database.category.getCurrentSectionCount(forSection: section)
+//        print("xxx:\(xxx)")
+//        return  database.category.getCurrentSectionCount(forSection: section)
+//    }
+//    func webCreatorNumberOfSections() -> Int {
+//        let yyy = database.category.getTotalNumberOfSection()
+//        print("xxx:\(yyy)")
+//        return  database.category.getTotalNumberOfSection()
+//    }
+//    func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable? {
+//        let  prodNumber=database.category.sectionsData[section].objects[row]
+//        let product = database.toShopProduct[prodNumber].productRelation
+//        return product
+//    }
+    // End of WebCreatorDelegate
     func displaySms() {
         sms = webCreator.getFullSms(myPhoneNumber: "512589528", myEmail: "kurczewski7@gmail.com")
     }

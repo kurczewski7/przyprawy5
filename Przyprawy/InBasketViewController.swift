@@ -208,7 +208,7 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
        
-            print("Controler: old Indexpath \(indexPath), new Indexpath (\(newIndexPath)")
+            //print("Controler: old Indexpath \(indexPath), new Indexpath (\(newIndexPath)")
             self.tableView?.reloadData()
     }
         

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol WebCreatorDelegate {
+@objc protocol WebCreatorDelegate {
     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable?
     func webCreatorNumberOfRows(forSection section: Int) -> Int
     func webCreatorNumberOfSections() -> Int
@@ -29,7 +29,7 @@ class WebCreator {
             sectionTitles = ["Przyprawy","Warzywa","Owoce","AAAA","BBBB","CCCC","DDDD","EEE"]
         }
     }
-    var delegate: WebCreatorDelegate?
+    weak var delegate: WebCreatorDelegate?
     
     var sectionInfoWeb: SectionsDescription = SectionsDescription()
     var webColsDescription: [WebColDescription] = []
@@ -87,6 +87,8 @@ class WebCreator {
         self.polishLanguage = Setup.polishLanguage
         self.telFrom = telFrom
         self.emailFrom = emailFrom
+    }
+    func generateHtml() {
         lang = polishLanguage ? "pl" : "en"
         sectionInfoWeb.sectionTitles = setSectionsTitles()
         db=database.product.array
