@@ -25,10 +25,13 @@ class Setup {
             //✖️✔️☛☞☛✔︎✘✓✕❤︎☎︎☏✆✍︎✍︎✍︎💲✖️✔️
     ]
     class func getCateorieName(forNumber row: Int) -> String {
-        let name: String
-        if row>0 && row < categoriesData.count+1 { name = currentLanguage == LanguaesList.polish ? categoriesData[row-1].name : categoriesData[row-1].nameEN }
+        var name: String
+        if row>0 && row < categoriesData.count+1 {
+            name = currentLanguage == LanguaesList.polish ? categoriesData[row-1].name : categoriesData[row-1].nameEN
+            name += ("  "+categoriesData[row-1].pictureName)
+        }
         else {  name = "empty"  }
-        return name+"  "+categoriesData[row-1].pictureName
+        return name
     }
     
     static let fructsProd    : [String] = ["owoce_01_b","owoce_02_b","owoce_03_b","owoce_04_b","owoce_05_b","owoce_06_b","owoce_07_b","owoce_08_b","owoce_09_b","owoce_10_b",
