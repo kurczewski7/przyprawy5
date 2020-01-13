@@ -791,7 +791,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Coc-yU-k5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2655" y="2991"/>
+            <point key="canvasLocation" x="2182" y="2327"/>
         </scene>
         <!--Selected View Controller-->
         <scene sceneID="BJS-AZ-E0C">
@@ -884,7 +884,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOE-mG-og5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4272.8000000000002" y="2328.4857571214393"/>
+            <point key="canvasLocation" x="2602" y="3032"/>
         </scene>
         <!--Lista zakupów -->
         <scene sceneID="dDu-HT-hDr">
@@ -1145,7 +1145,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="PIT-Gb-ju8" kind="relationship" relationship="rootViewController" id="5oC-eY-PEn"/>
+                        <segue destination="449-9N-d5u" kind="relationship" relationship="rootViewController" id="0Eo-Cg-HKe"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iup-Lv-5Qm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1183,12 +1183,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="449-9N-d5u" kind="relationship" relationship="rootViewController" id="hl7-Ba-cIa"/>
+                        <segue destination="PIT-Gb-ju8" kind="relationship" relationship="rootViewController" id="ZGF-jq-EHR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAF-8n-Pps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1802" y="2950"/>
+            <point key="canvasLocation" x="1705" y="3018"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rT5-Fx-1wE">

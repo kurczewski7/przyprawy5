@@ -70,6 +70,8 @@ class WebCreator {
 //                let sectionName = database.category.getCategorySectionHeader(forSection: i)
 //                value.append(sectionName)
 //            }
+        let zzzz = self.delegate?.webCreatorNumberOfSections()
+        print("zzzz:\(String(describing: zzzz))")
         let sectionTitle = self.delegate?.webCreatorHeaderForSection()
         value = sectionTitle ?? ["ffff","GGGG","HHHH","IIII","JJJJ","KKKKK","LLLLL","MMMMM"]
 //        {

@@ -129,8 +129,8 @@
             filePath = "Przyprawy/Model/WebCreator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "getRowData(forSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -145,8 +145,8 @@
             filePath = "Przyprawy/Model/WebCreator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "getFullHtml()"
             landmarkType = "7">
          </BreakpointContent>
@@ -161,8 +161,8 @@
             filePath = "Przyprawy/Model/WebCreator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "getFullSms(myPhoneNumber:myEmail:)"
             landmarkType = "7">
          </BreakpointContent>
