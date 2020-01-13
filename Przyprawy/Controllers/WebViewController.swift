@@ -9,8 +9,7 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WebCreatorDelegate {
-    
+class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WebCreatorDelegate {    
     var telFrom   = "512589528"
     var emailFrom = "kurczewski7@gmail.com"
 
@@ -26,7 +25,6 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
         webCreator = WebCreator(polishLanguage: Setup.polishLanguage, telFrom: telFrom, emailFrom: emailFrom)
         webCreator.delegate = self
         webCreator.generateHtml()
-      
 
         displayHtml()
         displaySms()
@@ -35,66 +33,38 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
         prepareDataForWeb()
     }
     func prepareDataForWeb() {
- //       override func viewWillAppear(_ animated: Bool) {
              let numList=Setup.currentListNumber+1
              database.loadData(tableNameType: .toShop)
              database.category.crateCategoryGroups(forToShopProduct: database.toShopProduct.array)
              self.title=cards[0].getName()+" \(numList)"
-             //database.category.createSectionsData()
-             //tabView.reloadData()
-             //print("viewWillAppear")
          }
-    // MARK: WebCreatorDelegate method
+     // MARK: WebCreatorDelegate method
      func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable? {
          let  prodNumber=database.category.sectionsData[section].objects[row]
          let product = database.toShopProduct[prodNumber].productRelation
          return product
      }
-     
      func webCreatorNumberOfRows(forSection section: Int) -> Int {
          let xxx = database.category.getCurrentSectionCount(forSection: section)
          print("xxx:\(xxx)")
          return  database.category.getCurrentSectionCount(forSection: section)
      }
-     
      func webCreatorNumberOfSections() -> Int {
          let yyy = database.category.getTotalNumberOfSection()
          print("xxx:\(yyy)")
          return  database.category.getTotalNumberOfSection()
      }
-     
      func webCreatorHeaderForSection() -> [String]? {
-         let titleInfo = ["Pierwsze", "Drugie","Trzecie"]
-         return titleInfo
+        var titleInfo = [String]()
+        let sectionCount = webCreatorNumberOfSections()
+        for i in 0..<sectionCount {
+             let sectionName = database.category.getCategorySectionHeader(forSection: i)
+             titleInfo.append(sectionName)
+        }
+        return titleInfo
      }
-
-//    func webCreatorHeaderForSection() -> [String]?  {
-//        let titleInfo = ["Pierwsze", "Drugie","Trzecie"]
-//        return titleInfo
-//    }
-//    func webCreatorTitlesOfSerctions() -> [String] {
-//        var value: [String] = [String]()
-//        for tmp in database.category.categoryArray {
-//            value.append(tmp.categoryName ?? "no category")
-//        }
-//        return ["tyt0","tyt1","tyt2","tyt3"] //value
-//    }
-//    func webCreatorNumberOfRows(forSection section: Int) -> Int {
-//        let xxx = database.category.getCurrentSectionCount(forSection: section)
-//        print("xxx:\(xxx)")
-//        return  database.category.getCurrentSectionCount(forSection: section)
-//    }
-//    func webCreatorNumberOfSections() -> Int {
-//        let yyy = database.category.getTotalNumberOfSection()
-//        print("xxx:\(yyy)")
-//        return  database.category.getTotalNumberOfSection()
-//    }
-//    func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable? {
-//        let  prodNumber=database.category.sectionsData[section].objects[row]
-//        let product = database.toShopProduct[prodNumber].productRelation
-//        return product
-//    }
     // End of WebCreatorDelegate
+ 
     func displaySms() {
         sms = webCreator.getFullSms(myPhoneNumber: "512589528", myEmail: "kurczewski7@gmail.com")
     }
@@ -154,7 +124,6 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
     }
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="gotoShare"
@@ -162,7 +131,6 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
             let nextController=segue.destination as! ShareViewController
             nextController.htmlText = html
             nextController.smsText  = sms
-                       //nextVC.productTitle = currentProduct.productName ?? "no product"
         }
     }
 }

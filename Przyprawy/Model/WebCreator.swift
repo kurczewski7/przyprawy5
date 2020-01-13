@@ -63,31 +63,31 @@ class WebCreator {
     var emailFrom = ""   //"kurczewski7@gmail.com"
     var htmlTablesCollection: [String] = [String]()
     
+    init(polishLanguage: Bool, telFrom: String, emailFrom: String)  {
+        self.polishLanguage = Setup.polishLanguage
+        self.telFrom = telFrom
+        self.emailFrom = emailFrom
+    }
     func setSectionsTitles()  -> [String] {
-        var value: [String] = [String]()
-//        let sectionCount=database.category.getTotalNumberOfSection()
-//        for i in 0..<sectionCount {
-//                let sectionName = database.category.getCategorySectionHeader(forSection: i)
-//                value.append(sectionName)
-//            }
-        let zzzz = self.delegate?.webCreatorNumberOfSections()
-        print("zzzz:\(String(describing: zzzz))")
-        let sectionTitle = self.delegate?.webCreatorHeaderForSection()
-        value = sectionTitle ?? ["ffff","GGGG","HHHH","IIII","JJJJ","KKKKK","LLLLL","MMMMM"]
+        var sectionNames: [String] = [String]()
+        //let sectionCount = delegate?.webCreatorNumberOfSections() ?? 0
+        sectionNames = delegate?.webCreatorHeaderForSection() ?? ["First section", "Second section"]
+        return sectionNames
+    }
+
+        
+//        let zzzz = self.delegate?.webCreatorNumberOfSections()
+//        print("zzzz:\(String(describing: zzzz))")
+//        let sectionTitle = self.delegate?.webCreatorHeaderForSection()
+//        value = sectionTitle ?? ["ffff","GGGG","HHHH","IIII","JJJJ","KKKKK","LLLLL","MMMMM"]
 //        {
 //            value = sectionTitle
 //        }
 //        else {
 //            value = ["ffff","GGGG","HHHH","IIII","JJJJ","KKKKK","LLLLL","MMMMM"]
 //        }
-        return value
-    }
-    
-    init(polishLanguage: Bool, telFrom: String, emailFrom: String)  {
-        self.polishLanguage = Setup.polishLanguage
-        self.telFrom = telFrom
-        self.emailFrom = emailFrom
-    }
+
+
     func generateHtml() {
         lang = polishLanguage ? "pl" : "en"
         sectionInfoWeb.sectionTitles = setSectionsTitles()
