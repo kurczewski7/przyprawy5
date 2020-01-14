@@ -13,7 +13,7 @@ protocol ShareViewControllerDelegate {
 }
 class ShareViewController: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     let emailAdressList = ["",""]
-    let smsPhoneList = ["",""]
+    let smsPhoneList = ["512589528","515914171"]
     
     var htmlText = ""
     var smsText = ""
@@ -39,6 +39,9 @@ class ShareViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     @IBAction func phoneButtonTap(_ sender: UIButton) {
+        var tel = smsPhoneList[0]
+        tel=tel.replacingOccurrences(of: " ", with: "")
+        openMyUrl(with: "telprompt://\(tel)")
     }
     
     @IBAction func contactButtonTap(_ sender: UIButton) {
@@ -79,7 +82,7 @@ class ShareViewController: UIViewController, MFMailComposeViewControllerDelegate
             """
             messageSms.messageComposeDelegate = self
             messageSms.body = text
-            messageSms.recipients=["512589528","515914171"]
+            messageSms.recipients = smsPhoneList
             messageSms.addAttachmentURL(URL(fileURLWithPath: urlString), withAlternateFilename: "http://www.gogle.com")
             present(messageSms, animated: true, completion: nil)
         }
@@ -98,6 +101,36 @@ func messageComposeViewController(_ controller: MFMessageComposeViewController, 
     }
     controller.dismiss(animated: true)
 }
+    private func openMyUrl(with myStringUrl: String)
+    {
+        guard let url=URL(string: myStringUrl)    else {    return    }
+        if #available(iOS 10.0, *) {
+            let app: UIApplication = UIApplication.shared
+            if app.canOpenURL(url) {
+                if #available(iOS 10.0, *) {
+                    app.open(url, options: [:], completionHandler: nil)
+                }
+                else {
+                    app.openURL(url as URL)
+                }
+           }
+        }
+    }
+//    if let phoneCallURL = URL(string: "telprompt://\(phoneNumber)") {
+//
+//        let application:UIApplication = UIApplication.shared
+//        if (application.canOpenURL(phoneCallURL)) {
+//            if #available(iOS 10.0, *) {
+//                application.open(phoneCallURL, options: [:], completionHandler: nil)
+//            } else {
+//                // Fallback on earlier versions
+//                 application.openURL(phoneCallURL as URL)
+//
+//            }
+//        }
+//    }
+    
+    
 //    func sendSMS(with text: String) {
 //        if MFMessageComposeViewController.canSendText() {
 //            let messageComposeViewController = MFMessageComposeViewController()
