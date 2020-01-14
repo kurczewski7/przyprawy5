@@ -59,14 +59,14 @@ class WebCreator {
     var footContents = ["-", "Razem", "-"]  //["-", "Razem produktów \(footerTitle)", "\(lp)"]
    
     var lang = "en"
-    var telFrom   = ""   //"512589528"
-    var emailFrom = ""   //"kurczewski7@gmail.com"
+    var telFrom = [String]()     //"512589528"
+    var emailFrom = [String]()   //"kurczewski7@gmail.com"
     var htmlTablesCollection: [String] = [String]()
     
     init(polishLanguage: Bool, telFrom: [String], emailFrom: [String])  {
         self.polishLanguage = Setup.polishLanguage
-        self.telFrom = telFrom[0]
-        self.emailFrom = emailFrom[0]
+        self.telFrom = telFrom
+        self.emailFrom = emailFrom
     }
     func setSectionsTitles()  -> [String] {
         var sectionNames: [String] = [String]()
@@ -115,9 +115,12 @@ class WebCreator {
             """
  
         // <a href="sms:1-111-1111;body=I made it!">Send location via SMS</a>
-        endHtml+="<a href=\"tel:\(telFrom)\">Tel:  \(telFrom)</a><br/>\n"
-        endHtml+="<a href=\"sms://\(telFrom)\">Sms:  \(telFrom)</a><br/>\n"
-        endHtml+="<a href=\"mailto:\(emailFrom)\">eMail:  \(emailFrom)</a><br/>\n"
+        endHtml+="<br/>\n"
+        for i in 0..<telFrom.count   {    endHtml+="<a href=\"tel:\(telFrom[i])\">Tel:  \(telFrom[i])</a><br/>\n"         }
+        endHtml+="<br/>\n"
+        for i in 0..<telFrom.count   {    endHtml+="<a href=\"sms://\(telFrom[i])\">Sms:  \(telFrom[i])</a><br/>\n"       }
+        endHtml+="<br/>\n"
+        for i in 0..<emailFrom.count {  endHtml+="<a href=\"mailto:\(emailFrom[i])\">eMail:  \(emailFrom[i])</a><br/>\n"  }
         
         //"mailto://\(email)?cc=\(cc)&subject=\(subject)&body=\(body)"
         endHtml += """
@@ -202,17 +205,17 @@ class WebCreator {
         for i in 0..<sectionsCount {
             fullSmsText += getOneSectionSms(forSection: i)
         }
+        fullSmsText += "\n\n"
         for i in 0..<tel.count {
            fullSmsText += "tel:\(tel[i])\n"
         }
-        fullSmsText += "\n"
         fullSmsText += "\n"
         for i in 0..<eMail.count {
            fullSmsText += "mailto:\(eMail[i])\n"
         }
         fullSmsText += "\n"
         for i in 0..<tel.count {
-           fullSmsText += "sms:\(tel[i])\n"
+           fullSmsText += "smsto:\(tel[i])\n"
         }
         fullSmsText += "\n"
         
@@ -223,8 +226,7 @@ class WebCreator {
         return fullSmsText
     }
     func getOneSectionSms(forSection section: Int) -> String {
-        //var smsText = "     \(sectionInfoWeb.sectionTitles[section])\n"
-        var smsText = "smsText"
+        var smsText = "     \(sectionInfoWeb.sectionTitles[section])\n"
         let numOfRows = self.delegate?.webCreatorNumberOfRows(forSection: section)
         for i in 0..<numOfRows! {
             if let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section) {
