@@ -1461,7 +1461,7 @@
         <!--Favorite Contact View Controller-->
         <scene sceneID="nMe-0W-7yz">
             <objects>
-                <viewController id="iQt-j4-NaC" userLabel="Favorite Contact View Controller" sceneMemberID="viewController">
+                <viewController id="iQt-j4-NaC" userLabel="Favorite Contact View Controller" customClass="FavoriteViewViewController" customModule="Przyprawy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8gy-iB-IFr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1470,6 +1470,10 @@
                                 <rect key="frame" x="16" y="44" width="343" height="574"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iQt-j4-NaC" id="aod-W8-EIT"/>
+                                    <outlet property="delegate" destination="iQt-j4-NaC" id="dOn-Cf-KED"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
