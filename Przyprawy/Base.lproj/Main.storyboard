@@ -912,7 +912,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CYKORIA_ARROD_PAPRYKA_OSTRA_MIELONA_10G_59954826_0_173_200" translatesAutoresizingMaskIntoConstraints="NO" id="awf-Tb-EXm">
-                                                    <rect key="frame" x="0.0" y="-308" width="346" height="400"/>
+                                                    <rect key="frame" x="0.0" y="-108" width="173" height="200"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jeg-E5-3az">
                                                     <rect key="frame" x="0.0" y="111" width="102" height="21"/>
@@ -1319,7 +1319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6nR-EX-Pf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6046" y="1614"/>
+            <point key="canvasLocation" x="6506" y="1585"/>
         </scene>
         <!--Lista zakupow-->
         <scene sceneID="0g8-SP-WJz">
@@ -1368,6 +1368,7 @@
                                         </state>
                                         <connections>
                                             <action selector="contactButtonTap:" destination="Yha-b8-xHJ" eventType="touchUpInside" id="lHR-MS-ken"/>
+                                            <segue destination="iQt-j4-NaC" kind="show" id="qg8-FR-tYe"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89w-W0-3G5">
@@ -1456,6 +1457,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYb-8g-EO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4714" y="1554"/>
+        </scene>
+        <!--Favorite Contact View Controller-->
+        <scene sceneID="nMe-0W-7yz">
+            <objects>
+                <viewController id="iQt-j4-NaC" userLabel="Favorite Contact View Controller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8gy-iB-IFr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PzM-fb-uAO">
+                                <rect key="frame" x="16" y="44" width="343" height="574"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Cd3-kK-b5e"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorite Contacts" id="6Vn-fl-dY7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6J-qg-ge8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5576.8000000000002" y="1559.3703148425789"/>
         </scene>
         <!--Detail At HomeView Controller-->
         <scene sceneID="vmb-6b-Eec">
