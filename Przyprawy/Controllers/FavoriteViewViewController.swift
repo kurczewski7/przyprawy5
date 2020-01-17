@@ -76,12 +76,14 @@ class FavoriteViewViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=UITableViewCell()
         
-        let contact: CNContact!
-         //contact = contactList[indexPath.row]
-
-        //cell.textLabel?.text = "\(contact.givenName) \(contact.familyName)"
-        cell.textLabel?.text = contacts[indexPath.row].familyName
-        cell.detailTextLabel?.text = contacts[indexPath.row].givenName
+        //let contact: CNContact!
+        let cont: CNContact = contacts[indexPath.row]
+        let phoneNumber = cont.phoneNumbers.first?.value.stringValue ?? "brak tel"
+        let email = "email" //cont.emailAddresses.first?.value.substring(from: 0) ?? "no email"
+        
+        //cell.textLabel?.text = "\(cont.givenName) \(contact.familyName)"
+        cell.textLabel?.text = "\(cont.familyName) \(cont.givenName) \(phoneNumber) \(email)"
+        cell.detailTextLabel?.text = "bbb" //contacts[indexPath.row].givenName
         
         
         return cell
