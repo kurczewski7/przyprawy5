@@ -23,8 +23,6 @@ class PhoneContactsViewController: UIViewController, UITabBarDelegate, UITableVi
         //readContacts(from : store!)
         getContacts()
         print("bbbbbbb")
-        
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -138,6 +136,4 @@ class PhoneContactsViewController: UIViewController, UITabBarDelegate, UITableVi
         }
        print("ooooooooo")
     }
-    
-    
 }

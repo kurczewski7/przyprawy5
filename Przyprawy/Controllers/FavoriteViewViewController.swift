@@ -74,16 +74,18 @@ class FavoriteViewViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell=UITableViewCell()
-        
+        // let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! ToShopTableViewCell
+        let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteContactTableViewCell
         //let contact: CNContact!
         let cont: CNContact = contacts[indexPath.row]
         let phoneNumber = cont.phoneNumbers.first?.value.stringValue ?? "brak tel"
         let email = "email" //cont.emailAddresses.first?.value.substring(from: 0) ?? "no email"
         
+        
+        
         //cell.textLabel?.text = "\(cont.givenName) \(contact.familyName)"
-        cell.textLabel?.text = "\(cont.familyName) \(cont.givenName) \(phoneNumber) \(email)"
-        cell.detailTextLabel?.text = "bbb" //contacts[indexPath.row].givenName
+        //cell.textLabel?.text = "\(cont.familyName) \(cont.givenName) \(phoneNumber) \(email)"
+        //cell.detailTextLabel?.text = "bbb" //contacts[indexPath.row].givenName
         
         
         return cell
