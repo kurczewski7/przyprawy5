@@ -83,7 +83,7 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         //let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteContactTableViewCell
         //let contact: CNContact!
         let email = "email"
-        let cont: CNContact = contacts[indexPath.row]
+        let cont: CNContact = contacts[indexPath.row] as CNContact
     
         let phoneNumber = cont.phoneNumbers.first?.value.stringValue ?? "brak tel"
         cell.contactPhoneNumberLabel.text = phoneNumber
@@ -92,20 +92,37 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         cell.contactImage.image = UIImage(named: "user_male_full")
         cell.contactImage.layer.cornerRadius=cell.contactImage.frame.size.width/2.0
         cell.contactImage.layer.masksToBounds = true
+        if (indexPath.row % 3) == 0 {
+            
+            cell.contactImage.alpha = 0.2
+        }
+        else {
+            cell.contactImage.tintColor = .systemBlue
+        }
+//        if let imAvail = cont.imageDataAvailable {
+//            print("imageDataAvailable:\(imAvail)")
+//        }
+        
+       // print("contact:\(phoneNumber),\(cont.imageDataAvailable)")
+        
+        
+        
+//        if let pict = cont.imageData  {
+//            // let uimag = UIImage(data: pict)
+//            print("IMG ok")
+//            //cell.contactImage.image = UIImage(data: pict)
+//        }
+//        else {
+//            print("Bład IMG")
+//        }
+        
         //cell.iLikeImige.image = UIImage(named: "add_favorites_filled")
-        
-        
-       
         //let name = "\(cont.givenName) \(cont.familyName)"
         //cont.emailAddresses.first?.value.substring(from: 0) ?? "no email"
-        
         //cell.contactNameLabel.text = cont.familyName
-        
         //= "\(cont.givenName) \(contact.familyName)"
         //cell.textLabel?.text = "\(cont.familyName) \(cont.givenName) \(phoneNumber) \(email)"
         //cell.detailTextLabel?.text = "bbb" //contacts[indexPath.row].givenName
-        
-        
         return cell
     }
     
