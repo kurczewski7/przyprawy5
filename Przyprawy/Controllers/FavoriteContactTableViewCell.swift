@@ -16,13 +16,16 @@ class FavoriteContactTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contactPhoneNumberLabel: UILabel!
     
-    @IBOutlet weak var iLikeImige: UIImageView!
+    @IBOutlet weak var iLikeButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    @IBAction func iLikeTap(_ sender: UIButton) {
+        sender.tintColor = UIColor.green
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

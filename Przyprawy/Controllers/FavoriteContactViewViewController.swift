@@ -88,8 +88,11 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         let phoneNumber = cont.phoneNumbers.first?.value.stringValue ?? "brak tel"
         cell.contactPhoneNumberLabel.text = phoneNumber
         cell.contactNameLabel.text = "\(cont.familyName) \(cont.givenName)  \(email)"
-        cell.contactImage.image = UIImage(named: "user-male-icon")
-        cell.iLikeImige.image = UIImage(named: "user-male-icon")
+
+        cell.contactImage.image = UIImage(named: "user_male_full")
+        cell.contactImage.layer.cornerRadius=cell.contactImage.frame.size.width/2.0
+        cell.contactImage.layer.masksToBounds = true
+        //cell.iLikeImige.image = UIImage(named: "add_favorites_filled")
         
         
        
