@@ -12,6 +12,8 @@ import Contacts
 class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var contacts: [CNContact] = []
     var store = CNContactStore()
+    
+    
     struct FavoriteContact {
         let name: String = "Name"
     }
@@ -52,10 +54,16 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
          }
     }
     func retriveContacts() {
-        let keys  = [CNContactGivenNameKey, CNContactFamilyNameKey,CNContactPhoneNumbersKey]
+        let keys  = [CNContactGivenNameKey, CNContactFamilyNameKey,CNContactPhoneNumbersKey,CNContactImageDataKey,CNContactEmailAddressesKey]
+//        let predicate = CNContact.predicateForContacts(matchingName: "krzysiu")
+//        contacts = try  store.unifiedContacts(matching: predicate, keysToFetch: keys as! [CNKeyDescriptor])
+//        catch do {
+//            print("Error in store predicate")
+//        }
+
+
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
         do {
-            //var favoritContacts = [FavoriteContact]()
             try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
                 print("Osoba:")
                 print(contact.givenName)
@@ -74,6 +82,8 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var pictureOfUser: UIImage? = nil
+        
         //let cell = UITableViewCell()
         //cell.textLabel?.text="AAA:\(indexPath.row)"
         
@@ -92,13 +102,16 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         cell.contactImage.image = UIImage(named: "user_male_full")
         cell.contactImage.layer.cornerRadius=cell.contactImage.frame.size.width/2.0
         cell.contactImage.layer.masksToBounds = true
-        if (indexPath.row % 3) == 0 {
-            
-            cell.contactImage.alpha = 0.2
-        }
-        else {
-            cell.contactImage.tintColor = .systemBlue
-        }
+        
+        
+        
+//        if (indexPath.row % 3) == 0 {
+//            
+//            cell.contactImage.alpha = 0.2
+//        }
+//        else {
+//           cell.contactImage.alpha = 1.0
+//        }
 //        if let imAvail = cont.imageDataAvailable {
 //            print("imageDataAvailable:\(imAvail)")
 //        }
@@ -107,14 +120,17 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         
         
         
-//        if let pict = cont.imageData  {
-//            // let uimag = UIImage(data: pict)
-//            print("IMG ok")
-//            //cell.contactImage.image = UIImage(data: pict)
-//        }
-//        else {
-//            print("Bład IMG")
-//        }
+        if let pict = cont.imageData  {
+            pictureOfUser = UIImage(data: pict)
+            cell.contactImage.alpha = 1.0
+            print("IMG ok")
+        }
+        else {
+            print("Bład IMG")
+            pictureOfUser = UIImage(named: "user_male_full")
+            cell.contactImage.alpha = 0.2
+        }
+        cell.contactImage.image = pictureOfUser
         
         //cell.iLikeImige.image = UIImage(named: "add_favorites_filled")
         //let name = "\(cont.givenName) \(cont.familyName)"
