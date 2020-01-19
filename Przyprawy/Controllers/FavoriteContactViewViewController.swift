@@ -9,7 +9,7 @@
 import UIKit
 import Contacts
 
-class FavoriteViewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var contacts: [CNContact] = []
     var store = CNContactStore()
     struct FavoriteContact {
@@ -74,16 +74,31 @@ class FavoriteViewViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! ToShopTableViewCell
-        let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteContactTableViewCell
+        //let cell = UITableViewCell()
+        //cell.textLabel?.text="AAA:\(indexPath.row)"
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! FavoriteContactTableViewCell
+
+        //let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteContactTableViewCell
         //let contact: CNContact!
+        let email = "email"
         let cont: CNContact = contacts[indexPath.row]
+    
         let phoneNumber = cont.phoneNumbers.first?.value.stringValue ?? "brak tel"
-        let email = "email" //cont.emailAddresses.first?.value.substring(from: 0) ?? "no email"
+        cell.contactPhoneNumberLabel.text = phoneNumber
+        cell.contactNameLabel.text = "\(cont.familyName) \(cont.givenName)  \(email)"
+        cell.contactImage.image = UIImage(named: "user-male-icon")
+        cell.iLikeImige.image = UIImage(named: "user-male-icon")
         
         
+       
+        //let name = "\(cont.givenName) \(cont.familyName)"
+        //cont.emailAddresses.first?.value.substring(from: 0) ?? "no email"
         
-        //cell.textLabel?.text = "\(cont.givenName) \(contact.familyName)"
+        //cell.contactNameLabel.text = cont.familyName
+        
+        //= "\(cont.givenName) \(contact.familyName)"
         //cell.textLabel?.text = "\(cont.familyName) \(cont.givenName) \(phoneNumber) \(email)"
         //cell.detailTextLabel?.text = "bbb" //contacts[indexPath.row].givenName
         

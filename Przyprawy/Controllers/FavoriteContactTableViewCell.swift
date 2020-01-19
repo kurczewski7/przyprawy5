@@ -10,6 +10,14 @@ import UIKit
 
 class FavoriteContactTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var contactImage: UIImageView!
+    
+    @IBOutlet weak var contactNameLabel: UILabel!
+    
+    @IBOutlet weak var contactPhoneNumberLabel: UILabel!
+    
+    @IBOutlet weak var iLikeImige: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

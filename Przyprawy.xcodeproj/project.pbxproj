@@ -49,7 +49,7 @@
 		2C82B33D21B4655600EDB60F /* ScanerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82B33C21B4655600EDB60F /* ScanerViewController.swift */; };
 		2C82B679223925A900772BF6 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82B678223925A900772BF6 /* Server.swift */; };
 		2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C528C2122E135006D8099 /* AtHomeViewController.swift */; };
-		2C961DAD23D1220C00ED5420 /* FavoriteViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C961DAC23D1220C00ED5420 /* FavoriteViewViewController.swift */; };
+		2C961DAD23D1220C00ED5420 /* FavoriteContactViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C961DAC23D1220C00ED5420 /* FavoriteContactViewViewController.swift */; };
 		2CB2281921F24BD8008A3292 /* InBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2281821F24BD8008A3292 /* InBasketViewController.swift */; };
 		2CB2281B21F2522C008A3292 /* InBasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */; };
 		2CB903AB230199AD009F6A8E /* SelProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB903AA230199AD009F6A8E /* SelProductViewController.swift */; };
@@ -137,7 +137,7 @@
 		2C82B33C21B4655600EDB60F /* ScanerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanerViewController.swift; sourceTree = "<group>"; };
 		2C82B678223925A900772BF6 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		2C8C528C2122E135006D8099 /* AtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeViewController.swift; sourceTree = "<group>"; };
-		2C961DAC23D1220C00ED5420 /* FavoriteViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewViewController.swift; sourceTree = "<group>"; };
+		2C961DAC23D1220C00ED5420 /* FavoriteContactViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteContactViewViewController.swift; sourceTree = "<group>"; };
 		2CB2281821F24BD8008A3292 /* InBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InBasketViewController.swift; path = ../InBasketViewController.swift; sourceTree = "<group>"; };
 		2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InBasketTableViewCell.swift; path = ../InBasketTableViewCell.swift; sourceTree = "<group>"; };
 		2CB903AA230199AD009F6A8E /* SelProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelProductViewController.swift; path = ../SelProductViewController.swift; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 		2C158CC1218610BB00C3438B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2C961DAC23D1220C00ED5420 /* FavoriteViewViewController.swift */,
+				2C961DAC23D1220C00ED5420 /* FavoriteContactViewViewController.swift */,
 				2C61390923D23D140048C637 /* FavoriteContactTableViewCell.swift */,
 				2CF8917E23C7490C006B8463 /* ToShopTableViewCtr.swift */,
 				2CB2281821F24BD8008A3292 /* InBasketViewController.swift */,
@@ -506,7 +506,7 @@
 			files = (
 				2C158CD8218623B300C3438B /* CoreDataStack.swift in Sources */,
 				2C55CD3B234A8FBE00ACFC95 /* SelectedProducyListController.swift in Sources */,
-				2C961DAD23D1220C00ED5420 /* FavoriteViewViewController.swift in Sources */,
+				2C961DAD23D1220C00ED5420 /* FavoriteContactViewViewController.swift in Sources */,
 				2CB2281921F24BD8008A3292 /* InBasketViewController.swift in Sources */,
 				2C7288BD2147EE0F003506BE /* popViewController.swift in Sources */,
 				2C1EB36321A46B4B00426F61 /* ToShopTableViewCell.swift in Sources */,
