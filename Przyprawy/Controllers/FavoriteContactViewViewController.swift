@@ -111,6 +111,7 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         else {
            cell.eMailLabel.text = "brak email"
         }
+        cell.eMailLabel.text = cont.identifier
         return cell
     }
     

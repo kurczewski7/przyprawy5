@@ -1319,7 +1319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6nR-EX-Pf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6506" y="1585"/>
+            <point key="canvasLocation" x="7058" y="609"/>
         </scene>
         <!--Lista zakupow-->
         <scene sceneID="0g8-SP-WJz">
@@ -1458,10 +1458,10 @@
             </objects>
             <point key="canvasLocation" x="4714" y="1554"/>
         </scene>
-        <!--Favorite Contact View Controller-->
+        <!--Favorite Add Contact View Controller-->
         <scene sceneID="nMe-0W-7yz">
             <objects>
-                <viewController id="iQt-j4-NaC" userLabel="Favorite Contact View Controller" customClass="FavoriteContactViewViewController" customModule="Przyprawy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iQt-j4-NaC" userLabel="Favorite Add Contact View Controller" customClass="FavoriteContactViewViewController" customModule="Przyprawy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8gy-iB-IFr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1563,7 +1563,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cd3-kK-b5e"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Favorite Contacts" id="6Vn-fl-dY7"/>
+                    <navigationItem key="navigationItem" title="Add to favorite contacts" id="6Vn-fl-dY7">
+                        <barButtonItem key="rightBarButtonItem" image="add_favorites_filled" style="plain" id="mLW-SD-mfl">
+                            <connections>
+                                <segue destination="YPT-9l-vug" kind="show" id="XRh-Tp-0rn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6J-qg-ge8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1824,6 +1830,117 @@
             </objects>
             <point key="canvasLocation" x="2158" y="777"/>
         </scene>
+        <!--Favorite Contact View Controller-->
+        <scene sceneID="O2k-Vw-HDs">
+            <objects>
+                <viewController id="YPT-9l-vug" userLabel="Favorite Contact View Controller" customClass="FavoriteContactViewViewController" customModule="Przyprawy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P4g-5f-tlS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2q4-zR-1Ad">
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="110" id="zWh-z4-QXf" customClass="FavoriteContactTableViewCell" customModule="Przyprawy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zWh-z4-QXf" id="5MJ-Ts-1Qg">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yQv-cl-1wg">
+                                                    <rect key="frame" x="15" y="15" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="yQv-cl-1wg" secondAttribute="height" multiplier="1:1" id="wKn-hM-FJf"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="qlg-Wo-8tO">
+                                                    <rect key="frame" x="103" y="15" width="42.5" height="79.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hei-un-U0y">
+                                                            <rect key="frame" x="0.0" y="0.0" width="42.5" height="19.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdG-pz-dc7">
+                                                            <rect key="frame" x="0.0" y="30.5" width="35.5" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="Wjj-9H-2EZ"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQq-cB-qDT">
+                                                            <rect key="frame" x="0.0" y="62.5" width="35.5" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2TD-xh-U63">
+                                                    <rect key="frame" x="330" y="10" width="40" height="90"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="9Yn-xs-Rf2"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" image="add_to_favorites_filled_mid"/>
+                                                    <connections>
+                                                        <action selector="iLikeTap:" destination="zWh-z4-QXf" eventType="touchUpInside" id="gF0-tu-8Ug"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="mHC-oG-RDK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="2TD-xh-U63" secondAttribute="trailing" constant="5" id="0NF-AW-L2B"/>
+                                                <constraint firstAttribute="trailing" secondItem="mHC-oG-RDK" secondAttribute="trailing" id="6yb-7R-GCd"/>
+                                                <constraint firstItem="yQv-cl-1wg" firstAttribute="centerY" secondItem="5MJ-Ts-1Qg" secondAttribute="centerY" id="8Ro-Zz-bdo"/>
+                                                <constraint firstAttribute="bottom" secondItem="2TD-xh-U63" secondAttribute="bottom" constant="10" id="R26-Ef-S9q"/>
+                                                <constraint firstItem="mHC-oG-RDK" firstAttribute="top" secondItem="5MJ-Ts-1Qg" secondAttribute="top" id="Yb6-u4-Pc5"/>
+                                                <constraint firstItem="mHC-oG-RDK" firstAttribute="leading" secondItem="5MJ-Ts-1Qg" secondAttribute="leading" id="YhA-cs-1P6"/>
+                                                <constraint firstItem="yQv-cl-1wg" firstAttribute="top" secondItem="5MJ-Ts-1Qg" secondAttribute="topMargin" constant="4" id="cHA-XQ-4nf"/>
+                                                <constraint firstItem="qlg-Wo-8tO" firstAttribute="leading" secondItem="yQv-cl-1wg" secondAttribute="trailing" constant="8" id="e6o-TP-oa4"/>
+                                                <constraint firstItem="yQv-cl-1wg" firstAttribute="leading" secondItem="5MJ-Ts-1Qg" secondAttribute="leading" constant="15" id="fch-eK-io5"/>
+                                                <constraint firstAttribute="bottom" secondItem="mHC-oG-RDK" secondAttribute="bottom" id="jmY-zj-gMQ"/>
+                                                <constraint firstItem="2TD-xh-U63" firstAttribute="top" secondItem="5MJ-Ts-1Qg" secondAttribute="top" constant="10" id="od9-MD-epP"/>
+                                                <constraint firstItem="yQv-cl-1wg" firstAttribute="top" secondItem="qlg-Wo-8tO" secondAttribute="top" id="t86-gu-M0H"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contactImage" destination="yQv-cl-1wg" id="zqg-Ky-8uL"/>
+                                            <outlet property="contactNameLabel" destination="Hei-un-U0y" id="7KP-kN-Cgu"/>
+                                            <outlet property="contactPhoneNumberLabel" destination="hdG-pz-dc7" id="8QR-Fh-y9X"/>
+                                            <outlet property="eMailLabel" destination="uQq-cB-qDT" id="sXY-6Z-7gj"/>
+                                            <outlet property="iLikeButton" destination="2TD-xh-U63" id="Jpb-CQ-TCs"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YPT-9l-vug" id="DJj-8i-guc"/>
+                                    <outlet property="delegate" destination="YPT-9l-vug" id="7vk-fT-Oaq"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="2q4-zR-1Ad" firstAttribute="trailing" secondItem="f88-Dp-lPI" secondAttribute="trailing" id="JkU-Oh-j0e"/>
+                            <constraint firstItem="2q4-zR-1Ad" firstAttribute="leading" secondItem="f88-Dp-lPI" secondAttribute="leading" id="QSM-Kv-7Yh"/>
+                            <constraint firstItem="2q4-zR-1Ad" firstAttribute="bottom" secondItem="f88-Dp-lPI" secondAttribute="bottom" id="iLd-Rf-Ngd"/>
+                            <constraint firstItem="2q4-zR-1Ad" firstAttribute="top" secondItem="f88-Dp-lPI" secondAttribute="top" id="yIF-wx-prk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="f88-Dp-lPI"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorite contacts" id="GhU-cn-tqG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYw-Ck-44B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6330" y="1559"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CYKORIA_ARROD_PAPRYKA_OSTRA_MIELONA_10G_59954826_0_173_200" width="173" height="200"/>
@@ -1831,6 +1948,7 @@
         <image name="Like" width="25" height="25"/>
         <image name="Shopping" width="25" height="25"/>
         <image name="Visa" width="25" height="25"/>
+        <image name="add_favorites_filled" width="25" height="25"/>
         <image name="add_file" width="25" height="25"/>
         <image name="add_property" width="25" height="25"/>
         <image name="add_to_favorites_filled_mid" width="40" height="40"/>
