@@ -1520,8 +1520,13 @@
                                                         <action selector="iLikeTap:" destination="hVk-fy-SE3" eventType="touchUpInside" id="YFe-TP-hAm"/>
                                                     </connections>
                                                 </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="Ino-h2-tQo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Ino-h2-tQo" firstAttribute="leading" secondItem="pyO-8r-Qb7" secondAttribute="leading" id="1cb-mf-45t"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ino-h2-tQo" secondAttribute="bottom" id="7gU-nT-ZAc"/>
                                                 <constraint firstItem="FUv-VT-SIU" firstAttribute="leading" secondItem="esD-iD-Zg8" secondAttribute="trailing" constant="8" id="8DF-a3-XhS"/>
                                                 <constraint firstItem="esD-iD-Zg8" firstAttribute="top" secondItem="pyO-8r-Qb7" secondAttribute="topMargin" constant="4" id="IUX-iT-lN6"/>
                                                 <constraint firstItem="esD-iD-Zg8" firstAttribute="leading" secondItem="pyO-8r-Qb7" secondAttribute="leading" constant="15" id="Ien-Ri-NRL"/>
@@ -1529,7 +1534,9 @@
                                                 <constraint firstItem="esD-iD-Zg8" firstAttribute="top" secondItem="FUv-VT-SIU" secondAttribute="top" id="h2I-3J-iVn"/>
                                                 <constraint firstAttribute="trailing" secondItem="rN7-0P-cPv" secondAttribute="trailing" constant="5" id="mUV-Rc-WMB"/>
                                                 <constraint firstItem="esD-iD-Zg8" firstAttribute="centerY" secondItem="pyO-8r-Qb7" secondAttribute="centerY" id="uM5-Vk-s0U"/>
+                                                <constraint firstItem="Ino-h2-tQo" firstAttribute="top" secondItem="pyO-8r-Qb7" secondAttribute="top" id="v8n-oV-TFm"/>
                                                 <constraint firstItem="rN7-0P-cPv" firstAttribute="top" secondItem="pyO-8r-Qb7" secondAttribute="top" constant="10" id="xO8-se-yib"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ino-h2-tQo" secondAttribute="trailing" id="y0i-Xm-19P"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1831,6 +1838,7 @@
         <image name="cameraCanon" width="450" height="450"/>
         <image name="documents" width="25" height="25"/>
         <image name="dom1.jpeg" width="640" height="480"/>
+        <image name="gradient" width="375" height="31.5"/>
         <image name="heart" width="128" height="128"/>
         <image name="keyboard_filled" width="25" height="25"/>
         <image name="phone_message" width="25" height="25"/>
