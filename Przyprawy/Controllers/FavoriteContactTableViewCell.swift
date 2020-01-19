@@ -16,6 +16,9 @@ class FavoriteContactTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contactPhoneNumberLabel: UILabel!
     
+    @IBOutlet weak var eMailLabel: UILabel!
+    
+    
     @IBOutlet weak var iLikeButton: UIButton!
     
     override func awakeFromNib() {

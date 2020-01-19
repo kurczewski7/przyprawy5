@@ -82,63 +82,35 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var pictureOfUser: UIImage? = nil
-        
-        //let cell = UITableViewCell()
-        //cell.textLabel?.text="AAA:\(indexPath.row)"
-        
+        // let pictureOfUser: UIImage?
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! FavoriteContactTableViewCell
-
-        //let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteContactTableViewCell
-        //let contact: CNContact!
-        let email = "email"
         let cont: CNContact = contacts[indexPath.row] as CNContact
     
         let phoneNumber = cont.phoneNumbers.first?.value.stringValue ?? "brak tel"
         cell.contactPhoneNumberLabel.text = phoneNumber
-        cell.contactNameLabel.text = "\(cont.familyName) \(cont.givenName)  \(email)"
-
+        cell.contactNameLabel.text = "\(cont.familyName) \(cont.givenName)"
         cell.contactImage.image = UIImage(named: "user_male_full")
         cell.contactImage.layer.cornerRadius=cell.contactImage.frame.size.width/2.0
         cell.contactImage.layer.masksToBounds = true
         
-        
-        
-//        if (indexPath.row % 3) == 0 {
-//            
-//            cell.contactImage.alpha = 0.2
-//        }
-//        else {
-//           cell.contactImage.alpha = 1.0
-//        }
-//        if let imAvail = cont.imageDataAvailable {
-//            print("imageDataAvailable:\(imAvail)")
-//        }
-        
-       // print("contact:\(phoneNumber),\(cont.imageDataAvailable)")
-        
-        
-        
         if let pict = cont.imageData  {
-            pictureOfUser = UIImage(data: pict)
+            cell.contactImage.image = UIImage(data: pict)
             cell.contactImage.alpha = 1.0
-            print("IMG ok")
         }
         else {
-            print("Bład IMG")
-            pictureOfUser = UIImage(named: "user_male_full")
+            cell.contactImage.image = UIImage(named: "user_male_full")
             cell.contactImage.alpha = 0.2
         }
-        cell.contactImage.image = pictureOfUser
+        //cell.contactImage.image = pictureOfUser
         
-        //cell.iLikeImige.image = UIImage(named: "add_favorites_filled")
-        //let name = "\(cont.givenName) \(cont.familyName)"
-        //cont.emailAddresses.first?.value.substring(from: 0) ?? "no email"
-        //cell.contactNameLabel.text = cont.familyName
-        //= "\(cont.givenName) \(contact.familyName)"
-        //cell.textLabel?.text = "\(cont.familyName) \(cont.givenName) \(phoneNumber) \(email)"
-        //cell.detailTextLabel?.text = "bbb" //contacts[indexPath.row].givenName
+        if let email = cont.emailAddresses.first {
+            let emailValue = String(email.value)
+            cell.eMailLabel.text = emailValue ?? "-"
+        }
+        else {
+           cell.eMailLabel.text = "brak email"
+        }
         return cell
     }
     
