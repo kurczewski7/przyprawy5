@@ -29,6 +29,17 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
         cell.contactNameLabel.text = tmpContact.name
         cell.contactPhoneNumberLabel.text = tmpContact.phone
         cell.eMailLabel.text = tmpContact.email
+
+        if let pict = tmpContact.image  {
+            cell.contactImage.image = pict //UIImage(data: pict)
+            cell.contactImage.alpha = 1.0
+        }
+        else {
+            cell.contactImage.image = UIImage(named: "user_male_full")
+            cell.contactImage.alpha = 0.2
+        }
+
+        
         
         //cell.accessoryType = .checkmark
         return cell

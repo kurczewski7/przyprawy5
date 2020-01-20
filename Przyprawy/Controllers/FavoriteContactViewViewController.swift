@@ -27,10 +27,10 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         getContacts()
     }
     func loadPreferedContacts() {
-        let myCont1 = Setup.SelectedContact(name: "AAA", email: "bbb", phone: "78788")
-        let myCont2=Setup.SelectedContact(name: "CCC", email: "ddd", phone: "1234")
-        Setup.preferedContacts.updateValue(myCont1, forKey: "410FE041-5C4E-48DA-B4DE-04C15EA3DBAC")
-        Setup.preferedContacts.updateValue(myCont2, forKey: "2E73EE73-C03F-4D5F-B1E8-44E85A70F170")
+  //      let myCont1 = Setup.SelectedContact(name: "AAA", email: "bbb", phone: "78788")
+  //      let myCont2=Setup.SelectedContact(name: "CCC", email: "ddd", phone: "1234")
+  //      Setup.preferedContacts.updateValue(myCont1, forKey: "410FE041-5C4E-48DA-B4DE-04C15EA3DBAC")
+  //      Setup.preferedContacts.updateValue(myCont2, forKey: "2E73EE73-C03F-4D5F-B1E8-44E85A70F170")
     }
     func savePreferedContacts() {
         print("PREFERED CONTACT SAVED")
