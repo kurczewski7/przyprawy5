@@ -7,16 +7,19 @@
 //
 
 import Foundation
+import UIKit
+
 class Setup {
     struct SelectedContact {
         var name: String
         var email: String
-        var phone: String 
+        var phone: String
+        var image: UIImage? = nil
     }
     static var preferedContacts: [String : SelectedContact] = [:]
     static var currentContactKey: String?
-    static var  currentLanguage: LanguaesList = .polish
-    static var  polishLanguage: Bool  {
+    static var currentLanguage: LanguaesList = .polish
+    static var polishLanguage: Bool  {
         return currentLanguage == LanguaesList.polish ? true : false
     }
 

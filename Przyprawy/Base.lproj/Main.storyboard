@@ -1573,7 +1573,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6J-qg-ge8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5576.8000000000002" y="1559.3703148425789"/>
+            <point key="canvasLocation" x="5458" y="1554"/>
         </scene>
         <!--Detail At HomeView Controller-->
         <scene sceneID="vmb-6b-Eec">
@@ -1833,7 +1833,7 @@
         <!--Favorite Contact View Controller-->
         <scene sceneID="O2k-Vw-HDs">
             <objects>
-                <viewController id="YPT-9l-vug" userLabel="Favorite Contact View Controller" customClass="FavoriteContactViewViewController" customModule="Przyprawy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YPT-9l-vug" userLabel="Favorite Contact View Controller" customClass="AddedContactTableView" customModule="Przyprawy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P4g-5f-tlS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1842,7 +1842,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="110" id="zWh-z4-QXf" customClass="FavoriteContactTableViewCell" customModule="Przyprawy" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="110" id="zWh-z4-QXf" customClass="AddedContactTableViewCell" customModule="Przyprawy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zWh-z4-QXf" id="5MJ-Ts-1Qg">
@@ -1939,7 +1939,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYw-Ck-44B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6330" y="1559"/>
+            <point key="canvasLocation" x="6202" y="1554"/>
         </scene>
     </scenes>
     <resources>

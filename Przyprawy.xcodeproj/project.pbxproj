@@ -48,6 +48,8 @@
 		2C7CB578212FEB57005F6304 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7CB577212FEB57005F6304 /* Contacts.swift */; };
 		2C82B33D21B4655600EDB60F /* ScanerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82B33C21B4655600EDB60F /* ScanerViewController.swift */; };
 		2C82B679223925A900772BF6 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82B678223925A900772BF6 /* Server.swift */; };
+		2C8ABAEA23D5FE0600D83ED7 /* AddedContactTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8ABAE923D5FE0600D83ED7 /* AddedContactTableView.swift */; };
+		2C8ABAEC23D6039D00D83ED7 /* AddedContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8ABAEB23D6039D00D83ED7 /* AddedContactTableViewCell.swift */; };
 		2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C528C2122E135006D8099 /* AtHomeViewController.swift */; };
 		2C961DAD23D1220C00ED5420 /* FavoriteContactViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C961DAC23D1220C00ED5420 /* FavoriteContactViewViewController.swift */; };
 		2CB2281921F24BD8008A3292 /* InBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2281821F24BD8008A3292 /* InBasketViewController.swift */; };
@@ -136,6 +138,8 @@
 		2C7CB577212FEB57005F6304 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		2C82B33C21B4655600EDB60F /* ScanerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanerViewController.swift; sourceTree = "<group>"; };
 		2C82B678223925A900772BF6 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		2C8ABAE923D5FE0600D83ED7 /* AddedContactTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedContactTableView.swift; sourceTree = "<group>"; };
+		2C8ABAEB23D6039D00D83ED7 /* AddedContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedContactTableViewCell.swift; sourceTree = "<group>"; };
 		2C8C528C2122E135006D8099 /* AtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeViewController.swift; sourceTree = "<group>"; };
 		2C961DAC23D1220C00ED5420 /* FavoriteContactViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteContactViewViewController.swift; sourceTree = "<group>"; };
 		2CB2281821F24BD8008A3292 /* InBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InBasketViewController.swift; path = ../InBasketViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				2C961DAC23D1220C00ED5420 /* FavoriteContactViewViewController.swift */,
+				2C8ABAE923D5FE0600D83ED7 /* AddedContactTableView.swift */,
+				2C8ABAEB23D6039D00D83ED7 /* AddedContactTableViewCell.swift */,
 				2C61390923D23D140048C637 /* FavoriteContactTableViewCell.swift */,
 				2CF8917E23C7490C006B8463 /* ToShopTableViewCtr.swift */,
 				2CB2281821F24BD8008A3292 /* InBasketViewController.swift */,
@@ -535,7 +541,9 @@
 				2C1F1D6722072CD3004665DD /* WebCreator.swift in Sources */,
 				2C31B32521383A4900B7581D /* Database.swift in Sources */,
 				2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */,
+				2C8ABAEA23D5FE0600D83ED7 /* AddedContactTableView.swift in Sources */,
 				2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */,
+				2C8ABAEC23D6039D00D83ED7 /* AddedContactTableViewCell.swift in Sources */,
 				2CB903AB230199AD009F6A8E /* SelProductViewController.swift in Sources */,
 				2CF8917F23C7490C006B8463 /* ToShopTableViewCtr.swift in Sources */,
 				2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */,

@@ -31,14 +31,18 @@ class FavoriteContactTableViewCell: UITableViewCell {
             let name = contactNameLabel.text ?? ""
             let email = eMailLabel.text ?? ""
             let pfone = contactPhoneNumberLabel.text ?? ""
-            let newVal =  Setup.SelectedContact(name: name, email: email, phone: pfone)
+            var newVal =  Setup.SelectedContact(name: name, email: email, phone: pfone)
+            newVal.image = UIImage(named: "user-male-icon")
             if let key=Setup.currentContactKey {
                 Setup.preferedContacts.updateValue(newVal, forKey: key)
             }
             //preferedContacts.
         }
         else {
-            sender.tintColor = .green
+            sender.tintColor = .red
+            if let key=Setup.currentContactKey {
+                 Setup.preferedContacts.removeValue(forKey: key)
+            }
         }
     }
     
