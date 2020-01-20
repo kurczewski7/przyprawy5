@@ -12,16 +12,29 @@ import Contacts
 class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var contacts: [CNContact] = []
     var store = CNContactStore()
+
     
     
-    struct FavoriteContact {
-        let name: String = "Name"
-    }
+//    struct FavoriteContact {
+//        let name: String = "Name"
+//    }
     var contactStore = CNContactStore()
     //var contacts = [ContactEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//ID:177C371E-701D-42F8-A03B-C61CA31627F6
+//ID:AB211C5F-9EC9-429F-9466-B9382FF61035
+//ID:410FE041-5C4E-48DA-B4DE-04C15EA3DBAC
+//ID:F57C8277-585D-4327-88A6-B5689FF69DFE
+//ID:2E73EE73-C03F-4D5F-B1E8-44E85A70F170
+//ID:E94CD15C-7964-4A9B-8AC4-10D7CFB791FD
+        //let myCont1:Setup.SelectedContact?
+        let myCont1 = Setup.SelectedContact(name: "AAA", email: "bbb", phone: "78788")
+        let myCont2=Setup.SelectedContact(name: "CCC", email: "ddd", phone: "1234")
+        Setup.preferedContacts.updateValue(myCont1, forKey: "410FE041-5C4E-48DA-B4DE-04C15EA3DBAC")
+        Setup.preferedContacts.updateValue(myCont2, forKey: "2E73EE73-C03F-4D5F-B1E8-44E85A70F170")
+        
         getContacts()
         
         // Do any additional setup after loading the view.
@@ -106,12 +119,36 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         
         if let email = cont.emailAddresses.first {
             let emailValue = String(email.value)
-            cell.eMailLabel.text = emailValue ?? "-"
+            cell.eMailLabel.text = emailValue
         }
         else {
            cell.eMailLabel.text = "brak email"
         }
+        if Setup.currentContactKey?.count == 0 {
+            cell.iLikeButton.tintColor = .red
+        }
+        else
+        {
+            if let temp = Setup.preferedContacts[cont.identifier]  {
+                print("OK temp.name:\(temp.name)")
+                 cell.iLikeButton.tintColor = .purple
+            }
+            else {
+                cell.iLikeButton.tintColor = .yellow
+            }
+            
+            
+            
+//            if Setup.currentContactKey == cont.identifier {
+//                //Setup.preferedContacts.index(forKey: T##String)
+            
+        }
+//        if cell.iLikeButton.tintColor == UIColor.red {
+//
+//        }
+        print("ID:\(cont.identifier)")
         cell.eMailLabel.text = cont.identifier
+        Setup.currentContactKey = cont.identifier
         return cell
     }
     

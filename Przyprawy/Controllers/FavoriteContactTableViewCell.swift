@@ -26,7 +26,20 @@ class FavoriteContactTableViewCell: UITableViewCell {
         // Initialization code
     }
     @IBAction func iLikeTap(_ sender: UIButton) {
-        sender.tintColor = UIColor.green
+        if sender.tintColor == .red {
+            sender.tintColor = .green
+            let name = contactNameLabel.text ?? ""
+            let email = eMailLabel.text ?? ""
+            let pfone = contactPhoneNumberLabel.text ?? ""
+            let newVal =  Setup.SelectedContact(name: name, email: email, phone: pfone)
+            if let key=Setup.currentContactKey {
+                Setup.preferedContacts.updateValue(newVal, forKey: key)
+            }
+            //preferedContacts.
+        }
+        else {
+            sender.tintColor = .green
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
