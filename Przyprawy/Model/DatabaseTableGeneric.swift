@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 // New Class ------------------------------------------
 // variable for ProductTable
-class DatabaseTableGeneric <P: NSFetchRequestResult> { //: DatabaseTableProtocol NSFetchRequestResultType
+class DatabaseTableGeneric <P: NSFetchRequestResult> { 
 
     var context: NSManagedObjectContext
     private var  genericArray = [P]()
@@ -43,35 +43,17 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> { //: DatabaseTableProtocol
             genericArray.append(val)
         }
     }
-    func iniziaalizeUserFetchedType() -> NSFetchRequest<NSFetchRequestResult> {
-        let tmpfeachRequest: NSFetchRequest<NSFetchRequestResult>
-        tmpfeachRequest = ProductTable.fetchRequest()
-        return tmpfeachRequest
-    }
-    func initalizeFeachRequest()  {
-        feachRequest = iniziaalizeUserFetchedType()
-        feachRequest.sortDescriptors = sortDescriptors
-        featchResultCtrl = NSFetchedResultsController(fetchRequest: feachRequest, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil) as! NSFetchedResultsController<P>
-    }
-    init(context: NSManagedObjectContext, keys: [String], ascendingKeys: [Bool]) {
+    init(context: NSManagedObjectContext, keys: [String], ascendingKeys: [Bool], _ setFetchReqest: () -> NSFetchRequest<NSFetchRequestResult>) {
         self.context=context
         genericArray=[]
+        feachRequest = setFetchReqest()
         //feachRequest = initalizeFeachRequest()     // ProductTable.fetchRequest()
         for i in 0..<keys.count {
             sortDescriptors.append(NSSortDescriptor(key: keys[i], ascending: ascendingKeys[i]))
         }
+        feachRequest.sortDescriptors = sortDescriptors
+        featchResultCtrl = NSFetchedResultsController(fetchRequest: feachRequest, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil) as! NSFetchedResultsController<P>
     }
-
-    //    init(context: NSManagedObjectContext)
-    //    {
-    //        self.context=context
-    //        genericArray=[]
-    //        feachRequest = ProductTable.fetchRequest()
-    //        sortDescriptors.append(NSSortDescriptor(key: "productName", ascending: true))
-    //            //)[0] = NSSortDescriptor(key: "productName", ascending: true)
-    //        feachRequest?.sortDescriptors = sortDescriptors
-    //        featchResultCtrl = NSFetchedResultsController(fetchRequest: feachRequest ?? <#default value#>, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil) as! NSFetchedResultsController<P>
-    //    }
     func add(value: P) -> Int {
         genericArray.append(value)
         return genericArray.count

@@ -23,8 +23,9 @@ class Database  {
     
     // MARK: - Entitis of project
     var category: CategorySeting!  //  = CategorySeting(context: context)
-    var product: ProductSeting!    //   = ProductSeting(context: context)
-    var toShopProduct: ToShopProduct!
+    //var product: ProductSeting!    //   = ProductSeting(context: context)
+    var product: DatabaseTableGeneric<ProductTable>!
+    var toShopProduct: ToShopProduct2!   //DatabaseTableGeneric<ToShopProductTable>!   ToShopProduct!
     var shopingProduct: ShopingProduct!
     var basketProduct: BasketProduct!    
     let bits: Bits!
@@ -62,7 +63,7 @@ class Database  {
             }
         }
     }
-    @objc var selectedCategory:CategoryTable? {
+    @objc var selectedCategory: CategoryTable? {
         didSet {
             print("Seting Category: \(selectedCategory?.categoryName ?? "")")
             let catArray=database.category.categoryArray
@@ -81,15 +82,24 @@ class Database  {
         
         
         category  = CategorySeting(context: context)
-        product   = ProductSeting(context: context)
-        toShopProduct = ToShopProduct(context: context)
+        //product   = ProductSeting(context: context)
+        //toShopProduct = ToShopProduct(context: context)
         shopingProduct = ShopingProduct(context: context)
         basketProduct = BasketProduct(context: context)
+    
         
-        let product2 = ProductSeting2(context: context, keys: ["productName"], ascendingKeys: [true])
-        product2.initalizeFeachRequest()
+        product = ProductSeting2(context: context, keys: ["productName"], ascendingKeys: [true]) {
+             return ProductTable.fetchRequest()
+        }
+        toShopProduct = ToShopProduct2(context: context, keys: ["id"], ascendingKeys: [true]) {
+            return ToShopProductTable.fetchRequest()
+        }
+//        product.initalizeFeachRequest() {
+//            return ProductTable.fetchRequest()
+//        }
     }
     func getParam(tableArrayWith dbName: DbTableNames) -> [AnyObject] {
+        
         var myArray: [AnyObject]?
         switch dbName {
         case .products:
@@ -656,8 +666,7 @@ class CategorySeting {
 
 // New Class ------------------------------------------
 // variable for ProductTable
-class ProductSeting2:  DatabaseTableGeneric<ProductTable> {
-    
+class ProductSeting2:  DatabaseTableGeneric<ProductTable>, DatabaseTableProtocol {
 }
 
 class ProductSeting: DatabaseTableProtocol {
@@ -751,6 +760,13 @@ class ProductSeting: DatabaseTableProtocol {
 //        catch  {  print("Error saveing context \(error)")   }
 //    }
 //}
+class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTableProtocol {
+     func insert(toshopProd: ToShopProductTable, at row: Int) {
+         let categoryId = toshopProd.productRelation?.categoryId ?? 0
+         toshopProd.categoryId = categoryId
+         array.insert(toshopProd, at: row)
+     }
+}
 class ToShopProduct: DatabaseTableProtocol {
 
     var context: NSManagedObjectContext
