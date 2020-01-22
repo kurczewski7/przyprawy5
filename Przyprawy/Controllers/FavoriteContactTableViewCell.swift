@@ -11,15 +11,12 @@ import UIKit
 class FavoriteContactTableViewCell: UITableViewCell {
 
     @IBOutlet weak var contactImage: UIImageView!
-    
     @IBOutlet weak var contactNameLabel: UILabel!
-    
     @IBOutlet weak var contactPhoneNumberLabel: UILabel!
-    
     @IBOutlet weak var eMailLabel: UILabel!
-    
-    
     @IBOutlet weak var iLikeButton: UIButton!
+    
+    var userKey: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,19 +30,29 @@ class FavoriteContactTableViewCell: UITableViewCell {
             let pfone = contactPhoneNumberLabel.text ?? ""
             var newVal =  Setup.SelectedContact(name: name, email: email, phone: pfone)
             newVal.image = UIImage(named: "user-male-icon")
-            if let key=Setup.currentContactKey {
+            if let key = userKey {
                 Setup.preferedContacts.updateValue(newVal, forKey: key)
             }
             //preferedContacts.
         }
         else {
             sender.tintColor = .red
-            if let key=Setup.currentContactKey {
+            if let key = userKey {
                  Setup.preferedContacts.removeValue(forKey: key)
             }
         }
     }
-    
+
+//    get {
+//        let centerX = origin.x + (size.width / 2)
+//        let centerY = origin.y + (size.height / 2)
+//        return Point(x: centerX, y: centerY)
+//    }
+//    set(newCenter) {
+//        origin.x = newCenter.x - (size.width / 2)
+//        origin.y = newCenter.y - (size.height / 2)
+//    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

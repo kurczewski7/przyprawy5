@@ -226,9 +226,9 @@
 			isa = PBXGroup;
 			children = (
 				2C961DAC23D1220C00ED5420 /* FavoriteContactViewViewController.swift */,
+				2C61390923D23D140048C637 /* FavoriteContactTableViewCell.swift */,
 				2C8ABAE923D5FE0600D83ED7 /* AddedContactTableView.swift */,
 				2C8ABAEB23D6039D00D83ED7 /* AddedContactTableViewCell.swift */,
-				2C61390923D23D140048C637 /* FavoriteContactTableViewCell.swift */,
 				2CF8917E23C7490C006B8463 /* ToShopTableViewCtr.swift */,
 				2CB2281821F24BD8008A3292 /* InBasketViewController.swift */,
 				2C22CF2A220CBB4100F6B53B /* WebViewController.swift */,

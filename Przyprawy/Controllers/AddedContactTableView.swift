@@ -12,8 +12,9 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
     
     var contactList: [Setup.SelectedContact] = []
     override func viewDidLoad() {
-        for tmpContact in Setup.preferedContacts.values {
-            print("Airport name: \(tmpContact.name)")
+        print("-----------")
+        for (tmpKey, tmpContact) in Setup.preferedContacts {
+            print("KKKKey name:\(tmpKey): \(tmpContact.name) \(tmpContact.phone) \(tmpContact.email)")
             self.contactList.append(tmpContact)
         }
     }

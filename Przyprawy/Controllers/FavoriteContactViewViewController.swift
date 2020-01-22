@@ -102,6 +102,7 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         cell.contactImage.image = UIImage(named: "user_male_full")
         cell.contactImage.layer.cornerRadius=cell.contactImage.frame.size.width/2.0
         cell.contactImage.layer.masksToBounds = true
+        cell.userKey = cont.identifier
         
         if let pict = cont.imageData  {
             cell.contactImage.image = UIImage(data: pict)
@@ -132,19 +133,7 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
             else {
                 cell.iLikeButton.tintColor = .red
             }
-            
-            
-            
-//            if Setup.currentContactKey == cont.identifier {
-//                //Setup.preferedContacts.index(forKey: T##String)
-            
         }
-//        if cell.iLikeButton.tintColor == UIColor.red {
-//
-//        }
-        print("ID:\(cont.identifier)")
-        cell.eMailLabel.text = cont.identifier
-        Setup.currentContactKey = cont.identifier
         return cell
     }
     

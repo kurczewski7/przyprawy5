@@ -16,14 +16,11 @@ class Setup {
         var phone: String
         var image: UIImage? = nil
     }
+    static var currentLanguage: LanguaesList = .polish
+    static var polishLanguage: Bool  {     return currentLanguage == LanguaesList.polish ? true : false }
     static var preferedContacts: [String : SelectedContact] = [:]
     static var currentContactKey: String?
-    static var currentLanguage: LanguaesList = .polish
-    static var polishLanguage: Bool  {
-        return currentLanguage == LanguaesList.polish ? true : false
-    }
-
-
+    
     static let  categoriesData : [CategoryType]  =
         [(name: "Przyprawy", nameEN: "Spices", pictureName: "🌶🧂", selectedCategory : false),
          (name: "Warzywa", nameEN: "Vegetables", pictureName: "🥬🥕🥒", selectedCategory : false),
