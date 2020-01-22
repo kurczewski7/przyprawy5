@@ -85,6 +85,9 @@ class Database  {
         toShopProduct = ToShopProduct(context: context)
         shopingProduct = ShopingProduct(context: context)
         basketProduct = BasketProduct(context: context)
+        
+        let product2 = ProductSeting2(context: context, keys: ["productName"], ascendingKeys: [true])
+        product2.initalizeFeachRequest()
     }
     func getParam(tableArrayWith dbName: DbTableNames) -> [AnyObject] {
         var myArray: [AnyObject]?
@@ -653,6 +656,10 @@ class CategorySeting {
 
 // New Class ------------------------------------------
 // variable for ProductTable
+class ProductSeting2:  DatabaseTableGeneric<ProductTable> {
+    
+}
+
 class ProductSeting: DatabaseTableProtocol {
 
     var context: NSManagedObjectContext

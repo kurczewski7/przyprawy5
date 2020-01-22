@@ -10,55 +10,76 @@ import Foundation
 import CoreData
 // New Class ------------------------------------------
 // variable for ProductTable
-class DatabaseTableGeneric: DatabaseTableProtocol {
+class DatabaseTableGeneric <P: NSFetchRequestResult> { //: DatabaseTableProtocol NSFetchRequestResultType
 
     var context: NSManagedObjectContext
-    private var  productArray: [ProductTable] = []
-    private var  productArrayFiltered: [ProductTable] = []
+    private var  genericArray = [P]()
+    private var  genericArrayFiltered: [P] = []
     
-    var featchResultCtrl: NSFetchedResultsController<ProductTable>
-    let feachRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
-    var sortDescriptor:NSSortDescriptor
+    var featchResultCtrl: NSFetchedResultsController<P> = NSFetchedResultsController<P>()
+    var feachRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>()
+    var sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor]()
     var count: Int {
-        get {   return productArray.count   }
+        get {   return genericArray.count   }
     }
-    var array: [ProductTable] {
-        get {   return productArray   }
-        set {   productArray = newValue  }
+    var array: [P] {
+        get {   return genericArray   }
+        set {   genericArray = newValue  }
     }
-    var arrayFiltered:[ProductTable] {
-        get {   return productArrayFiltered   }
-        set {   productArrayFiltered = newValue  }
+    var arrayFiltered:[P] {
+        get {   return genericArrayFiltered   }
+        set {   genericArrayFiltered = newValue  }
     }
-    subscript(index: Int) -> ProductTable {
-        get {  return productArray[index]      }
-        set {  productArray[index] = newValue  }
+    subscript(index: Int) -> P {
+        get {  return genericArray[index]      }
+        set {  genericArray[index] = newValue  }
     }
 //    subscript(section: Int, row: Int) {
 //        get { return nil }
 //        set { _ = newValue }
 //    }
     func append<T>(_ value: T) {
-        if let val = value as? ProductTable {
-            productArray.append(val)
+        if let val = value as? P {
+            genericArray.append(val)
         }
     }
-    init(context: NSManagedObjectContext)
-    {
-        self.context=context
-        productArray=[]
-        sortDescriptor=NSSortDescriptor(key: "productName", ascending: true)
-        feachRequest.sortDescriptors = [sortDescriptor]
-        featchResultCtrl=NSFetchedResultsController(fetchRequest: feachRequest, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil)
+    func iniziaalizeUserFetchedType() -> NSFetchRequest<NSFetchRequestResult> {
+        let tmpfeachRequest: NSFetchRequest<NSFetchRequestResult>
+        tmpfeachRequest = ProductTable.fetchRequest()
+        return tmpfeachRequest
     }
-    func add(value: ProductTable) -> Int {
-        productArray.append(value)
-        return productArray.count
+    func initalizeFeachRequest()  {
+        feachRequest = iniziaalizeUserFetchedType()
+        feachRequest.sortDescriptors = sortDescriptors
+        featchResultCtrl = NSFetchedResultsController(fetchRequest: feachRequest, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil) as! NSFetchedResultsController<P>
+    }
+    init(context: NSManagedObjectContext, keys: [String], ascendingKeys: [Bool]) {
+        self.context=context
+        genericArray=[]
+        //feachRequest = initalizeFeachRequest()     // ProductTable.fetchRequest()
+        for i in 0..<keys.count {
+            sortDescriptors.append(NSSortDescriptor(key: keys[i], ascending: ascendingKeys[i]))
+        }
+    }
+
+    //    init(context: NSManagedObjectContext)
+    //    {
+    //        self.context=context
+    //        genericArray=[]
+    //        feachRequest = ProductTable.fetchRequest()
+    //        sortDescriptors.append(NSSortDescriptor(key: "productName", ascending: true))
+    //            //)[0] = NSSortDescriptor(key: "productName", ascending: true)
+    //        feachRequest?.sortDescriptors = sortDescriptors
+    //        featchResultCtrl = NSFetchedResultsController(fetchRequest: feachRequest ?? <#default value#>, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil) as! NSFetchedResultsController<P>
+    //    }
+    func add(value: P) -> Int {
+        genericArray.append(value)
+        return genericArray.count
     }
     func remove(at row: Int) -> Bool {
         let res: Bool
-        if row < productArray.count {
-            productArray.remove(at: row)
+        if row < genericArray.count {
+            genericArray.remove(at: row)
             res = true
         }
         else {
