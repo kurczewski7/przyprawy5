@@ -41,6 +41,7 @@
 		2C6A2E7523608060002C85DA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C6A2E7423608060002C85DA /* Settings.bundle */; };
 		2C6A2E772360875C002C85DA /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6A2E762360875C002C85DA /* SettingsBundleHelper.swift */; };
 		2C70579C2139ED4300B99FEA /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70579B2139ED4300B99FEA /* Product.swift */; };
+		2C71F90F23D8B1B4009B6EDC /* DatabaseTableGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C71F90E23D8B1B4009B6EDC /* DatabaseTableGeneric.swift */; };
 		2C7288BD2147EE0F003506BE /* popViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7288BC2147EE0F003506BE /* popViewController.swift */; };
 		2C72D5E0230961D4008BC61C /* DatabaseTableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72D5DF230961D4008BC61C /* DatabaseTableProtocol.swift */; };
 		2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DC212C492D00225A52 /* ShopingListViewController.swift */; };
@@ -131,6 +132,7 @@
 		2C6A2E7423608060002C85DA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2C6A2E762360875C002C85DA /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		2C70579B2139ED4300B99FEA /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		2C71F90E23D8B1B4009B6EDC /* DatabaseTableGeneric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTableGeneric.swift; sourceTree = "<group>"; };
 		2C7288BC2147EE0F003506BE /* popViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popViewController.swift; sourceTree = "<group>"; };
 		2C72D5DF230961D4008BC61C /* DatabaseTableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTableProtocol.swift; sourceTree = "<group>"; };
 		2C7888DC212C492D00225A52 /* ShopingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				2C6A2E762360875C002C85DA /* SettingsBundleHelper.swift */,
 				2C1F1D6622072CD3004665DD /* WebCreator.swift */,
 				2C31B32421383A4900B7581D /* Database.swift */,
+				2C71F90E23D8B1B4009B6EDC /* DatabaseTableGeneric.swift */,
 				2C60EB6023A26C580018D327 /* Bits.swift */,
 				2C72D5DF230961D4008BC61C /* DatabaseTableProtocol.swift */,
 				2C158CD7218623B300C3438B /* CoreDataStack.swift */,
@@ -553,6 +556,7 @@
 				2C1B3BDD21B7D12000B53ABA /* TakePhotoViewController.swift in Sources */,
 				2C55CD3D234A900F00ACFC95 /* SelectedProductListCell.swift in Sources */,
 				2C70579C2139ED4300B99FEA /* Product.swift in Sources */,
+				2C71F90F23D8B1B4009B6EDC /* DatabaseTableGeneric.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
