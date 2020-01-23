@@ -152,7 +152,9 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let currCell=tableView.cellForRow(at: indexPath)
         let isChecked = (currCell?.accessoryType == .checkmark)
-        let checkAction=UITableViewRowAction(style: .default, title: " 🧺\nDo koszyka", handler:
+        let toBuyMessage = Setup.polishLanguage ? " 🧺\nDo koszyka" : " 🧺\nTo shopping cart"
+        let toRemoveMessage = Setup.polishLanguage ? "❎\nUsuń z koszyka " : "❎\nRemove from cart "
+        let checkAction=UITableViewRowAction(style: .default, title: toBuyMessage, handler:
         {(action, indexPath) -> Void in
             currCell?.accessoryType = .checkmark
             //database.product[indexPath.row].checked1 = true
@@ -161,7 +163,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
             database.addToProductList(product: database.product[indexPath.row])
             database.save()
         })
-        let uncheckAction=UITableViewRowAction(style: .destructive, title: "❎\nUsuń z koszyka ", handler:
+        let uncheckAction=UITableViewRowAction(style: .destructive, title: toRemoveMessage, handler:
         { (action, indexPath) -> Void in
             currCell?.accessoryType = .none
             //database.product[indexPath.row].checked1 = false
