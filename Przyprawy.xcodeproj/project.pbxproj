@@ -212,6 +212,7 @@
 				2C158CD7218623B300C3438B /* CoreDataStack.swift */,
 				2C70579B2139ED4300B99FEA /* Product.swift */,
 				2C82B678223925A900772BF6 /* Server.swift */,
+				2CF187BF2398161700BEB505 /* Setup.swift */,
 				2C61F47A236B186900795C07 /* ProductList.swift */,
 			);
 			path = Model;
@@ -326,7 +327,6 @@
 				2CE2756A210237AF001C046B /* Main.storyboard */,
 				2CB903AC2301AEB7009F6A8E /* ProductProlocol.swift */,
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
-				2CF187BF2398161700BEB505 /* Setup.swift */,
 				2CDC33AD225762B7000BCBE1 /* String+extension.swift */,
 				2C158CBD2186106F00C3438B /* Model */,
 				2C158CC1218610BB00C3438B /* Controllers */,

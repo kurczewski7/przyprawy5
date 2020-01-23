@@ -1564,7 +1564,7 @@
                         <viewLayoutGuide key="safeArea" id="Cd3-kK-b5e"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add to favorite contacts" id="6Vn-fl-dY7">
-                        <barButtonItem key="rightBarButtonItem" image="add_favorites_filled" style="plain" id="mLW-SD-mfl">
+                        <barButtonItem key="rightBarButtonItem" image="add_to_favor" style="plain" id="mLW-SD-mfl">
                             <connections>
                                 <segue destination="YPT-9l-vug" kind="show" id="XRh-Tp-0rn"/>
                             </connections>
@@ -1920,8 +1920,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f88-Dp-lPI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Favorite contacts" id="GhU-cn-tqG"/>
+                    <navigationItem key="navigationItem" title="Favorite contacts" id="GhU-cn-tqG">
+                        <barButtonItem key="rightBarButtonItem" image="lock" style="plain" id="79J-QK-zEb">
+                            <connections>
+                                <action selector="editModeBarButton:" destination="YPT-9l-vug" id="axk-hG-YhY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="editModeButtonOutlet" destination="79J-QK-zEb" id="o3j-AA-5Gx"/>
                         <outlet property="tableView" destination="2q4-zR-1Ad" id="mRe-ur-qlR"/>
                     </connections>
                 </viewController>
@@ -1936,9 +1943,9 @@
         <image name="Like" width="25" height="25"/>
         <image name="Shopping" width="25" height="25"/>
         <image name="Visa" width="25" height="25"/>
-        <image name="add_favorites_filled" width="25" height="25"/>
         <image name="add_file" width="25" height="25"/>
         <image name="add_property" width="25" height="25"/>
+        <image name="add_to_favor" width="25" height="25"/>
         <image name="add_to_favorites_filled_mid" width="40" height="40"/>
         <image name="barcode" width="25" height="25"/>
         <image name="cameraCanon" width="450" height="450"/>
@@ -1947,6 +1954,7 @@
         <image name="gradient" width="375" height="31.5"/>
         <image name="heart" width="128" height="128"/>
         <image name="keyboard_filled" width="25" height="25"/>
+        <image name="lock" width="25" height="25"/>
         <image name="phone_message" width="25" height="25"/>
         <image name="plus" width="25" height="25"/>
         <image name="setup" width="25" height="25"/>

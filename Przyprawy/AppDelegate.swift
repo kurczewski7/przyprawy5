@@ -13,12 +13,13 @@ enum LanguaesList: String {
 }
 
 enum DbTableNames : String {
-    case products        = "ProductTable"
-    case basket          = "BasketProductTable"
-    case shopingProduct  = "ShopingProductTable"
-    case toShop          = "ToShopProductTable"
-    case categories      = "CategoryTable"
-    case users           = "Users"
+    case products         = "ProductTable"
+    case basket           = "BasketProductTable"
+    case shopingProduct   = "ShopingProductTable"
+    case toShop           = "ToShopProductTable"
+    case categories       = "CategoryTable"
+    case favoriteContacts = "FavortteContactsTable"
+    case users            = "Users"
 }
 enum SearchField : String {
     case Producent = "producent"

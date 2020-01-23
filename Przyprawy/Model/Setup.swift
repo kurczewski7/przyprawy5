@@ -11,10 +11,11 @@ import UIKit
 
 class Setup {
     struct SelectedContact {
-        var name: String
+        var name:  String
         var email: String
         var phone: String
         var image: UIImage? = nil
+        var order: Int = 0
     }
     static var currentLanguage: LanguaesList = .polish
     static var polishLanguage: Bool  {     return currentLanguage == LanguaesList.polish ? true : false }

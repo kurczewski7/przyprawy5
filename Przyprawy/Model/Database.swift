@@ -112,8 +112,11 @@ class Database  {
             myArray  = toShopProduct.array
         case .basket:
             myArray  = basketProduct.array
+        case .favoriteContacts:
+            myArray = basketProduct.array
         case .users:
             print("ERROR: myArray  = userArray")
+
         }
         return myArray!
     }
@@ -163,6 +166,8 @@ class Database  {
             request = UsersTable.fetchRequest()
         case .toShop         :
             request = ToShopProductTable.fetchRequest()
+        case .favoriteContacts:
+            request = nil
         }
 
 //        let predicate=NSPredicate(format: "%K CONTAINS[cd] %@", searchField, searchText)
@@ -178,18 +183,20 @@ class Database  {
                 print("Error loading empty data")
             }
             switch tabName {
-                case .products       :
+                case .products        :
                     product.array = newArray as! [ProductTable]
-                case .basket         :
+                case .basket           :
                     basketProduct.array = newArray as! [BasketProductTable]
-                case .shopingProduct :
+                case .shopingProduct   :
                     shopingProduct.array = newArray as! [ShopingProductTable]
-                case .categories     :
+                case .categories       :
                     category.categoryArray = newArray as! [CategoryTable]
-                case .users          :
+                case .users            :
                     usersArray = newArray as! [UsersTable]
-                case .toShop         :
+                case .toShop           :
                     toShopProduct.array = newArray as! [ToShopProductTable]
+                case .favoriteContacts :
+                    print("No favoriteContacts")
             }
         }
         catch { print("Error fetching data from context \(error)")   }
@@ -501,6 +508,9 @@ class Database  {
              reqest  = CategoryTable.fetchRequest()
         case .users:
             reqest  = UsersTable.fetchRequest()
+        case .favoriteContacts:
+            reqest  = FavoriteContactsTable.fetchRequest()
+            print("No favoriteContacts")
         }
         return reqest
     }
@@ -778,7 +788,9 @@ class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTablePro
 //        toshopProd.categoryId = categoryId
 //        array.insert(toshopProd, at: row)
 //
-
+//class FavoriteContacts: DatabaseTableGeneric<FavoriteContactsTable> {
+//
+//}
 class ToShopProduct: DatabaseTableProtocol {
 
     var context: NSManagedObjectContext

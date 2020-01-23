@@ -12,7 +12,16 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
     
     var contactList: [Setup.SelectedContact] = []
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editModeButtonOutlet: UIBarButtonItem!
     
+    @IBAction func editModeBarButton(_ sender: UIBarButtonItem) {
+        var ikonName: String = ""
+        let statusOn = self.tableView.isEditing
+        self.tableView.isEditing = !statusOn
+        ikonName = statusOn ? "unlock" : "lock"
+        let image = UIImage(named: ikonName)
+        navigationItem.rightBarButtonItem?.image = image
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
            self.tableView.isEditing = true
