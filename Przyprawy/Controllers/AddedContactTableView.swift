@@ -11,7 +11,12 @@ import UIKit
 class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     var contactList: [Setup.SelectedContact] = []
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+           self.tableView.isEditing = true
+        
         print("-----------")
         for (tmpKey, tmpContact) in Setup.preferedContacts {
             print("KKKKey name:\(tmpKey): \(tmpContact.name) \(tmpContact.phone) \(tmpContact.email)")
@@ -41,7 +46,7 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
         }
 
         //cell.accessoryType = .detailDisclosureButton
-
+        //cell.s
         return cell
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -73,6 +78,4 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
 //        super.awakeFromNib()
 //        // Initialization code
 //    }
-
-
 }

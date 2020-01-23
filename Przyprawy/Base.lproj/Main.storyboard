@@ -1921,6 +1921,9 @@
                         <viewLayoutGuide key="safeArea" id="f88-Dp-lPI"/>
                     </view>
                     <navigationItem key="navigationItem" title="Favorite contacts" id="GhU-cn-tqG"/>
+                    <connections>
+                        <outlet property="tableView" destination="2q4-zR-1Ad" id="mRe-ur-qlR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYw-Ck-44B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
