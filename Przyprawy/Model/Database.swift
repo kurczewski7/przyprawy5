@@ -13,8 +13,30 @@ protocol DatabaseDelegate: class {
     func updateGUI()
     func getNumberOfRecords(numbersOfRecords recNo: Int, eanMode: Bool)
     }
-
+//--------------------------------------------------------------------------------------------------------------------------------
+// Other databases class
+class ProductSeting2:  DatabaseTableGeneric<ProductTable>, DatabaseTableProtocol {
+}
+class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTableProtocol {
+     func insert(toshopProd: ToShopProductTable, at row: Int) {
+         let categoryId = toshopProd.productRelation?.categoryId ?? 0
+         toshopProd.categoryId = categoryId
+         array.insert(toshopProd, at: row)
+     }
+    override func append<T>(_ value: T) {
+        if let val = value as? ToShopProductTable {
+            let categoryId = val.productRelation?.categoryId ?? 0
+            val.categoryId = categoryId
+            array.append(val)
+         }
+    }
+}
+class FavoriteContacts: DatabaseTableGeneric<FavoriteContactsTable>, DatabaseTableProtocol {
+}
+//--------------------------------------------------------------------------------------------------------------------------------
+// Main database class
 class Database  {
+
     // seting delegate
     var delegate: DatabaseDelegate?
     var context: NSManagedObjectContext
@@ -27,7 +49,8 @@ class Database  {
     var product: DatabaseTableGeneric<ProductTable>!
     var toShopProduct: ToShopProduct2!   //DatabaseTableGeneric<ToShopProductTable>!   ToShopProduct!
     var shopingProduct: ShopingProduct!
-    var basketProduct: BasketProduct!    
+    var basketProduct: BasketProduct!
+    var favoriteContacts: FavoriteContacts!
     let bits: Bits!
  
 //    // variable for ShopingProductTable
@@ -79,7 +102,7 @@ class Database  {
         self.selectedProductList = 1
         self.scanerCodebarValue = ""
         bits = Bits(context: context)
-        
+            
         
         category  = CategorySeting(context: context)
         //product   = ProductSeting(context: context)
@@ -93,6 +116,9 @@ class Database  {
         }
         toShopProduct = ToShopProduct2(context: context, keys: ["id"], ascendingKeys: [true]) {
             return ToShopProductTable.fetchRequest()
+        }
+        favoriteContacts = FavoriteContacts(context: context, keys: ["key"], ascendingKeys: [true]) {
+            return FavoriteContactsTable.fetchRequest()
         }
 //        product.initalizeFeachRequest() {
 //            return ProductTable.fetchRequest()
@@ -113,7 +139,7 @@ class Database  {
         case .basket:
             myArray  = basketProduct.array
         case .favoriteContacts:
-            myArray = basketProduct.array
+            myArray = favoriteContacts.array
         case .users:
             print("ERROR: myArray  = userArray")
 
@@ -167,7 +193,7 @@ class Database  {
         case .toShop         :
             request = ToShopProductTable.fetchRequest()
         case .favoriteContacts:
-            request = nil
+            request = FavoriteContactsTable.fetchRequest()
         }
 
 //        let predicate=NSPredicate(format: "%K CONTAINS[cd] %@", searchField, searchText)
@@ -196,7 +222,7 @@ class Database  {
                 case .toShop           :
                     toShopProduct.array = newArray as! [ToShopProductTable]
                 case .favoriteContacts :
-                    print("No favoriteContacts")
+                    favoriteContacts.array = newArray as! [FavoriteContactsTable]
             }
         }
         catch { print("Error fetching data from context \(error)")   }
@@ -676,8 +702,7 @@ class CategorySeting {
 
 // New Class ------------------------------------------
 // variable for ProductTable
-class ProductSeting2:  DatabaseTableGeneric<ProductTable>, DatabaseTableProtocol {
-}
+
 
 class ProductSeting: DatabaseTableProtocol {
 
@@ -770,20 +795,6 @@ class ProductSeting: DatabaseTableProtocol {
 //        catch  {  print("Error saveing context \(error)")   }
 //    }
 //}
-class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTableProtocol {     
-     func insert(toshopProd: ToShopProductTable, at row: Int) {
-         let categoryId = toshopProd.productRelation?.categoryId ?? 0
-         toshopProd.categoryId = categoryId
-         array.insert(toshopProd, at: row)
-     }
-    override func append<T>(_ value: T) {
-        if let val = value as? ToShopProductTable {
-            let categoryId = val.productRelation?.categoryId ?? 0
-            val.categoryId = categoryId
-            array.append(val)
-         }
-    }
-}
 //        let categoryId = toshopProd.productRelation?.categoryId ?? 0
 //        toshopProd.categoryId = categoryId
 //        array.insert(toshopProd, at: row)

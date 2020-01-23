@@ -50,15 +50,11 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
             cell.contactImage.alpha = 1.0
             cell.contactImage.layer.cornerRadius=cell.contactImage.frame.size.width/2.0
             cell.contactImage.layer.masksToBounds = true
-
         }
         else {
             cell.contactImage.image = UIImage(named: "user_male_full")
             cell.contactImage.alpha = 0.2
         }
-
-        //cell.accessoryType = .detailDisclosureButton
-        //cell.s
         return cell
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {

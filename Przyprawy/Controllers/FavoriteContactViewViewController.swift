@@ -33,6 +33,8 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
   //      Setup.preferedContacts.updateValue(myCont2, forKey: "2E73EE73-C03F-4D5F-B1E8-44E85A70F170")
     }
     func savePreferedContacts() {
+        // TODO: savePreferedContacts
+        //let table=database.favoriteContacts[0].email
         print("PREFERED CONTACT SAVED")
     }
     @available (iOS 9.0, *)
