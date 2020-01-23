@@ -760,13 +760,25 @@ class ProductSeting: DatabaseTableProtocol {
 //        catch  {  print("Error saveing context \(error)")   }
 //    }
 //}
-class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTableProtocol {
+class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTableProtocol {     
      func insert(toshopProd: ToShopProductTable, at row: Int) {
          let categoryId = toshopProd.productRelation?.categoryId ?? 0
          toshopProd.categoryId = categoryId
          array.insert(toshopProd, at: row)
      }
+    override func append<T>(_ value: T) {
+        if let val = value as? ToShopProductTable {
+            let categoryId = val.productRelation?.categoryId ?? 0
+            val.categoryId = categoryId
+            array.append(val)
+         }
+    }
 }
+//        let categoryId = toshopProd.productRelation?.categoryId ?? 0
+//        toshopProd.categoryId = categoryId
+//        array.insert(toshopProd, at: row)
+//
+
 class ToShopProduct: DatabaseTableProtocol {
 
     var context: NSManagedObjectContext

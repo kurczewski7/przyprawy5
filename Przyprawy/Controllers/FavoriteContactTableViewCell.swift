@@ -9,7 +9,6 @@
 import UIKit
 
 class FavoriteContactTableViewCell: UITableViewCell {
-
     @IBOutlet weak var contactImage: UIImageView!
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var contactPhoneNumberLabel: UILabel!
@@ -31,17 +30,9 @@ class FavoriteContactTableViewCell: UITableViewCell {
             let pfone = contactPhoneNumberLabel.text ?? ""
             var newVal =  Setup.SelectedContact(name: name, email: email, phone: pfone)
             newVal.image = isUserPicture ? contactImage.image : nil
-//            if isUserPicture {
-//                newVal.image = contactImage.image
-//            } else
-//            {
-//                newVal.image = nil
-//            }
-            //newVal.image = UIImage(named: "user-male-icon")
             if let key = userKey {
                 Setup.preferedContacts.updateValue(newVal, forKey: key)
             }
-            //preferedContacts.
         }
         else {
             sender.tintColor = .red
