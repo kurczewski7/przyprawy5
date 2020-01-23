@@ -1881,33 +1881,19 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2TD-xh-U63">
-                                                    <rect key="frame" x="330" y="10" width="40" height="90"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="9Yn-xs-Rf2"/>
-                                                    </constraints>
-                                                    <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" image="add_to_favorites_filled_mid"/>
-                                                    <connections>
-                                                        <action selector="iLikeTap:" destination="zWh-z4-QXf" eventType="touchUpInside" id="gF0-tu-8Ug"/>
-                                                    </connections>
-                                                </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="mHC-oG-RDK">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="2TD-xh-U63" secondAttribute="trailing" constant="5" id="0NF-AW-L2B"/>
                                                 <constraint firstAttribute="trailing" secondItem="mHC-oG-RDK" secondAttribute="trailing" id="6yb-7R-GCd"/>
                                                 <constraint firstItem="yQv-cl-1wg" firstAttribute="centerY" secondItem="5MJ-Ts-1Qg" secondAttribute="centerY" id="8Ro-Zz-bdo"/>
-                                                <constraint firstAttribute="bottom" secondItem="2TD-xh-U63" secondAttribute="bottom" constant="10" id="R26-Ef-S9q"/>
                                                 <constraint firstItem="mHC-oG-RDK" firstAttribute="top" secondItem="5MJ-Ts-1Qg" secondAttribute="top" id="Yb6-u4-Pc5"/>
                                                 <constraint firstItem="mHC-oG-RDK" firstAttribute="leading" secondItem="5MJ-Ts-1Qg" secondAttribute="leading" id="YhA-cs-1P6"/>
                                                 <constraint firstItem="yQv-cl-1wg" firstAttribute="top" secondItem="5MJ-Ts-1Qg" secondAttribute="topMargin" constant="4" id="cHA-XQ-4nf"/>
                                                 <constraint firstItem="qlg-Wo-8tO" firstAttribute="leading" secondItem="yQv-cl-1wg" secondAttribute="trailing" constant="8" id="e6o-TP-oa4"/>
                                                 <constraint firstItem="yQv-cl-1wg" firstAttribute="leading" secondItem="5MJ-Ts-1Qg" secondAttribute="leading" constant="15" id="fch-eK-io5"/>
                                                 <constraint firstAttribute="bottom" secondItem="mHC-oG-RDK" secondAttribute="bottom" id="jmY-zj-gMQ"/>
-                                                <constraint firstItem="2TD-xh-U63" firstAttribute="top" secondItem="5MJ-Ts-1Qg" secondAttribute="top" constant="10" id="od9-MD-epP"/>
                                                 <constraint firstItem="yQv-cl-1wg" firstAttribute="top" secondItem="qlg-Wo-8tO" secondAttribute="top" id="t86-gu-M0H"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1916,7 +1902,6 @@
                                             <outlet property="contactNameLabel" destination="Hei-un-U0y" id="7KP-kN-Cgu"/>
                                             <outlet property="contactPhoneNumberLabel" destination="hdG-pz-dc7" id="8QR-Fh-y9X"/>
                                             <outlet property="eMailLabel" destination="uQq-cB-qDT" id="sXY-6Z-7gj"/>
-                                            <outlet property="iLikeButton" destination="2TD-xh-U63" id="Jpb-CQ-TCs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1939,7 +1924,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYw-Ck-44B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6202" y="1554"/>
+            <point key="canvasLocation" x="6130" y="1554"/>
         </scene>
     </scenes>
     <resources>

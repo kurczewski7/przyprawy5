@@ -32,7 +32,7 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
         cell.eMailLabel.text = tmpContact.email
 
         if let pict = tmpContact.image  {
-            cell.contactImage.image = pict //UIImage(data: pict)
+            cell.contactImage.image = pict
             cell.contactImage.alpha = 1.0
         }
         else {
@@ -40,13 +40,36 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
             cell.contactImage.alpha = 0.2
         }
 
-        
-        
-        //cell.accessoryType = .checkmark
+        //cell.accessoryType = .detailDisclosureButton
+
         return cell
     }
-    
-//    override func awakeFromNib() {
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let objectToMove = contactList[sourceIndexPath.row]
+        contactList.remove(at: sourceIndexPath.row)
+        contactList.insert(objectToMove, at: destinationIndexPath.row)
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.backgroundColor = .green
+    }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+
+    //    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    //        let movedObject = self.headlines[sourceIndexPath.row]
+    //        headlines.remove(at: sourceIndexPath.row)
+    //        headlines.insert(movedObject, at: destinationIndexPath.row)
+    //    }
+
+    //    override func awakeFromNib() {
 //        super.awakeFromNib()
 //        // Initialization code
 //    }
