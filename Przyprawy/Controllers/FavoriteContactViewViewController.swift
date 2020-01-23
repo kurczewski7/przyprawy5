@@ -107,10 +107,12 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         if let pict = cont.imageData  {
             cell.contactImage.image = UIImage(data: pict)
             cell.contactImage.alpha = 1.0
+            cell.isUserPicture = true
         }
         else {
             cell.contactImage.image = UIImage(named: "user_male_full")
             cell.contactImage.alpha = 0.2
+            cell.isUserPicture = false
         }
         //cell.contactImage.image = pictureOfUser
         

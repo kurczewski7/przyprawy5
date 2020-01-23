@@ -17,6 +17,7 @@ class FavoriteContactTableViewCell: UITableViewCell {
     @IBOutlet weak var iLikeButton: UIButton!
     
     var userKey: String?
+    var isUserPicture: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +30,14 @@ class FavoriteContactTableViewCell: UITableViewCell {
             let email = eMailLabel.text ?? ""
             let pfone = contactPhoneNumberLabel.text ?? ""
             var newVal =  Setup.SelectedContact(name: name, email: email, phone: pfone)
-            newVal.image = UIImage(named: "user-male-icon")
+            newVal.image = isUserPicture ? contactImage.image : nil
+//            if isUserPicture {
+//                newVal.image = contactImage.image
+//            } else
+//            {
+//                newVal.image = nil
+//            }
+            //newVal.image = UIImage(named: "user-male-icon")
             if let key = userKey {
                 Setup.preferedContacts.updateValue(newVal, forKey: key)
             }
