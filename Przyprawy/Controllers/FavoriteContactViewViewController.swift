@@ -114,7 +114,6 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
             cell.contactImage.alpha = 0.2
             cell.isUserPicture = false
         }
-        //cell.contactImage.image = pictureOfUser
         
         if let email = cont.emailAddresses.first {
             let emailValue = String(email.value)

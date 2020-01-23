@@ -39,6 +39,9 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
         if let pict = tmpContact.image  {
             cell.contactImage.image = pict
             cell.contactImage.alpha = 1.0
+            cell.contactImage.layer.cornerRadius=cell.contactImage.frame.size.width/2.0
+            cell.contactImage.layer.masksToBounds = true
+
         }
         else {
             cell.contactImage.image = UIImage(named: "user_male_full")
