@@ -28,9 +28,9 @@ class FavoriteContactTableViewCell: UITableViewCell {
             let name = contactNameLabel.text ?? ""
             let email = eMailLabel.text ?? ""
             let pfone = contactPhoneNumberLabel.text ?? ""
-            var newVal =  Setup.SelectedContact(name: name, email: email, phone: pfone)
-            newVal.image = isUserPicture ? contactImage.image : nil
             if let key = userKey {
+                var newVal =  Setup.SelectedContact(key: key, name: name, email: email, phone: pfone)
+                newVal.image = isUserPicture ? contactImage.image : nil
                 Setup.preferedContacts.updateValue(newVal, forKey: key)
             }
         }

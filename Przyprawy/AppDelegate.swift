@@ -18,7 +18,7 @@ enum DbTableNames : String {
     case shopingProduct   = "ShopingProductTable"
     case toShop           = "ToShopProductTable"
     case categories       = "CategoryTable"
-    case favoriteContacts = "FavortteContactsTable"
+    case favoriteContacts = "FavoriteContactsTable"  //FavortteContactsTable //FavoriteContactsTable
     case users            = "Users"
 }
 enum SearchField : String {

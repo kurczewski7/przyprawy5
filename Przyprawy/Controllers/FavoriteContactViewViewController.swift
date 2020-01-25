@@ -23,18 +23,50 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        database.loadData(tableNameType: .favoriteContacts)
         loadPreferedContacts()
         getContacts()
     }
     func loadPreferedContacts() {
+        for i in 0..<database.favoriteContacts.count {
+            loadOneRecord(forNumberRecord: i)
+        }
+    }
+    func loadOneRecord(forNumberRecord num: Int) {
+        if num < database.favoriteContacts.count {
+            let rec = database.favoriteContacts[num]
+            if let key = rec.key {
+                let name  = rec.name  ?? "No name"
+                let email = rec.email ?? "No email"
+                let phone = rec.phone ?? "No phone"
+                let myContact = Setup.SelectedContact(key: key, name:  name, email: email, phone: phone)
+                Setup.preferedContacts.updateValue(myContact, forKey: key)
+            }
+        }
+    }
+//        let oneRecord: FavoriteContactsTable = FavoriteContactsTable(context: database.context)
+//         for tmpContact in contactList {
+//             oneRecord.key   = tmpContact.key
+//             oneRecord.name  = tmpContact.name
+//             oneRecord.phone = tmpContact.phone
+//             oneRecord.email = tmpContact.email
+//             oneRecord.image = tmpContact.image?.pngData()
+//             database.favoriteContacts.add(value: oneRecord)
+//             database.save()
+//         }
+
   //      let myCont1 = Setup.SelectedContact(name: "AAA", email: "bbb", phone: "78788")
   //      let myCont2=Setup.SelectedContact(name: "CCC", email: "ddd", phone: "1234")
   //      Setup.preferedContacts.updateValue(myCont1, forKey: "410FE041-5C4E-48DA-B4DE-04C15EA3DBAC")
   //      Setup.preferedContacts.updateValue(myCont2, forKey: "2E73EE73-C03F-4D5F-B1E8-44E85A70F170")
-    }
+
     func savePreferedContacts() {
         // TODO: savePreferedContacts
-        //let table=database.favoriteContacts[0].email
+//        let cont: CNContact = contacts[0] as CNContact
+//        let oneContact = FavoriteContactsTable()
+//        oneContact.email = contacts[0].
+//
+//        let table=database.favoriteContacts[0].email
         print("PREFERED CONTACT SAVED")
     }
     @available (iOS 9.0, *)
@@ -91,7 +123,9 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
     }
-    
+    func fullNameContact(forContact cont: CNContact)  -> String{
+        return "\(cont.familyName) \(cont.givenName)"
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // let pictureOfUser: UIImage?
         
@@ -100,7 +134,8 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
     
         let phoneNumber = cont.phoneNumbers.first?.value.stringValue ?? "brak tel"
         cell.contactPhoneNumberLabel.text = phoneNumber
-        cell.contactNameLabel.text = "\(cont.familyName) \(cont.givenName)"
+        cell.contactNameLabel.text = fullNameContact(forContact: cont)
+       
         cell.contactImage.image = UIImage(named: "user_male_full")
         cell.contactImage.layer.cornerRadius=cell.contactImage.frame.size.width/2.0
         cell.contactImage.layer.masksToBounds = true

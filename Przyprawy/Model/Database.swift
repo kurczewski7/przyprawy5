@@ -231,7 +231,7 @@ class Database  {
     func deleteOne() {
         let r = product.count-1
         context.delete(product[r])
-        product.remove(at: r)
+        _ = product.remove(at: r)
         save()
     }
     func deleteOne(withProductRec row : Int) {
@@ -246,7 +246,7 @@ class Database  {
         let arr = toShopProduct.array
         let r = (row == -1 ? toShopProduct.count-1 : row)
         context.delete(toShopProduct[r])
-        toShopProduct.remove(at: r)
+        _ = toShopProduct.remove(at: r)
         save()
         let arr2 = toShopProduct.array
         print("\(arr)")
@@ -256,7 +256,7 @@ class Database  {
         //let arr = basketProduct.basketProductArray   //toShopProduct.toShopProductArray
         let r = (row == -1 ? basketProduct.count-1 : row)
         context.delete(basketProduct[r])
-        basketProduct.remove(at: r)
+        _ = basketProduct.remove(at: r)
         save()
     }
     func uncheckOne(withToShopRec row : Int, toCheck: Bool = false) {
@@ -288,7 +288,7 @@ class Database  {
     }
     
       func addOneRecord(newProduct : ProductTable) {
-        self.product.add(value: newProduct)
+        _ = self.product.add(value: newProduct)
         self.save()
     }
     func addOneRecord(newProductInBasket basketProd: BasketProductTable, at row: Int = -1) {
@@ -296,7 +296,7 @@ class Database  {
             self.basketProduct.append(basketProd)
         }
         else {
-            self.basketProduct.insert(basketProd, at: row)
+            _ = self.basketProduct.insert(basketProd, at: row)
         }
         self.save()
     }
@@ -590,7 +590,7 @@ class Database  {
     func removeFromProductList(withProductRec row : Int = -1) {
         let r = (row == -1 ? product.count-1 : row)
         context.delete(product[r])
-        product.remove(at: r)
+        _ = product.remove(at: r)
         save()
     }
 //    func deleteOne(withProductRec row : Int = -1) {
@@ -956,15 +956,11 @@ class BasketProduct {
     }
 }
 
-
-
 //        let predicate=NSPredicate(format: "%K CONTAINS[cd] %@", searchField, searchText)
 //        predicates.append(predicate)
 //        let predicateAll=NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: predicates)
 //        reqest.predicate=predicateAll
 //  let groupPredicate=NSPredicate(format: "%K = %@", "categoryId", "\(findCategoryId)")
-
-
 
 //    // variable for ProductTable
 //    var productArray : [ProductTable] = []

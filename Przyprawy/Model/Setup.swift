@@ -11,6 +11,7 @@ import UIKit
 
 class Setup {
     struct SelectedContact {
+        var key:   String
         var name:  String
         var email: String
         var phone: String

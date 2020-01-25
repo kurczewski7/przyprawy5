@@ -24,7 +24,9 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-           self.tableView.isEditing = true
+        //database.delTable(dbTableName: .favoriteContacts)
+        database.favoriteContacts.deleteAll()
+        self.tableView.isEditing = true
         
         print("-----------")
         for (tmpKey, tmpContact) in Setup.preferedContacts {
@@ -32,7 +34,24 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
             self.contactList.append(tmpContact)
         }
     }
-
+    func savePreferedContacts() {
+        for tmpContact in contactList {
+            saveOneContact(forContact: tmpContact)
+        }
+    }
+    func saveOneContact(forContact contact: Setup.SelectedContact) {
+        let oneRecord: FavoriteContactsTable = FavoriteContactsTable(context: database.context)
+        oneRecord.key   = contact.key
+        oneRecord.name  = contact.name
+        oneRecord.phone = contact.phone
+        oneRecord.email = contact.email
+        oneRecord.image = contact.image?.pngData()
+        _ = database.favoriteContacts.add(value: oneRecord)
+        print("Saved contact")
+        print("key:\(oneRecord.key),name:\(oneRecord.name),\(oneRecord.phone),\(oneRecord.email)")
+        database.save()
+    }
+    // Deleate UITableViewDelegate and UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactList.count
     }
@@ -74,6 +93,9 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+    deinit {
+        savePreferedContacts()
     }
 
     //    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

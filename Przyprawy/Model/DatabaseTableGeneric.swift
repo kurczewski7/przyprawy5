@@ -31,18 +31,12 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
         set {   genericArrayFiltered = newValue  }
     }
     subscript(index: Int) -> P {
-        get {  return genericArray[index]      }
-        set {  genericArray[index] = newValue  }
+        get {  _ = isIndexInRange(index: index)
+            return genericArray[index]      }
+        set {   _ = isIndexInRange(index: index)
+            genericArray[index] = newValue  }
     }
-//    subscript(section: Int, row: Int) {
-//        get { return nil }
-//        set { _ = newValue }
-//    }
-    func append<T>(_ value: T) {
-        if let val = value as? P {
-            genericArray.append(val)
-        }
-    }
+
     init(context: NSManagedObjectContext, keys: [String], ascendingKeys: [Bool], _ setFetchReqest: () -> NSFetchRequest<NSFetchRequestResult>) {
         self.context=context
         genericArray=[]
@@ -53,6 +47,34 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
         }
         feachRequest.sortDescriptors = sortDescriptors
         featchResultCtrl = NSFetchedResultsController(fetchRequest: feachRequest, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil) as! NSFetchedResultsController<P>
+    }
+    func isIndexInRange(index: Int) -> Bool {
+            if index >= count {
+                print("Index \(index) is bigger then count \(count). Give correct index!")
+                return false
+            }
+            else {
+                return true
+            }
+        }
+    //    subscript(section: Int, row: Int) {
+    //        get { return nil }
+    //        set { _ = newValue }
+    //    }
+    func first() -> P {
+        _ = isIndexInRange(index: 0)
+        return genericArray[0]
+    }
+    func last() -> P {
+        let lastVal = count-1
+        _ = isIndexInRange(index: lastVal)
+        return genericArray[lastVal]
+
+    }
+    func append<T>(_ value: T) {
+        if let val = value as? P {
+            genericArray.append(val)
+        }
     }
     func add(value: P) -> Int {
         genericArray.append(value)
@@ -73,5 +95,18 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
         
         return true
     }
+    func deleteAll()  {
+         let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: feachRequest)
+        do { try context.execute(DelAllReqVar) }
+        catch { print(error) }
+    }
+
+    
+//    func removeAll() {
+//        genericArray.removeAll()
+//    }
+//    func deleteAll() {
+//        removeAll()
+//    }
     
 } // end of class ProductSeting
