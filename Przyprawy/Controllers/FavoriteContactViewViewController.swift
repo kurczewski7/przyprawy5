@@ -36,10 +36,17 @@ class FavoriteContactViewViewController: UIViewController, UITableViewDelegate, 
         if num < database.favoriteContacts.count {
             let rec = database.favoriteContacts[num]
             if let key = rec.key {
-                let name  = rec.name  ?? "No name"
-                let email = rec.email ?? "No email"
-                let phone = rec.phone ?? "No phone"
-                let myContact = Setup.SelectedContact(key: key, name:  name, email: email, phone: phone)
+                let name    = rec.name  ?? "No name"
+                let email   = rec.email ?? "No email"
+                let phone   = rec.phone ?? "No phone"
+                var myContact = Setup.SelectedContact(key: key, name:  name, email: email, phone: phone)
+                if let picture = rec.image {
+                    myContact.image = UIImage(data: picture)
+                }
+                else {
+                    myContact.image = nil
+                }
+               
                 Setup.preferedContacts.updateValue(myContact, forKey: key)
             }
         }

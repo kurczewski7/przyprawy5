@@ -15,6 +15,7 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
     var context: NSManagedObjectContext
     private var  genericArray = [P]()
     private var  genericArrayFiltered: [P] = []
+    private var  currentRow = 0
     
     var featchResultCtrl: NSFetchedResultsController<P> = NSFetchedResultsController<P>()
     var feachRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>()
@@ -96,9 +97,28 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
         return true
     }
     func deleteAll()  {
-         let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: feachRequest)
+        let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: feachRequest)
         do { try context.execute(DelAllReqVar) }
         catch { print(error) }
+    }
+    func next() -> P? {
+        if currentRow+1 < count {
+            currentRow += 1
+            return genericArray[currentRow]
+        }
+        else {
+            return nil
+        }
+        
+    }
+    func previous() -> P? {
+        if currentRow > 0 && currentRow < count {
+            currentRow += 1
+            return genericArray[currentRow]
+        }
+        else {
+            return nil
+        }
     }
 
     
