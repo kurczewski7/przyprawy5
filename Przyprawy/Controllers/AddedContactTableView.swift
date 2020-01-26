@@ -11,6 +11,8 @@ import UIKit
 class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     var contactList: [Setup.SelectedContact] = []
+    // let xxx=database.favoriteContacts.array
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editModeButtonOutlet: UIBarButtonItem!
     
@@ -25,7 +27,7 @@ class AddedContactTableView: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         //database.delTable(dbTableName: .favoriteContacts)
-        database.favoriteContacts.deleteAll()
+        //database.favoriteContacts.deleteAll()
         self.tableView.isEditing = true
         
         print("-----------")

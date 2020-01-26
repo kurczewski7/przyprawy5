@@ -25,13 +25,21 @@ class FavoriteContactTableViewCell: UITableViewCell {
     @IBAction func iLikeTap(_ sender: UIButton) {
         if sender.tintColor == .red {
             sender.tintColor = .green
-            let name = contactNameLabel.text ?? ""
+            let name  = contactNameLabel.text ?? ""
             let email = eMailLabel.text ?? ""
             let pfone = contactPhoneNumberLabel.text ?? ""
             if let key = userKey {
                 var newVal =  Setup.SelectedContact(key: key, name: name, email: email, phone: pfone)
                 newVal.image = isUserPicture ? contactImage.image : nil
                 Setup.preferedContacts.updateValue(newVal, forKey: key)
+                let contactRec = FavoriteContactsTable(context: database.context)
+                contactRec.key   = key
+                contactRec.name  = name
+                contactRec.email = email
+                contactRec.phone = pfone
+                contactRec.image = newVal.image?.pngData()
+                _ = database.favoriteContacts.add(value: contactRec)
+                database.save()
             }
         }
         else {
