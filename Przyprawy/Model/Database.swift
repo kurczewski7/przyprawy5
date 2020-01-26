@@ -32,6 +32,17 @@ class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTablePro
     }
 }
 class FavoriteContacts: DatabaseTableGeneric<FavoriteContactsTable>, DatabaseTableProtocol {
+    func findExistElement(forKey key: String) -> Int {
+        let row = findValue(procedureToCheck: { (contact)  in
+            if let tmpKey = contact?.key {
+                return tmpKey == key
+            } else
+            {
+               return false
+            }
+        })
+        return row
+    }
 }
 //--------------------------------------------------------------------------------------------------------------------------------
 // Main database class

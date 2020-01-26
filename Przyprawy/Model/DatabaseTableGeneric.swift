@@ -131,7 +131,7 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
             executeBlock(i, elem)
         }
     }
-    func findValue(procedureToCheck: (_ oneElement: P?) -> Bool) -> Int? {
+    func findValue(procedureToCheck: (_ oneElement: P?) -> Bool) -> Int {
         var i = -1
         for elem in genericArray {
             i += 1
@@ -141,7 +141,7 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
             }
         }
         print("Object not found in table")
-        return nil
+        return -1
     }
     func moveRow(fromSourceIndex sourceIndex: Int, to destinationIndex: Int) {
         let objectToMove = genericArray[sourceIndex]

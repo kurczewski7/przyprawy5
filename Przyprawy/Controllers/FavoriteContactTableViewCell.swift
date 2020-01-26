@@ -22,6 +22,17 @@ class FavoriteContactTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+//    func findExistElement(forKey key: String) -> Int {
+//        let row = database.favoriteContacts.findValue(procedureToCheck: { (contact)  in
+//            if let tmpKey = contact?.key {
+//                return tmpKey == key
+//            } else
+//            {
+//               return false
+//            }
+//        })
+//        return row
+//    }
     @IBAction func iLikeTap(_ sender: UIButton) {
         if sender.tintColor == .red {
             sender.tintColor = .green
@@ -32,20 +43,27 @@ class FavoriteContactTableViewCell: UITableViewCell {
                 var newVal =  Setup.SelectedContact(key: key, name: name, email: email, phone: pfone)
                 newVal.image = isUserPicture ? contactImage.image : nil
                 Setup.preferedContacts.updateValue(newVal, forKey: key)
-                let contactRec = FavoriteContactsTable(context: database.context)
-                contactRec.key   = key
-                contactRec.name  = name
-                contactRec.email = email
-                contactRec.phone = pfone
-                contactRec.image = newVal.image?.pngData()
-                _ = database.favoriteContacts.add(value: contactRec)
-                database.save()
+                if  database.favoriteContacts.findExistElement(forKey: key) < 0 {
+                    let contactRec = FavoriteContactsTable(context: database.context)
+                    contactRec.key   = key
+                    contactRec.name  = name
+                    contactRec.email = email
+                    contactRec.phone = pfone
+                    contactRec.image = newVal.image?.pngData()
+                    _ = database.favoriteContacts.add(value: contactRec)
+                    database.save()
+                }
             }
         }
         else {
             sender.tintColor = .red
             if let key = userKey {
                  Setup.preferedContacts.removeValue(forKey: key)
+                let numberToDel = database.favoriteContacts.findExistElement(forKey: key)
+                if  numberToDel > -1 {
+                    _ = database.favoriteContacts.remove(at: numberToDel)
+                    database.save()
+                }
             }
         }
     }

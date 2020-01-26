@@ -65,9 +65,9 @@
             filePath = "Przyprawy/Model/Database.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "deleteOne(withProductRec:)"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "deleteOne(withToShopRec:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -129,8 +129,8 @@
             filePath = "Przyprawy/Model/Database.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "965"
-            endingLineNumber = "965"
+            startingLineNumber = "976"
+            endingLineNumber = "976"
             landmarkName = "array"
             landmarkType = "24">
          </BreakpointContent>
@@ -177,8 +177,8 @@
             filePath = "Przyprawy/Model/Database.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "Database"
             landmarkType = "3">
          </BreakpointContent>
