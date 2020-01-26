@@ -97,6 +97,7 @@ class Database  {
         }
     }
     // initialising class Database
+  // initialising class Database
     init(context: NSManagedObjectContext) {
         self.context = context
         self.selectedProductList = 1
@@ -111,19 +112,25 @@ class Database  {
         basketProduct = BasketProduct(context: context)
     
         
-        product = ProductSeting2(context: context, keys: ["productName"], ascendingKeys: [true]) {
+        product = ProductSeting2(className: "ProductSeting", databaseSelf: self, keys: ["productName"], ascendingKeys: [true]) {
              return ProductTable.fetchRequest()
         }
-        toShopProduct = ToShopProduct2(context: context, keys: ["id"], ascendingKeys: [true]) {
+        toShopProduct = ToShopProduct2( className: "ToShopProduct", databaseSelf: self, keys: ["id"], ascendingKeys: [true]) {
             return ToShopProductTable.fetchRequest()
         }
-        favoriteContacts = FavoriteContacts(context: context, keys: ["key"], ascendingKeys: [true]) {
+        favoriteContacts = FavoriteContacts(className: "FavoriteContacts", databaseSelf: self, keys: ["key"], ascendingKeys: [true]) {
             return FavoriteContactsTable.fetchRequest()
         }
 //        product.initalizeFeachRequest() {
 //            return ProductTable.fetchRequest()
 //        }
+        
+        
+//        let myClass = Database.self
+//        Database.
+//        let type = type(of: myClass)
     }
+
     func getParam(tableArrayWith dbName: DbTableNames) -> [AnyObject] {
         
         var myArray: [AnyObject]?
@@ -609,7 +616,86 @@ class Database  {
     }
 }
 //=====================================================
+//class FavoriteContacts: DatabaseTableGeneric<FavoriteContactsTable>, DatabaseTableProtocol {
+//}
+
 // New Class ------------------------------------------
+class CategorySeting2: DatabaseTableGeneric<CategoryTable> {
+    struct SectionsData {
+           var sectionId: Int = 0
+           var sectionTitle: String = "No title"
+           var groupId: Int = 0
+           var objects: [Int] = []
+       }
+      var categoryGroups : [[Int]] = [[0,1,2], [3,4], [6],[],[],[],[],[]]
+      var sectionsData: [SectionsData] = [SectionsData]()
+    
+    
+    
+      func crateCategoryGroups(forToShopProduct: [ToShopProductTable] ) {
+            var categoryId: Int16 = 0
+            //var categoryTmp: Int16?
+            clearToShopForCategorries()
+            for i in 0..<forToShopProduct.count {
+                categoryId = forToShopProduct[i].productRelation?.categoryId ?? 0
+                if categoryId > 0 {
+                    categoryGroups[Int(categoryId)-1].append(i)
+                }
+            }
+            createSectionsData()
+        }
+        func createSectionsData() {
+            sectionsData.removeAll()
+            var i: Int = 0
+            var sectionNo: Int = 0
+            var sectionTitle = ""
+            for tmp in categoryGroups {
+                if tmp.count > 0 {
+                    sectionTitle = Setup.polishLanguage ? Setup.categoriesData[sectionNo].name : Setup.categoriesData[sectionNo].nameEN
+                    addElementToSectionData(sectionId: sectionNo+1, sectionTitle: sectionTitle, groupId: i, objects: tmp)
+                    i += 1
+                }
+                sectionNo += 1
+            }
+        }
+        func addElementToSectionData(sectionId: Int, sectionTitle: String, groupId: Int, objects: [Int])
+        {
+            let newElement = SectionsData(sectionId: sectionId, sectionTitle: sectionTitle, groupId: groupId, objects: objects)
+            print("newElement \(newElement)")
+             sectionsData.append(newElement)
+        }
+        func deleteElement(forIndexpath indexpath: IndexPath) {
+            let secton = indexpath.section
+            let row = indexpath.row
+            
+    //aaaaaaaaaaaaaaaaaaaa
+            sectionsData[secton].objects.remove(at: row)
+            if sectionsData[secton].objects.count == 0 {
+                print("UWAGA. OSTATNI ELEMENT")
+                print("befor \(sectionsData[0])")
+                //sectionsData.remove(at: secton)
+                print("aftyer count: \(sectionsData.count)")
+            }
+        }
+        func  clearToShopForCategorries() {
+            categoryGroups = [[], [], [],[],[],[],[],[]]
+        }
+        func getCurrentSectionCount(forSection section: Int) -> Int {
+            let val = self.sectionsData[section].objects.count //categoryGroups[section].count
+             return val
+        }
+        
+        func getTotalNumberOfSection() -> Int {
+            let val = self.sectionsData.count // database.category.getCurrentSectionCount(forSection: section)
+            return val
+            
+        }
+        func getCategorySectionHeader(forSection section: Int) -> String {
+            return self.sectionsData[section].sectionTitle
+        }
+
+
+}
 class CategorySeting {
     struct SectionsData {
         var sectionId: Int = 0

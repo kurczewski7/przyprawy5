@@ -5,17 +5,18 @@
 //  Created by Slawek Kurczewski on 22/01/2020.
 //  Copyright © 2020 Slawomir Kurczewski. All rights reserved.
 //
-
 import Foundation
 import CoreData
 // New Class ------------------------------------------
-// variable for ProductTable
-class DatabaseTableGeneric <P: NSFetchRequestResult> { 
+// variable for exemple ProductTable
+class DatabaseTableGeneric <P: NSFetchRequestResult> {
 
     var context: NSManagedObjectContext
+    var databaseSelf: Database
     private var  genericArray = [P]()
     private var  genericArrayFiltered: [P] = []
     private var  currentRow = 0
+    var  classNameString: String = ""
     
     var featchResultCtrl: NSFetchedResultsController<P> = NSFetchedResultsController<P>()
     var feachRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>()
@@ -37,10 +38,16 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
         set {   _ = isIndexInRange(index: index)
             genericArray[index] = newValue  }
     }
-
-    init(context: NSManagedObjectContext, keys: [String], ascendingKeys: [Bool], _ setFetchReqest: () -> NSFetchRequest<NSFetchRequestResult>) {
-        self.context=context
-        genericArray=[]
+    // you can override this class name in inheritance class
+    func className() -> String {
+        return self.classNameString  //"DatabaseTableGeneric"
+    }
+    init(className: String, databaseSelf: Database, keys: [String], ascendingKeys: [Bool], _ setFetchReqest: () -> NSFetchRequest<NSFetchRequestResult>) {
+        self.context = databaseSelf.context
+        self.databaseSelf = databaseSelf
+        self.classNameString = className
+        
+        genericArray = []
         feachRequest = setFetchReqest()
         //feachRequest = initalizeFeachRequest()     // ProductTable.fetchRequest()
         for i in 0..<keys.count {
@@ -49,19 +56,17 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
         feachRequest.sortDescriptors = sortDescriptors
         featchResultCtrl = NSFetchedResultsController(fetchRequest: feachRequest, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil) as! NSFetchedResultsController<P>
     }
-    func isIndexInRange(index: Int) -> Bool {
+    func isIndexInRange(index: Int, isPrintToConsol: Bool = true) -> Bool {
             if index >= count {
-                print("Index \(index) is bigger then count \(count). Give correct index!")
+                if isPrintToConsol {
+                   print("Index \(index) is bigger then count \(count). Give correct index!")
+                }
                 return false
             }
             else {
                 return true
             }
         }
-    //    subscript(section: Int, row: Int) {
-    //        get { return nil }
-    //        set { _ = newValue }
-    //    }
     func first() -> P {
         _ = isIndexInRange(index: 0)
         return genericArray[0]
@@ -70,7 +75,6 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
         let lastVal = count-1
         _ = isIndexInRange(index: lastVal)
         return genericArray[lastVal]
-
     }
     func append<T>(_ value: T) {
         if let val = value as? P {
@@ -82,18 +86,17 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
         return genericArray.count
     }
     func remove(at row: Int) -> Bool {
-        let res: Bool
+        //let res: Bool
         if row < genericArray.count {
             genericArray.remove(at: row)
-            res = true
+            return true
         }
         else {
-            res = false
+            return false
         }
-        return res
     }
     func remove(fromDatabaseRow row:Int) -> Bool {
-        
+        // TODO: If you want
         return true
     }
     func deleteAll()  {
@@ -109,7 +112,6 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
         else {
             return nil
         }
-        
     }
     func previous() -> P? {
         if currentRow > 0 && currentRow < count {
@@ -120,13 +122,34 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
             return nil
         }
     }
+    // TODO: If you want
+    func forEach(executeBlock: (_ index: Int, _ oneElement: P?) -> Void) {
+        var i = -1
+        print("genericArray.count:\(genericArray.count)")
+        for elem in genericArray {
+            i += 1
+            executeBlock(i, elem)
+        }
+    }
+    func findValue(procedureToCheck: (_ oneElement: P?) -> Bool) -> Int? {
+        var i = -1
+        for elem in genericArray {
+            i += 1
+            if procedureToCheck(elem) {
+                print("Object fond in table row \(i)")
+                return i
+            }
+        }
+        print("Object not found in table")
+        return nil
+    }
+    func moveRow(fromSourceIndex sourceIndex: Int, to destinationIndex: Int) {
+        let objectToMove = genericArray[sourceIndex]
+        genericArray.remove(at: sourceIndex)
+        genericArray.insert(objectToMove, at: destinationIndex)
+    }
+    func save() {
+        self.databaseSelf.save()
+    }
+} // end of class DatabaseTableGeneric
 
-    
-//    func removeAll() {
-//        genericArray.removeAll()
-//    }
-//    func deleteAll() {
-//        removeAll()
-//    }
-    
-} // end of class ProductSeting
