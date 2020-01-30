@@ -44,6 +44,23 @@ class Setup {
         return name
     }
     
+    static func getWelcome() -> String {
+        var value: String = ""
+        switch currentLanguage {
+            case LanguaesList.polish:
+                value = welcome_pl
+            case LanguaesList.enlish:
+                value = welcome_en
+            case LanguaesList.german:
+                value = welcome_de
+            case LanguaesList.french:
+                value = welcome_fr
+            default:
+                value = welcome_en
+        }
+        return value
+    }
+    
     static let fructsProd    : [String] = ["owoce_01_b","owoce_02_b","owoce_03_b","owoce_04_b","owoce_05_b","owoce_06_b","owoce_07_b","owoce_08_b","owoce_09_b","owoce_10_b",
                                     "owoce_11_b","owoce_12_b","owoce_13_b","owoce_14_b","owoce_15_b","owoce_16_b","owoce_17_b","owoce_18_b","owoce_19_b","owoce_20_b"]
 
@@ -64,6 +81,45 @@ class Setup {
 
        // / [("Przyprawy", "Spices","picture1",true),("Warzywa", "Vegetables","picture1",false),("Owoce", "Fructs","picture1",false)]
 
+            //super.viewDidLoad()
+            //textView.delegate = self
+    static let welcome_pl = """
+        W Szczebrzeszynie chrząszcz brzmi w trzcinie.
+        I Szczebrzeszyn z tego słynie.
+        Wół go pyta: ”Panie chrząszczu,
+        Po co pan tak brzęczy w gąszczu?”.
+        ”Jak to – po co? To jest praca,
+        Każda praca się opłaca.”
+
+        ”A cóż za to Pan dostaje?”.
+        ”Też pytanie! Wszystkie gaje,
+        Wszystkie trzciny po wsze czasy,
+        Łąki, pola oraz lasy,
+        Nawet rzeczki, nawet zdroje,
+        Wszystko to jest właśnie moje!”
+        – Jan Brzechwa ”CHRZĄSZCZ”
+        """
+    static let welcome_en = """
+        ROBINSON CRUSOE. I WAS born in the year 1632, in the city of York, of a
+        good family, though not of that country, my father being a
+        foreigner of Bremen, who settled first at Hull. He got a
+        good estate by merchandise, and leaving off his trade, lived
+        afterwards at York, from whence he had married my
+        mother, whose relations were named Robinson, a very
+        good family in that country, and from whom I was called
+        Robinson Kreutznaer; but, by the usual corruption of
+        words in England, we are now called - nay we call
+        ourselves and write our name - Crusoe; and so my
+        companions always called me.
+        """
+    static let welcome_de = """
+        Flüchtlinge, die Unterstützung beim Erlernen der deutschen Sprache suchen und kostenfrei Deutsch üben wollen, finden hier ab sofort eine Vielzahl von Sprachlernangeboten des Goethe-Instituts: Selbstlernkurse, Sprechübungen und Videos sowie Informationen zum Umgang mit Behörden, im Alltag oder bei der Arbeitssuche. Alle Angebote funktionieren auf Smartphones und Tablets. Ein interaktives Wortschatztraining in 16 Sprachen kann ohne Vorkenntnisse genutzt werden, zahlreiche Angebote sind begleitend zu Präsenzkursen hilfreich.
+        """
+    static let welcome_fr = """
+        Écrivain français né à Tours en 1799, décédé à Paris en 1850, Balzac (qui ajoutera une particule à son nom en 1831) est issu de la petite bourgeoisie provinciale. Sa mère l'envoie à l'âge de huit ans chez les oratoriens de Vendôme, où il reste pensionnaire pendant six ans et semble préférer la lecture à des études qu'il achèvera cependant à Paris (1814-1816). Destiné à une carrière juridique mais passionné par la lecture de romans, il arrive à convaincre sa famille de le laisser s'essayer à l'écriture. Après avoir lu la première tragédie en vers de Balzac, Cromwell amènera un critique ami de la famille à déconseiller la carrière littéraire au jeune homme.
+"""
+  
+    
     static let picturesArray: [String] =
         ["CYKORIA_ARROD_PAPRYKA_OSTRA_MIELONA_10G_59954826_0_173_200",
          "CYKORIA_ARROD_PIEPRZ_CZARNY_ZIARNISTY_11G_60057064_0_173_200",

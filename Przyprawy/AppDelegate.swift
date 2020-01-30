@@ -8,8 +8,14 @@
 
 import UIKit
 enum LanguaesList: String {
-    case enlish = "EN"
-    case polish = "PL"
+    //  let language = ["pl", "en-GB","de","fr","pl"]
+    case enlish    = "en"
+    case english_US = "en-US"
+    case english_GB = "en-GB"
+    case polish    = "pl"
+    case german    = "de"
+    case french    = "fr"
+    case spanish   = "sp"
 }
 
 enum DbTableNames : String {
@@ -36,6 +42,7 @@ let coreData = CoreDataStack()
 let database = Database(context: coreData.persistentContainer.viewContext)
 let server   = Server()
 let cards = Setup.fillCards()
+let speak = Speaking()
 
 //let polishLanguage = true
 // Mark: Detect 3D touch
@@ -49,6 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        let speak = Speak(lang: .polish)
+//        speak.startSpeaking()   //sSpeaking()
+        
         print("database.product.count przed: \(database.product.count)")
         database.loadData(tableNameType: .products)
         print("database.product.count po: \(database.product.count)")
@@ -76,6 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         // Override point for customization after application launch.
         aboutSwiftVersion()
+        let texToSpeach = Setup.getWelcome()
+        //speak.LanguageId = Setup.currentLanguage.rawValue
+        speak.textToSpeach = texToSpeach     //Setup.getWelcome()
+        //speak.startSpeaking()
 
         return true
     }

@@ -21,6 +21,7 @@
 		2C31B32521383A4900B7581D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31B32421383A4900B7581D /* Database.swift */; };
 		2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38921F2122FE5300257476 /* AtHomeCell.swift */; };
 		2C3F37A92216060F00397BD7 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F37A82216060F00397BD7 /* ShareViewController.swift */; };
+		2C4B0AFB23E372F500237B9A /* Speaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B0AFA23E372F500237B9A /* Speaking.swift */; };
 		2C55CD3B234A8FBE00ACFC95 /* SelectedProducyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C55CD3A234A8FBE00ACFC95 /* SelectedProducyListController.swift */; };
 		2C55CD3D234A900F00ACFC95 /* SelectedProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C55CD3C234A900F00ACFC95 /* SelectedProductListCell.swift */; };
 		2C60EB6123A26C580018D327 /* Bits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C60EB6023A26C580018D327 /* Bits.swift */; };
@@ -109,6 +110,7 @@
 		2C31B32421383A4900B7581D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		2C38921F2122FE5300257476 /* AtHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeCell.swift; sourceTree = "<group>"; };
 		2C3F37A82216060F00397BD7 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		2C4B0AFA23E372F500237B9A /* Speaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaking.swift; sourceTree = "<group>"; };
 		2C55CD3A234A8FBE00ACFC95 /* SelectedProducyListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProducyListController.swift; sourceTree = "<group>"; };
 		2C55CD3C234A900F00ACFC95 /* SelectedProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProductListCell.swift; sourceTree = "<group>"; };
 		2C55CD3F234A910600ACFC95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				2CE2756D210237AF001C046B /* DataModel.xcdatamodeld */,
+				2CF187BF2398161700BEB505 /* Setup.swift */,
 				2C6A2E762360875C002C85DA /* SettingsBundleHelper.swift */,
 				2C1F1D6622072CD3004665DD /* WebCreator.swift */,
 				2C31B32421383A4900B7581D /* Database.swift */,
@@ -212,7 +215,7 @@
 				2C158CD7218623B300C3438B /* CoreDataStack.swift */,
 				2C70579B2139ED4300B99FEA /* Product.swift */,
 				2C82B678223925A900772BF6 /* Server.swift */,
-				2CF187BF2398161700BEB505 /* Setup.swift */,
+				2C4B0AFA23E372F500237B9A /* Speaking.swift */,
 				2C61F47A236B186900795C07 /* ProductList.swift */,
 			);
 			path = Model;
@@ -529,6 +532,7 @@
 				2C82B679223925A900772BF6 /* Server.swift in Sources */,
 				2C1B7940219C7DE300A7BD63 /* CategoryCollectionViewCell.swift in Sources */,
 				2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */,
+				2C4B0AFB23E372F500237B9A /* Speaking.swift in Sources */,
 				2CB2281B21F2522C008A3292 /* InBasketTableViewCell.swift in Sources */,
 				2CB903B12301B065009F6A8E /* SelProductViewControllerCell.swift in Sources */,
 				2CF187C02398161700BEB505 /* Setup.swift in Sources */,
