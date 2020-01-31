@@ -10,12 +10,12 @@ import Foundation
 import AVFoundation
 
 class Speaking {
-    var LanguageId = "en-GB"
     let synthesier = AVSpeechSynthesizer()
     var selectedLanguage = 0
-    init() {
-        self.LanguageId =  Setup.currentLanguage.rawValue
-        self.textToSpeach = ""
+    var languageId: String  {
+        get {
+         return Setup.languageId
+        }
     }
     var textToSpeach: String {
         didSet {
@@ -23,10 +23,14 @@ class Speaking {
             else {   startSpeaking()       }
         }
     }
+    init() {
+        //self.languageId =  Setup.languageId
+        self.textToSpeach = ""
+    }
     var contentToSpeac: [String] = []
     func startSpeaking() {
         let utterance = AVSpeechUtterance(string: textToSpeach) //contentToSpeac[selectedLanguage]
-        utterance.voice = AVSpeechSynthesisVoice(language: LanguageId) // pl "en-GB" "en-US"
+        utterance.voice = AVSpeechSynthesisVoice(language: languageId) // pl "en-GB" "en-US"
         synthesier.speak(utterance)
     }
     func stopSpeaking() {

@@ -22,6 +22,11 @@ class Setup {
     static var polishLanguage: Bool  {     return currentLanguage == LanguaesList.polish ? true : false }
     static var preferedContacts: [String : SelectedContact] = [:]
     static var currentContactKey: String?
+    static var languageId: String {
+        get {
+            currentLanguage.rawValue
+        }
+    }
     
     static let  categoriesData : [CategoryType]  =
         [(name: "Przyprawy", nameEN: "Spices", pictureName: "🌶🧂", selectedCategory : false),
@@ -84,20 +89,7 @@ class Setup {
             //super.viewDidLoad()
             //textView.delegate = self
     static let welcome_pl = """
-        W Szczebrzeszynie chrząszcz brzmi w trzcinie.
-        I Szczebrzeszyn z tego słynie.
-        Wół go pyta: ”Panie chrząszczu,
-        Po co pan tak brzęczy w gąszczu?”.
-        ”Jak to – po co? To jest praca,
-        Każda praca się opłaca.”
-
-        ”A cóż za to Pan dostaje?”.
-        ”Też pytanie! Wszystkie gaje,
-        Wszystkie trzciny po wsze czasy,
-        Łąki, pola oraz lasy,
-        Nawet rzeczki, nawet zdroje,
-        Wszystko to jest właśnie moje!”
-        – Jan Brzechwa ”CHRZĄSZCZ”
+        Program Przyprawy służy do wspomagania zakupów codziennych. W obecnej wersji program ma 8 kategorii produktów takich jak przyprawy, warzywa i owoce, pieczywo i tym podobne. Aby dokonać zakupów należy najpierw stworzyć listę zakupów dodajac poszczegolne produkty z katalogu do swojej listy. W tym celu można skorzystać do wyszukiwania produktów po nazwie produktu lub po producencie. Wyszukiwanie odbywać się przy pomocy klawiatury lub głosowo.W proramie w dolnej cześci jest pięc zakładek. Na zakładce pierwszej jest lista z której mozna usuwać towary przesuwąjac palcem nad wybraną komorką w lewo a nastepnie należy wybrać ikonę z koszem. Na zakladce drugiej wystepują dwie sekcje: do kupienia i kupione. Przesuwając w lewo komorkę na drugiej zakladce można wybrac opcję kup lub zwróć z ikonami kosza. Przesuwajac w prawo komorke, mozna usunąć calkowicie dany produkt z listy. Na zakładce trzeciej mozemy zobaczyc realizowane zakupy oraz wysłac liste zakupow emallem lub sms do wybranych osób w celu konsultacji. Zakładka ostatnia  o nazwie kontakty umożliwia stworzenie na podstawie kontaktów telefonicznych listy preferowanych adresów email lub numerów telefonu dla których można udostepniać liste zakupow. Listę tę mozna rownież udostepniać przy pomocy aplikacji takich jak Facebook i Flicker. Katalog produktów przechowywany jest w internecie a listy naszych produktów sa przechowywane lokalnie. Program obsługje w pełni jezyk anielski i polski zaś w ograniczonym zakresie niemicki i francuski.
         """
     static let welcome_en = """
         ROBINSON CRUSOE. I WAS born in the year 1632, in the city of York, of a

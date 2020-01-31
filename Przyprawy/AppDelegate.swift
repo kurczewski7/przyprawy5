@@ -9,15 +9,14 @@
 import UIKit
 enum LanguaesList: String {
     //  let language = ["pl", "en-GB","de","fr","pl"]
-    case enlish    = "en"
+    case enlish     = "en"
     case english_US = "en-US"
     case english_GB = "en-GB"
-    case polish    = "pl"
-    case german    = "de"
-    case french    = "fr"
-    case spanish   = "sp"
+    case polish     = "pl"
+    case german     = "de"
+    case french     = "fr"
+    case spanish    = "sp"
 }
-
 enum DbTableNames : String {
     case products         = "ProductTable"
     case basket           = "BasketProductTable"
@@ -86,9 +85,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         // Override point for customization after application launch.
         aboutSwiftVersion()
-        let texToSpeach = Setup.getWelcome()
-        //speak.LanguageId = Setup.currentLanguage.rawValue
-        speak.textToSpeach = texToSpeach     //Setup.getWelcome()
+        
+        Setup.currentLanguage = .polish
+//        Setup.currentLanguage = .enlish
+//        Setup.currentLanguage = .german
+//        Setup.currentLanguage = .french
+        speak.textToSpeach = Setup.getWelcome()
+        
+        
+        //Setup.getWelcome()
         //speak.startSpeaking()
 
         return true
