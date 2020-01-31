@@ -53,6 +53,7 @@
 		2C8ABAEA23D5FE0600D83ED7 /* AddedContactTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8ABAE923D5FE0600D83ED7 /* AddedContactTableView.swift */; };
 		2C8ABAEC23D6039D00D83ED7 /* AddedContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8ABAEB23D6039D00D83ED7 /* AddedContactTableViewCell.swift */; };
 		2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C528C2122E135006D8099 /* AtHomeViewController.swift */; };
+		2C90016E23E4DAD50001B434 /* ListenSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90016D23E4DAD50001B434 /* ListenSpeech.swift */; };
 		2C961DAD23D1220C00ED5420 /* FavoriteContactViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C961DAC23D1220C00ED5420 /* FavoriteContactViewViewController.swift */; };
 		2CB2281921F24BD8008A3292 /* InBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2281821F24BD8008A3292 /* InBasketViewController.swift */; };
 		2CB2281B21F2522C008A3292 /* InBasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */; };
@@ -145,6 +146,7 @@
 		2C8ABAE923D5FE0600D83ED7 /* AddedContactTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedContactTableView.swift; sourceTree = "<group>"; };
 		2C8ABAEB23D6039D00D83ED7 /* AddedContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedContactTableViewCell.swift; sourceTree = "<group>"; };
 		2C8C528C2122E135006D8099 /* AtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeViewController.swift; sourceTree = "<group>"; };
+		2C90016D23E4DAD50001B434 /* ListenSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenSpeech.swift; sourceTree = "<group>"; };
 		2C961DAC23D1220C00ED5420 /* FavoriteContactViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteContactViewViewController.swift; sourceTree = "<group>"; };
 		2CB2281821F24BD8008A3292 /* InBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InBasketViewController.swift; path = ../InBasketViewController.swift; sourceTree = "<group>"; };
 		2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InBasketTableViewCell.swift; path = ../InBasketTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				2CE2756D210237AF001C046B /* DataModel.xcdatamodeld */,
 				2CF187BF2398161700BEB505 /* Setup.swift */,
+				2C90016D23E4DAD50001B434 /* ListenSpeech.swift */,
 				2C6A2E762360875C002C85DA /* SettingsBundleHelper.swift */,
 				2C1F1D6622072CD3004665DD /* WebCreator.swift */,
 				2C31B32421383A4900B7581D /* Database.swift */,
@@ -538,6 +541,7 @@
 				2CF187C02398161700BEB505 /* Setup.swift in Sources */,
 				2C1B793E219C66DB00A7BD63 /* CategoryViewController.swift in Sources */,
 				2CDC33AE225762B7000BCBE1 /* String+extension.swift in Sources */,
+				2C90016E23E4DAD50001B434 /* ListenSpeech.swift in Sources */,
 				2C0A1D2821355BFF006FA312 /* PhoneContactsViewController.swift in Sources */,
 				2C7CB578212FEB57005F6304 /* Contacts.swift in Sources */,
 				2CE27567210237AF001C046B /* AppDelegate.swift in Sources */,

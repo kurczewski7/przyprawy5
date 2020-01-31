@@ -60,6 +60,8 @@ class Setup {
                 value = welcome_de
             case LanguaesList.french:
                 value = welcome_fr
+            case LanguaesList.spanish: 
+                value = welcome_sp
             default:
                 value = welcome_en
         }
