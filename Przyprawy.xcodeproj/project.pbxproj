@@ -208,7 +208,6 @@
 			children = (
 				2CE2756D210237AF001C046B /* DataModel.xcdatamodeld */,
 				2CF187BF2398161700BEB505 /* Setup.swift */,
-				2C90016D23E4DAD50001B434 /* ListenSpeech.swift */,
 				2C6A2E762360875C002C85DA /* SettingsBundleHelper.swift */,
 				2C1F1D6622072CD3004665DD /* WebCreator.swift */,
 				2C31B32421383A4900B7581D /* Database.swift */,
@@ -218,6 +217,7 @@
 				2C158CD7218623B300C3438B /* CoreDataStack.swift */,
 				2C70579B2139ED4300B99FEA /* Product.swift */,
 				2C82B678223925A900772BF6 /* Server.swift */,
+				2C90016D23E4DAD50001B434 /* ListenSpeech.swift */,
 				2C4B0AFA23E372F500237B9A /* Speaking.swift */,
 				2C61F47A236B186900795C07 /* ProductList.swift */,
 			);
