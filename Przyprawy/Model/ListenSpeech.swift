@@ -17,7 +17,7 @@ class ListenSpeech {
     }
     //memoTitle: "Nowe nagranie", memoDate: Date(), memoText: self.recordedMessage.text!
     //typealias Memo = String
-    var memoData: [Memo]!
+    var memoData: [Memo] = [Memo]()
     
     var currentLanguage = 0
     let languaeList = ["pl","en_GB","de","fr_FR","es_ES"]
@@ -37,6 +37,10 @@ class ListenSpeech {
            let audioEngine = AVAudioEngine()
            return audioEngine
        }()
+    init() {
+//        let memo = Memo(memoTitle: "Nagranie 1", memoDate: Date(), memoText: "")
+//        memoData.append(memo)
+    }
 
     //    lazy var speechRecognizer: SFSpeechRecognizer? = {
     //        if let recognizer = SFSpeechRecognizer(locale: Locale(identifier: languaeList[currentLanguage])) {
@@ -73,8 +77,7 @@ class ListenSpeech {
                     case .denied, .notDetermined, .restricted:
                          print("denied, notDetermined, restricted")
                     default :
-                        print("EROR Listen speach")
-                    
+                        print("EROR Listen speach")                    
                     }
                 }
             }

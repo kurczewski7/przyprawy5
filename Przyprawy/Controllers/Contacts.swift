@@ -9,7 +9,8 @@
 import UIKit
 
 class Contacts: UIViewController {
-    
+    var soundRecordOn = false
+    var listenSpeech: ListenSpeech? = nil
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -17,7 +18,25 @@ class Contacts: UIViewController {
         // Drawing code
     }
     */
-
+    override func viewDidAppear(_ animated: Bool) {
+       listenSpeech = ListenSpeech()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        listenSpeech = nil
+    }
+    
+    @IBAction func speeakTest() {
+        
+        if !soundRecordOn {
+            print("Start Listening")
+            listenSpeech?.startRecording()
+        }
+        else {
+            listenSpeech?.stopRecording()
+            print("LISTENIN: \(listenSpeech?.recordedMessage)")
+        }
+        soundRecordOn.toggle()
+     }
     @IBAction func callAction(_ sender: Any) {
         var tel = "512 58 95 28"
         tel=tel.replacingOccurrences(of: " ", with: "")

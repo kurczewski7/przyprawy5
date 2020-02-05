@@ -1053,6 +1053,11 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="barcode" id="N2p-ZL-tQo"/>
+                            <barButtonItem systemItem="organize" id="tfS-KY-94k">
+                                <connections>
+                                    <action selector="speeakTest" destination="PRb-pf-nmK" id="Av9-N0-ucQ"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
