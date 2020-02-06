@@ -1046,6 +1046,11 @@
                         <viewLayoutGuide key="safeArea" id="iIC-7T-6cj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Kontakty" id="vmv-e8-RYk">
+                        <barButtonItem key="leftBarButtonItem" image="microphone" id="tfS-KY-94k">
+                            <connections>
+                                <action selector="speeakTest" destination="PRb-pf-nmK" id="Av9-N0-ucQ"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="compose" id="dLT-pC-CXk">
                                 <connections>
@@ -1053,11 +1058,6 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="barcode" id="N2p-ZL-tQo"/>
-                            <barButtonItem systemItem="organize" id="tfS-KY-94k">
-                                <connections>
-                                    <action selector="speeakTest" destination="PRb-pf-nmK" id="Av9-N0-ucQ"/>
-                                </connections>
-                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -1960,6 +1960,7 @@
         <image name="heart" width="128" height="128"/>
         <image name="keyboard_filled" width="25" height="25"/>
         <image name="lock" width="25" height="25"/>
+        <image name="microphone" width="25" height="25"/>
         <image name="phone_message" width="25" height="25"/>
         <image name="plus" width="25" height="25"/>
         <image name="setup" width="25" height="25"/>

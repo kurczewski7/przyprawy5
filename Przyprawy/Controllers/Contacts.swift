@@ -8,34 +8,35 @@
 
 import UIKit
 
-class Contacts: UIViewController {
-    var soundRecordOn = false
-    var listenSpeech: ListenSpeech? = nil
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+class Contacts: UIViewController, ListenSpeechDelegate {
+    var listenSpeech: ListenSpeech!
+
     override func viewDidAppear(_ animated: Bool) {
-       listenSpeech = ListenSpeech()
+        listenSpeech = ListenSpeech()
+        listenSpeech?.delegate = self
+        print("")
     }
     override func viewDidDisappear(_ animated: Bool) {
         listenSpeech = nil
     }
-    
+    // MARK: mothod for protocol ListenSpeechDelegate
+    func updateListenSpeechInterface(forRedyToRecord isReady: Bool) {
+        let ikonName = isReady ? "circled_pause" : "microphone"
+        navigationItem.leftBarButtonItem?.image = UIImage(named: ikonName)
+    }
     @IBAction func speeakTest() {
-        
-        if !soundRecordOn {
-            print("Start Listening")
-            listenSpeech?.startRecording()
+        let speeking = Speaking()
+        listenSpeech.didTapRecordButton()
+        if listenSpeech.isEnabled {
+            if !listenSpeech.isEmpty {
+                print("\(listenSpeech.recordedMessage)")
+                Setup.currentLanguage = .polish
+                speeking.textToSpeach = "To jest test rozpoznania mowy" //listenSpeech.recordedMessage
+            }
+            
+            
         }
-        else {
-            listenSpeech?.stopRecording()
-            print("LISTENIN: \(listenSpeech?.recordedMessage)")
-        }
-        soundRecordOn.toggle()
+        print("Message: \(listenSpeech.recordedMessage), \(listenSpeech.isEnabled)")
      }
     @IBAction func callAction(_ sender: Any) {
         var tel = "512 58 95 28"

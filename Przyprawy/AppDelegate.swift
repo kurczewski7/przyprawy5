@@ -14,8 +14,8 @@ enum LanguaesList: String {
     case english_GB = "en-GB"
     case polish     = "pl"
     case german     = "de"
-    case french     = "fr"
-    case spanish    = "sp"
+    case french     = "fr_FR"
+    case spanish    = "es_ES"
 }
 enum DbTableNames : String {
     case products         = "ProductTable"

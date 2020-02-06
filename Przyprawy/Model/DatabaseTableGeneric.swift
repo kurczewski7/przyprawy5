@@ -16,7 +16,7 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
     private var  genericArray = [P]()
     private var  genericArrayFiltered: [P] = []
     private var  currentRow = 0
-    var  classNameString: String = ""
+    //var  classNameString: String = ""
     
     var featchResultCtrl: NSFetchedResultsController<P> = NSFetchedResultsController<P>()
     var feachRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>()
@@ -39,13 +39,13 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
             genericArray[index] = newValue  }
     }
     // you can override this class name in inheritance class
-    func className() -> String {
-        return self.classNameString  //"DatabaseTableGeneric"
+    class func className() -> String {
+        return  "DatabaseTableGeneric" //self.classNameString  //"DatabaseTableGeneric"
     }
-    init(className: String, databaseSelf: Database, keys: [String], ascendingKeys: [Bool], _ setFetchReqest: () -> NSFetchRequest<NSFetchRequestResult>) {
+    init(databaseSelf: Database, keys: [String], ascendingKeys: [Bool], _ setFetchReqest: () -> NSFetchRequest<NSFetchRequestResult>) {
         self.context = databaseSelf.context
         self.databaseSelf = databaseSelf
-        self.classNameString = className
+        //self.classNameString = className
         
         genericArray = []
         feachRequest = setFetchReqest()

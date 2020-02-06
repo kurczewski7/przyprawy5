@@ -16,9 +16,15 @@ protocol DatabaseDelegate: class {
 //--------------------------------------------------------------------------------------------------------------------------------
 // Other databases class
 class ProductSeting2:  DatabaseTableGeneric<ProductTable>, DatabaseTableProtocol {
+    override class func className() -> String {
+        return "ProductSeting2"
+    }
 }
 class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTableProtocol {
-     func insert(toshopProd: ToShopProductTable, at row: Int) {
+    override class func className() -> String {
+        return "ToShopProduct2"
+    }
+    func insert(toshopProd: ToShopProductTable, at row: Int) {
          let categoryId = toshopProd.productRelation?.categoryId ?? 0
          toshopProd.categoryId = categoryId
          array.insert(toshopProd, at: row)
@@ -32,6 +38,9 @@ class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTablePro
     }
 }
 class FavoriteContacts: DatabaseTableGeneric<FavoriteContactsTable>, DatabaseTableProtocol {
+    override class func className() -> String {
+        return "FavoriteContacts"
+    }
     func findExistElement(forKey key: String) -> Int {
         let row = findValue(procedureToCheck: { (contact)  in
             if let tmpKey = contact?.key {
@@ -123,13 +132,13 @@ class Database  {
         basketProduct = BasketProduct(context: context)
     
         
-        product = ProductSeting2(className: "ProductSeting", databaseSelf: self, keys: ["productName"], ascendingKeys: [true]) {
+        product = ProductSeting2(databaseSelf: self, keys: ["productName"], ascendingKeys: [true]) {
              return ProductTable.fetchRequest()
         }
-        toShopProduct = ToShopProduct2( className: "ToShopProduct", databaseSelf: self, keys: ["id"], ascendingKeys: [true]) {
+        toShopProduct = ToShopProduct2(databaseSelf: self, keys: ["id"], ascendingKeys: [true]) {
             return ToShopProductTable.fetchRequest()
         }
-        favoriteContacts = FavoriteContacts(className: "FavoriteContacts", databaseSelf: self, keys: ["key"], ascendingKeys: [true]) {
+        favoriteContacts = FavoriteContacts(databaseSelf: self, keys: ["key"], ascendingKeys: [true]) {
             return FavoriteContactsTable.fetchRequest()
         }
 //        product.initalizeFeachRequest() {
