@@ -25,37 +25,26 @@ class ListenSpeech {
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     lazy var speechRecognizer: SFSpeechRecognizer? = nil
-
     var languageId: String  {
-        get {
-         return Setup.languageId
-        }
+        get {    return Setup.languageId        }
     }
     var isEmpty : Bool {
-        get {
-            return recordedMessage.count > 0
-        }
+        get {    return recordedMessage.count > 0   }
     }
     lazy var audioEngine: AVAudioEngine = {
            let audioEngine = AVAudioEngine()
            return audioEngine
        }()
     init() {
-        // request auth
         self.requestAuth()
-        // init data
         memoData = []
     }
     private func setupSpeechRecognizer() ->  SFSpeechRecognizer? {
-        if let recognizer = SFSpeechRecognizer(locale: Locale(identifier: languageId)) {
-            //recognizer.delegate = self
-            return recognizer
-        }
+        if let recognizer = SFSpeechRecognizer(locale: Locale(identifier: languageId)) {    return recognizer   }
         else {   return nil    }
     }
     private func requestAuth() {
-        SFSpeechRecognizer.requestAuthorization { (authStatus) in
-            DispatchQueue.main.async {
+        SFSpeechRecognizer.requestAuthorization { (authStatus) in   DispatchQueue.main.async {
                 switch authStatus {
                     case .authorized:
                         print("authorized")
@@ -117,7 +106,6 @@ class ListenSpeech {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 self.isRecordEnabled = true
-                //self.recordButton.isEnabled = true
             }
         })
         let recordingFormat = audioEngine.inputNode.outputFormat(forBus: 0)
