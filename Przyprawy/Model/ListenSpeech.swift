@@ -17,28 +17,23 @@ class ListenSpeech {
         let memoDate: Date
         let memoText: String
     }
-    //memoTitle: "Nowe nagranie", memoDate: Date(), memoText: self.recordedMessage.text!
-    //typealias Memo = String
     var delegate: ListenSpeechDelegate?
     var memoData: [Memo] = [Memo]()
     var isEnabled = true
-    var isEmpty : Bool {
-        get {
-            return recordedMessage.count > 0
-        }
-    }
-    var currentLanguage = 0
-    let languaeList = ["pl","en_GB","de","fr_FR","es_ES"]
+    var recordedMessage: String = ""
+    var isRecordEnabled = true
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     lazy var speechRecognizer: SFSpeechRecognizer? = nil
-    //----------
-    var recordedMessage: String = ""
-    var isRecordEnabled = true
 
     var languageId: String  {
         get {
          return Setup.languageId
+        }
+    }
+    var isEmpty : Bool {
+        get {
+            return recordedMessage.count > 0
         }
     }
     lazy var audioEngine: AVAudioEngine = {
@@ -51,24 +46,14 @@ class ListenSpeech {
         // init data
         memoData = []
     }
-
-
-
-    //    lazy var speechRecognizer: SFSpeechRecognizer? = {
-    //        if let recognizer = SFSpeechRecognizer(locale: Locale(identifier: languaeList[currentLanguage])) {
-    //            recognizer.delegate = self
-    //            return recognizer
-    //        }
-    //        return nil
-    //    }()
-    func setupSpeechRecognizer() ->  SFSpeechRecognizer? {
-        if let recognizer = SFSpeechRecognizer(locale: Locale(identifier: languaeList[currentLanguage])) {
+    private func setupSpeechRecognizer() ->  SFSpeechRecognizer? {
+        if let recognizer = SFSpeechRecognizer(locale: Locale(identifier: languageId)) {
             //recognizer.delegate = self
             return recognizer
         }
         else {   return nil    }
     }
-    func requestAuth() {
+    private func requestAuth() {
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
             DispatchQueue.main.async {
                 switch authStatus {
@@ -82,34 +67,6 @@ class ListenSpeech {
             }
         }
     }
-//    func updateUserInterface() {
-//        if isEnabled {
-//            print("User interface is enabled")
-//        }
-//        else {
-//           print("User interface is disabled")
-//        }
-//}
-        //                self.recordingView.isHidden = false
-        //                self.fadedView.alpha = 0.0
-        //                self.fadedView.isHidden = false
-        //                UIView.animate(withDuration: 1.0) {
-        //                    self.fadedView.alpha = 1.0
-
-        //          during stop
-        //                UIView.animate(withDuration: 0.5, animations: {
-        //                    self.fadedView.alpha = 0.0
-        //                }) { (finished) in
-        //                    self.fadedView.isHidden = true
-        //                    self.recordingView.isHidden = true
-        //                    self.tableView.reloadData()
-        //                }
-
-        
-//        @IBAction func languageSementedControlPress(_ sender: UISegmentedControl) {
-//            currentLanguage = sender.selectedSegmentIndex
-//            print("lan=\(currentLanguage)")
-//        }
      func didTapRecordButton() {
         self.speechRecognizer = setupSpeechRecognizer()
         if audioEngine.isRunning {
@@ -117,11 +74,9 @@ class ListenSpeech {
             recognitionRequest?.endAudio()
         } else {
             self.startRecording()
-            
-        }        
+        }
         delegate?.updateListenSpeechInterface(forRedyToRecord: isEnabled)
         isEnabled.toggle()
-        //updateUserInterface()
     }
     func stopRecording() {
         if audioEngine.isRunning {
@@ -132,7 +87,6 @@ class ListenSpeech {
         }
         self.speechRecognizer = nil
     }
-
     func startRecording() {
         if let recognitionTask = self.recognitionTask {
             recognitionTask.cancel()
@@ -144,7 +98,6 @@ class ListenSpeech {
             try audioSession.setCategory(AVAudioSession.Category.record)
             try audioSession.setMode(AVAudioSession.Mode.measurement)
             try audioSession.setActive(true, options: AVAudioSession.SetActiveOptions.notifyOthersOnDeactivation)
-            //try audioSession.setActive(true, with: AVAudioSession.SetActiveOptions.notifyOthersOnDeactivation)
         }catch {
             print(error)
         }
@@ -174,23 +127,4 @@ class ListenSpeech {
         catch {   print(error)     }
     }
 // end start
-
-
-//    extension ViewController: SFSpeechRecognizerDelegate {}
-//    extension ViewController: UITableViewDelegate {}
-
-//    extension ViewController: UITableViewDataSource {
-//        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//            return memoData.count
-//        }
-//        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
-//            let memo = memoData[indexPath.row]
-//            cell.titleLabel.text = memo.memoTitle
-//            cell.dateLabel.text = memo.memoDate.description
-//            cell.memoLabel.text = memo.memoText
-//            return cell
-//        }
-//    }
-
 }

@@ -33,8 +33,6 @@ class Contacts: UIViewController, ListenSpeechDelegate {
                 Setup.currentLanguage = .polish
                 speeking.textToSpeach = "To jest test rozpoznania mowy" //listenSpeech.recordedMessage
             }
-            
-            
         }
         print("Message: \(listenSpeech.recordedMessage), \(listenSpeech.isEnabled)")
      }
@@ -43,8 +41,7 @@ class Contacts: UIViewController, ListenSpeechDelegate {
         tel=tel.replacingOccurrences(of: " ", with: "")
         print(tel)
         openMyUrl(with: "tel://\(tel)")
-     }
-    
+     }    
     @IBAction func emailAction(_ sender: UIButton) {
         // let email2 = "mailto:kurczewski7@gmail.com?cc=kurczewsscy@gmail.com&subject=Greetings%20from%20Cupertino!&body=Wish%20you%20were%20here!"
         
