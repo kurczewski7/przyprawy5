@@ -23,18 +23,19 @@ class Contacts: UIViewController, ListenSpeechDelegate {
     func updateListenSpeechInterface(forRedyToRecord isReady: Bool) {
         let ikonName = isReady ? "circled_pause" : "microphone"
         navigationItem.leftBarButtonItem?.image = UIImage(named: ikonName)
+        navigationItem.leftBarButtonItem?.tintColor =  isReady ? .systemRed : .systemBlue
     }
     @IBAction func speeakTest() {
         let speeking = Speaking()
         listenSpeech.didTapRecordButton()
-        if listenSpeech.isEnabled {
+        if listenSpeech.isRecordEnabled {
             if !listenSpeech.isEmpty {
                 print("\(listenSpeech.recordedMessage)")
                 Setup.currentLanguage = .polish
                 speeking.textToSpeach = "To jest test rozpoznania mowy" //listenSpeech.recordedMessage
             }
         }
-        print("Message: \(listenSpeech.recordedMessage), \(listenSpeech.isEnabled)")
+        print("Message: \(listenSpeech.recordedMessage), \(listenSpeech.isRecordEnabled)")
      }
     @IBAction func callAction(_ sender: Any) {
         var tel = "512 58 95 28"

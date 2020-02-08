@@ -10,24 +10,21 @@ import Foundation
 import AVFoundation
 
 class Speaking {
-    let synthesier = AVSpeechSynthesizer()
-    var selectedLanguage = 0
-    var languageId: String  {
-        get {
-         return Setup.languageId
-        }
-    }
+    private let synthesier = AVSpeechSynthesizer()
     var textToSpeach: String {
         didSet {
             if textToSpeach == "" {   stopSpeaking()     }
             else {   startSpeaking()       }
         }
     }
+    var languageId: String  {
+        get {
+         return Setup.languageId
+        }
+    }
     init() {
-        //self.languageId =  Setup.languageId
         self.textToSpeach = ""
     }
-    var contentToSpeac: [String] = []
     func startSpeaking() {
         let utterance = AVSpeechUtterance(string: textToSpeach) //contentToSpeac[selectedLanguage]
         utterance.voice = AVSpeechSynthesisVoice(language: languageId) // pl "en-GB" "en-US"

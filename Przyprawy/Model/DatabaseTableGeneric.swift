@@ -16,7 +16,6 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
     private var  genericArray = [P]()
     private var  genericArrayFiltered: [P] = []
     private var  currentRow = 0
-    //var  classNameString: String = ""
     
     var featchResultCtrl: NSFetchedResultsController<P> = NSFetchedResultsController<P>()
     var feachRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>()
@@ -45,7 +44,6 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
     init(databaseSelf: Database, keys: [String], ascendingKeys: [Bool], _ setFetchReqest: () -> NSFetchRequest<NSFetchRequestResult>) {
         self.context = databaseSelf.context
         self.databaseSelf = databaseSelf
-        //self.classNameString = className
         
         genericArray = []
         feachRequest = setFetchReqest()
@@ -86,8 +84,9 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
         return genericArray.count
     }
     func remove(at row: Int) -> Bool {
-        //let res: Bool
+        let r = (row == -1 ? genericArray.count-1 : row)
         if row < genericArray.count {
+            context.delete(genericArray[r] as! NSManagedObject)
             genericArray.remove(at: row)
             return true
         }
@@ -95,10 +94,15 @@ class DatabaseTableGeneric <P: NSFetchRequestResult> {
             return false
         }
     }
-    func remove(fromDatabaseRow row:Int) -> Bool {
-        // TODO: If you want
-        return true
-    }
+//    func deleteOne(withProductRec row : Int) {
+//         // for row -1 delete last record
+//         //let arr = product.array
+//         let r = (row == -1 ? product.count-1 : row)
+//         context.delete(product.array[r])
+//         product.array.remove(at: r)
+//         save()
+//     }
+
     func deleteAll()  {
         let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: feachRequest)
         do { try context.execute(DelAllReqVar) }

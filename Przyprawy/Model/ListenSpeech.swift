@@ -19,19 +19,20 @@ class ListenSpeech {
     }
     var delegate: ListenSpeechDelegate?
     var memoData: [Memo] = [Memo]()
-    var isEnabled = true
-    var recordedMessage: String = ""
+    //var isEnabled = true
     var isRecordEnabled = true
-    var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    var recognitionTask: SFSpeechRecognitionTask?
-    lazy var speechRecognizer: SFSpeechRecognizer? = nil
+    var recordedMessage: String = ""
+
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+    private lazy var speechRecognizer: SFSpeechRecognizer? = nil
     var languageId: String  {
         get {    return Setup.languageId        }
     }
     var isEmpty : Bool {
         get {    return recordedMessage.count > 0   }
     }
-    lazy var audioEngine: AVAudioEngine = {
+    private lazy  var audioEngine: AVAudioEngine = {
            let audioEngine = AVAudioEngine()
            return audioEngine
        }()
@@ -64,8 +65,8 @@ class ListenSpeech {
         } else {
             self.startRecording()
         }
-        delegate?.updateListenSpeechInterface(forRedyToRecord: isEnabled)
-        isEnabled.toggle()
+        delegate?.updateListenSpeechInterface(forRedyToRecord: isRecordEnabled)
+        isRecordEnabled.toggle()
     }
     func stopRecording() {
         if audioEngine.isRunning {

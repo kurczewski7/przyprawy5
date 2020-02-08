@@ -58,7 +58,7 @@ class FavoriteContactTableViewCell: UITableViewCell {
         else {
             sender.tintColor = .red
             if let key = userKey {
-                 Setup.preferedContacts.removeValue(forKey: key)
+                Setup.preferedContacts.removeValue(forKey: key)
                 let numberToDel = database.favoriteContacts.findExistElement(forKey: key)
                 if  numberToDel > -1 {
                     _ = database.favoriteContacts.remove(at: numberToDel)
