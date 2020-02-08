@@ -18,6 +18,11 @@ protocol DatabaseDelegate: class {
 class ProductSeting2:  DatabaseTableGeneric<ProductTable>, DatabaseTableProtocol {
     override class func className() -> String {
         return "ProductSeting2"
+    }    
+    var checkProduct: Bool = false {
+        didSet {
+            print("Ustawiono nowa wartosc: \(checkProduct)  stara wartosc \(oldValue)")
+        }
     }
 }
 class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTableProtocol {
