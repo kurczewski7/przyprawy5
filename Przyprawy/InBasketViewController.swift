@@ -129,11 +129,18 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .destructive, title: "Usuń z listy") { (lastAction, view, completionHandler) in
             print("Usuń z listy")
-            
-            
             let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+            if let product = toShopProduct.productRelation {
+                database.toShopProduct.checkProduct(forProduct: product, at: indexPath, isSelected: false)
+            }                        
             self.fetchedResultsController.managedObjectContext.delete(toShopProduct)
             self.saveDataAndReloadView()
+            
+//            if let obj=fetchedResultsController.object(at: indexPath) as? ToShopProductTable {
+//                configureCell(cell: cell, withEntity: obj, at: indexPath)
+//            }
+            
+            
 //            toShopProduct.checked = true
 //            database.toShopProduct.toShopProductArray.remove(at: indexPath.row)
 //            database.save()

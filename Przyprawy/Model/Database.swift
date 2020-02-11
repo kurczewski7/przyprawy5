@@ -26,6 +26,11 @@ class ProductSeting2:  DatabaseTableGeneric<ProductTable>, DatabaseTableProtocol
     }
 }
 class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTableProtocol {
+    var currentListNumber: Int {
+        get {
+            return Setup.currentListNumber
+        }
+    }
     override class func className() -> String {
         return "ToShopProduct2"
     }
@@ -40,6 +45,15 @@ class ToShopProduct2: DatabaseTableGeneric<ToShopProductTable>, DatabaseTablePro
             val.categoryId = categoryId
             array.append(val)
          }
+    }
+    func checkProduct(forProduct product: ProductTable, at indexPath: IndexPath, isSelected value: Bool) {
+        print("Current check row: \(indexPath), \(value), product: \(String(describing: product.productName)),currentListNumber:\(currentListNumber) ")
+            product.checked1 = false
+            save()
+        
+        //product.multiChecked = value
+//cell.accessoryType =  product.checked1 ? .checkmark : .none
+
     }
 }
 class FavoriteContacts: DatabaseTableGeneric<FavoriteContactsTable>, DatabaseTableProtocol {

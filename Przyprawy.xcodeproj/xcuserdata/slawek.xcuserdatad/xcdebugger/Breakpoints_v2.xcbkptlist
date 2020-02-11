@@ -65,8 +65,8 @@
             filePath = "Przyprawy/Model/Database.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "loadData(tableNameType:categoryId:)"
             landmarkType = "7">
          </BreakpointContent>

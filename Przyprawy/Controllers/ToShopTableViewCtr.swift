@@ -76,12 +76,7 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
       }
       func tableView(tableView: UITableView,
                      numberOfRowsInSection section: Int) -> Int {
-         // let sectionInfo = fetchedResultsController.sections![section]
-  //            print("numb: \(sectionInfo.numberOfObjects)")
-  //            print("index: \(sectionInfo.indexTitle)")
-  //            print("name: \(sectionInfo.name)")
-  //            print("count: \(sectionInfo.objects?.count)")
-          return fetchedResultsController.sections?[section].numberOfObjects ?? 0  //  sections?[section].count  ?? 0  //sectionInfo.numberOfObjects
+           return fetchedResultsController.sections?[section].numberOfObjects ?? 0
       }
       
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -137,62 +132,37 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
       func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
           let action = UIContextualAction(style: .destructive, title: "Usuń z listy") { (lastAction, view, completionHandler) in
               print("Usuń z listy")
-              
-              
-              let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+                            
+            let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
+            if let product = toShopProduct.productRelation {
+               database.toShopProduct.checkProduct(forProduct: product, at: indexPath, isSelected: false)
+            }
               self.fetchedResultsController.managedObjectContext.delete(toShopProduct)
               self.saveDataAndReloadView()
-  //            toShopProduct.checked = true
-  //            database.toShopProduct.toShopProductArray.remove(at: indexPath.row)
-  //            database.save()
-            //  self.tableView?.reloadData()
-              completionHandler(true)
+               completionHandler(true)
           }
           action.backgroundColor = .red
-          action.image=UIImage(named: "full_trash")
+          action.image=UIImage(named: "full_trash_big")
           let swipe = UISwipeActionsConfiguration(actions: [action])
           return swipe
-      }
+      }   
       func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
          let deleteMessage = Setup.currentLanguage == .polish ? "Usuń z listy" : "Remove" //"Usuń z listy" : "Remove from list"
          let action = UIContextualAction(style: .destructive, title: deleteMessage) { (lastAction, view, completionHandler) in
          print("Usuń z listy")
          let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
-         self.fetchedResultsController.managedObjectContext.delete(toShopProduct)
+         if let product = toShopProduct.productRelation {
+            database.toShopProduct.checkProduct(forProduct: product, at: indexPath, isSelected: false)
+         }
+        self.fetchedResultsController.managedObjectContext.delete(toShopProduct)
          self.saveDataAndReloadView()
             completionHandler(true)
-            //            toShopProduct.checked = true
-            //            database.toShopProduct.toShopProductArray.remove(at: indexPath.row)
-            //            database.save()
-            //  self.tableView?.reloadData()§gggg
-        }
+         }
         action.backgroundColor = .red
         action.image=UIImage(named: "full_trash_big")
         let swipe = UISwipeActionsConfiguration(actions: [action])
         return swipe
     }
-          //          let sectionType = getSectionType(at: indexPath)
-          //          let action1 = UIContextualAction(style: .destructive, title: "Kup") { (act, view, completionHandler) in
-          //              print("Kup")
-          //              let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
-          //              toShopProduct.checked = true
-          //              self.saveDataAndReloadView()
-          //              completionHandler(true)
-          //          }
-          //          action1.backgroundColor =  #colorLiteral(red: 0.09233232588, green: 0.5611743331, blue: 0.3208354712, alpha: 1)
-          //          action1.image =  UIImage(named: "buy_filled")
-          //
-          //          let action2 = UIContextualAction(style: .destructive, title: "Zwróć") { (act, view, completionHandler) in
-          //              print("Zwróć")
-          //              let toShopProduct = self.fetchedResultsController.object(at: indexPath) as! ToShopProductTable
-          //              toShopProduct.checked = false
-          //              self.saveDataAndReloadView()
-          //              completionHandler(true)
-          //          }
-          //          action2.backgroundColor =  #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
-          //          action2.image =  UIImage(named: "return_purchase_filled")
-          //
-          //          let swipe = UISwipeActionsConfiguration(actions: [sectionType == .ToBuy ?  action1 : action2])
       func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
           var sectionName = "brak"
         let colorList: [UIColor] = [.orange, .purple, .green, .brown, .cyan, .blue, .yellow, .gray]
@@ -209,7 +179,6 @@ class ToShopTableViewCtr:   UIViewController, UITableViewDataSource, UITableView
             label.textColor = ((section % 2 == 0) ?  UIColor.black : UIColor.white)
         }
           return label
-        //((section == 0) ?  #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1) : #colorLiteral(red: 0, green: 0.5690457821, blue: 0.5746168494, alpha: 1))
       }
       func getSectionType(at indexPath: IndexPath) -> SectionType {
           let elem = fetchedResultsController.object(at: indexPath) as! ToShopProductTable
